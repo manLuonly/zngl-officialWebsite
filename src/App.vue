@@ -29,7 +29,7 @@ export default {
 @import "./style/global.less";
 @import "./style/bootstarp-ui.less";
 @import "./style/antdesign.less";
-// @import "./style/media.less";
+@import "./style/media.less";
 
 #app {
   height: 100%;

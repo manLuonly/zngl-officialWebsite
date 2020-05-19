@@ -22,14 +22,14 @@
 
         <div class="center-text">
           <h1 class="center_title wow slideInUp">用设计塑造品牌价值</h1>
-          <div class="text_indent2 wow slideInUp">
+          <div class="text_indent2 font16 wow slideInUp">
            智能桂联已经服务各行业超过三百多家的公司以及店铺，我们有信心赢得客户良好口碑和高度满意的依据，唯有客户的满意才能让我们继续努力向前冲，追随时
             代的发展，保持设计的原创。秉承“客户满意就是我们的成功”的服务理念，为用户提供便利、经济的个性化全程智能应用解决方案，让用户体验互联网智能时代。
           </div>
         </div>
 
         <div class="bottom-box wow slideInUp">
-          <img src="../../assets/img/bottom-img.jpg" class="bottom-img" />
+          <img src="../../assets/img/home-img/bottom-img.jpg" class="bottom-img" />
         </div>
       </div>
     </div>

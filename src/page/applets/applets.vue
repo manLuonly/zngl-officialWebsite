@@ -9,25 +9,26 @@
           <img v-lazy="item.url" />
         </div>
       </div>-->
-      <div style="height:300px">
-        <img src="../../assets/img/applets-img/banner.jpg" style="width:100%;height:100%">
-      </div>
+        <div class="banner">
+          <img src="../../assets/img/applets-img/banner.jpg" >
+        </div>
+     
 
-      <div class="module1" style="margin-top:40px">
+      <div class="module1 section" style="margin-top:40px">
         <h1 class="module1-title-text animated slideInUp">一站式微信小程序解决方案满足多场景的业务需求</h1>
         <span
           class="module1-content-text animated slideInUp"
         >小程序解决方案致力于为商家提供一体化智能营销解决方案。包括活动优惠、商品销售，会员管理，产品折扣，商品上架、下架数据体系，二次营销等服务，帮助商家快速时间获客能力，实现商品及订单双倍高，为商家获取最大的收益。</span>
         <div class="module1-img-box animated slideInUp">
-          <img v-lazy='require("../../assets/img/applets-img/big-img-1.png")' />
+          <img v-lazy="require('../../assets/img/applets-img/big-img-1.png')" />
         </div>
       </div>
 
       <div class="module1">
         <h1 class="module1-title-text padding-h1 wow slideInUp">一站式微信小程序界面展示</h1>
-        <span class="module1-content-text center-text wow slideInUp">标准化界面，支持灵活拖拽，功能板块丰富</span>
+        <span class="module1-content-text center-text wow slideInUp">强劲的功能系统，专属品牌小程序+门店小程序，适合个人、门店、商家。</span>
         <div class="module1-img-box wow slideInUp">
-          <img v-lazy='require("../../assets/img/applets-img/big-img-2.png")' />
+          <img v-lazy="require('../../assets/img/applets-img/big-img-2.png')" />
         </div>
       </div>
 
@@ -170,7 +171,6 @@ export default {
 }
 
 .applets {
-  margin-top: 40px;
   .module1 {
     .module1-title-text {
       .reuseTieleText();
@@ -212,8 +212,8 @@ export default {
       .module2-nav-box {
         width: 150px;
         .module2-nav-img {
-          width: 35px;
-          height: 35px;
+          width: 39px;
+          height: 40px;
           margin: 0 auto;
         }
         .module2-nav-text {

@@ -2,7 +2,7 @@
 <template>
   <div class="project">
     <div class="banner">
-      <img src="../../assets/img/program-img/test-banner.png" />
+      <img src="../../assets/img/project-img/banner.jpg" />
     </div>
     <div class="section">
       <div class="select-project font24">
@@ -56,7 +56,8 @@ export default {
         pageSize: 10 // 每页条数
       },
       isShowDetailsBtn: false,
-      type: ""
+      type: "",
+      classificationArr:[]
     };
   },
   watch: {
@@ -76,7 +77,6 @@ export default {
           pageNum: 1, // 当前页码
           pageSize: 10 // 每页条数
         };
-        console.log(this.currentSelect, " this.currentSelect");
 
         this.currentSelect = "logo"; // 类型
         this.getAllProject();
@@ -104,6 +104,7 @@ export default {
         await casetype().then(res => {
           if (res.code === 0) {
             const result = res.data;
+            this.classificationArr =  result.map(i=> i.type);
             var arr = [];
             // 一维数组分割为多维数组
             for (var i = 0; i < result.length; i += 4) {
@@ -116,6 +117,7 @@ export default {
         await caselist(form).then(res => {
           if (res.code === 0) {
             this.projectList = res.data;
+
             this.sortAllProject(typeVal);
           }
         });
@@ -129,19 +131,7 @@ export default {
     sortAllProject(typeVal) {
       let projectList = {};
 
-      const classificationArr = [
-        "app",
-        "logo",
-        "pa",
-        "pg",
-        "vi",
-        "web",
-        "pb",
-        "sm",
-        "pt"
-      ];
-
-      classificationArr.map(type => {
+      this.classificationArr.map(type => {
         projectList[type] = this.projectList.filter(item => {
           if (item.type == "logo" || item.type == "sm") {
             this.isShowDetailsBtn = false;
@@ -231,14 +221,6 @@ export default {
 }
 
 .project {
-  .banner {
-    height: 300px;
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  }
   .text {
     font-size: 28px;
     cursor: pointer;
@@ -259,7 +241,7 @@ export default {
         width: 24%;
         height: 281px;
         margin: 74px 1% 20px 0;
-        box-shadow: 0px 0px 10px -5px rgba(0, 0, 0);
+        box-shadow: 0px 0px 7px -5px rgba(0, 0, 0);
         background-color: #eee;
         color: blue;
         text-align: center;

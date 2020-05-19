@@ -1,4 +1,4 @@
-<!-- LGT创意-->
+<!-- 智能桂联创意-->
 <template>
   <div class="brand">
     <div class="banner">
@@ -6,11 +6,13 @@
     </div>
 
     <div class="nav">
-      <div class="nav-box font16" v-for="(item,index) in navList" :key="index">
-        <span
-          @click="changeType(item,index)"
-          :class="{ active: activeClass == index }"
-        >{{ item.text }}</span>
+      <div
+        class="nav-box font16"
+        v-for="(item,index) in navList"
+        :key="index"
+        @click="changeType(item,index)"
+      >
+        <span :class="{ active: activeClass == index }">{{ item.text }}</span>
       </div>
     </div>
 
@@ -19,7 +21,7 @@
         <a-col :span="12" class="animated fadeInLeft">
           <img
             v-lazy="require('../../assets/img/program-img/img-1.png')"
-            style="width: 569px;height: 340px;"
+            style="max-width: 100%;height: 100%;"
           />
         </a-col>
         <a-col :span="12" class="animated fadeInRight">
@@ -49,25 +51,29 @@
           </div>
           <div class="text-box">
             <h3 class="font22">{{ item.title }}</h3>
-            <span class="font18 color000">{{ item.content }}</span>
+            <span class="font16 color000">{{ item.content }}</span>
           </div>
         </div>
       </div>
     </div>
 
-    <div class="architecture color000">
-      <h1 class="font30 wow slideInUp">智能家居系统架构</h1>
-      <h3 class="font16 wow slideInUp">根据不同用户的实际情况、使用需求、允许搭建的系统架构，我们将系统分为以下版本</h3>
-      <div class="version-box">
-        <div class="furniture wow slideInUp" v-for="(item,index) in architectureList" :key="index">
-          <img v-lazy="item.url" />
-          <div class="text-box">
-            <h3 class="font20 colorfff">{{ item.title }}</h3>
-            <span class="font16 colorfff">{{ item.content }}</span>
+    <div class="bg-box">
+      <div class="architecture section color000">
+        <h1 class="font30 wow slideInUp">智能家居系统架构</h1>
+        <h3 class="font16 wow slideInUp">根据不同用户的实际情况、使用需求、允许搭建的系统架构，我们将系统分为以下版本</h3>
+        <div class="version-box">
+          <div
+            class="furniture wow slideInUp"
+            v-for="(item,index) in architectureList"
+            :key="index"
+          >
+            <img v-lazy="item.url" />
+            <div class="text-box">
+              <h3 class="font20 colorfff">{{ item.title }}</h3>
+              <span class="font16 colorfff">{{ item.content }}</span>
+            </div>
           </div>
         </div>
-        <div></div>
-        <div></div>
       </div>
     </div>
   </div>
@@ -94,31 +100,31 @@ export default {
         {
           icon: require("../../assets/img/program-img/life.png"),
           title: "舒适生活",
-          content: "打造顶级的智能家居系统,给业主一个可以自己改变的居家环境"
+          content: "打造顶级的智能家居系统,给业主一个可以自己改变的居家环境。"
         },
         {
           icon: require("../../assets/img/program-img/technology.png"),
           title: "超前科技",
           content:
-            "应用适度超前的先进、优化集成的成套技术体系和设备体系，为住户提供一个安全、舒适、信息化、环保节能的居家环境"
+            "应用适度超前的先进、优化集成的成套技术体系和设备体系，为住户提供一个安全、舒适、信息化、环保节能的居家环境。"
         },
         {
           icon: require("../../assets/img/program-img/application.png"),
           title: "科技应用",
           content:
-            "真正把IT的技术应用到安全及居家生活的每个细节，让用户享受到高科技带来的安全性与方便性"
+            "真正把IT的技术应用到安全及居家生活的每个细节，让用户享受到高科技带来的安全性与方便性。"
         },
         {
           icon: require("../../assets/img/program-img/lead.png"),
           title: "引领风尚",
-          content: "引领人们进入智能小区生活模式"
+          content: "引领人们进入智能小区生活模式。"
         }
       ],
       architectureList: [
         {
           url: require("../../assets/img/program-img/primary.png"),
           title: "初级智能家居",
-          content: "对家中水阀，煤气阀等进行管理具备几种简单功能"
+          content: "对家中灯光、空调、电视等进行控制具备有几种简单功能"
         },
         {
           url: require("../../assets/img/program-img/intermediate.png"),
@@ -128,7 +134,7 @@ export default {
         {
           url: require("../../assets/img/program-img/luxury.png"),
           title: "豪华智能家居",
-          content: "增加多媒体控制,防护功能，更加个性化。也可按需求编程"
+          content: "增加多媒体控制,防护功能，更加个性化。可按需求编程"
         }
       ],
       activeClass: 0
@@ -145,10 +151,8 @@ export default {
     wow.init();
   },
   methods: {
-    changeType(item,index) {
-      
-      this.activeClass = index
-      console.log(this.activeClass,index,'index');
+    changeType(item, index) {
+      this.activeClass = index;
     }
   }
 };
@@ -161,15 +165,6 @@ export default {
 }
 
 .brand {
-  .banner {
-    height: 300px;
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  }
-
   .nav {
     .flex();
     height: 56px;
@@ -183,12 +178,9 @@ export default {
       &:hover {
         color: #0556a8;
       }
-      &:active {
-        color: red;
+      .active {
+        color: #0556a8;
       }
-      // &:nth-child(1) {
-      //   color: #0556a8;
-      // }
     }
   }
 
@@ -253,34 +245,37 @@ export default {
     }
   }
 
-  .architecture {
-    height: 403px;
+  .bg-box {
     background-color: #f5f5f5;
-    text-align: center;
-    h1 {
-      margin-bottom: 20px;
-      padding-top: 20px;
-    }
-    .version-box {
-      .flex();
-      margin-top: 20px;
-      .furniture {
+    .architecture {
+      height: 403px;
+      text-align: center;
+      h1 {
+        margin-bottom: 20px;
+        padding-top: 20px;
+      }
+      .version-box {
         .flex();
-        .text-box {
-          position: relative;
-          top: 50px;
-          left: -160px;
-          text-align: left;
-          margin-left: 10px;
-          h3 {
-            margin-bottom: 20px;
-          }
-          span {
-            display: block;
-            width: 124px;
-            height: 112px;
-            margin: 0 auto;
-            line-height: 28px;
+        justify-content: space-around;
+        margin-top: 20px;
+        .furniture {
+          width: 202px;
+          height: 293px;
+          .text-box {
+            position: relative;
+            top: -235px;
+            left: 10px;
+            width: 120px;
+            margin-left: 40px;
+            text-align: left;
+            h3 {
+              margin-bottom: 20px;
+            }
+            span {
+              display: block;
+              margin: 0 auto;
+              line-height: 28px;
+            }
           }
         }
       }

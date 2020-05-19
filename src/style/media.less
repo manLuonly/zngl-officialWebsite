@@ -1,18 +1,50 @@
-@media screen and (min-width: 1200px){  // 屏幕大于1200px（大屏幕）
-    body{
-        background: #000 !important;
-    }
- }
+// 屏幕1920px（大屏幕）
+@media screen and (width: 1920px) {
+  // .link-us {
+  //   .banner {
+  //     background-image: url("../assets//img//linkUs-img//联系我们1920.png");
+  //   }
+  // }
+}
 
- @media screen and (min-width: 1024px)  and (max-width: 1199px) {  // 屏幕尺寸 1024-1199（中屏幕）
-    body{
-        background: red !important;
-    }
- }
+// 屏幕尺寸 1660-1680（中屏幕）
+@media screen and (min-width: 1600px) and (max-width: 1680px) {
+  // .link-us {
+  //   .banner {
+  //     background-image: url("../assets//img//linkUs-img/联系我们1680.png");
+  //   }
+  // }
+}
 
- @media screen and (min-width: 768px)  and (max-width: 1023px) {  // 屏幕尺寸 1024-1199（小屏幕pad）
-    body{
-        background: blue !important;
+// 屏幕尺寸 1360-1366（小屏幕）
+@media screen and (min-width: 1360px) and (max-width: 1440px) {
+  // .link-us {
+  //   .banner {
+  //     background-image: url("../assets//img//linkUs-img/联系我们1360.png");
+  //   }
+  // }
+  .suspended-box {
+    .suspended-img {
+      height: 450px;
     }
- }
+    .suspended-text-box {
+      width: 108px !important;
+      height: 450px !important;
+      padding-top: 50px !important;
 
+      .suspended-text {
+        &:last-child {
+          padding-top: 50px !important;
+        }
+        span {
+          font-size: 12px;
+        }
+      }
+      .no-hover {
+        span {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+}

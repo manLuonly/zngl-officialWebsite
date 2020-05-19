@@ -9,9 +9,9 @@
 
         <ul class="service clearfix">
           <div class="mr-2 mb-2">服务范围</div>
-          <router-link v-for="(item, index) in serviceList" :key="index" class="mb-1 mr-1" to="/project" tag="li" >
-            <span>{{ item.name }}</span>
-          </router-link>
+          <li v-for="(item, index) in serviceList" :key="index" class="mb-1 mr-1">
+            <span>{{ item }}</span>
+          </li>
         </ul>
 
         <ul class="contact">
@@ -63,7 +63,7 @@
             <div class>
               <img v-lazy="require('../../assets/img/wx-qrcode.png')" alt="hehe" />
             </div>
-            <span class="mt-1">LGT公众号</span>
+            <span class="mt-1">智能桂联公众号</span>
           </a-col>
         </a-row>
       </div>
@@ -77,83 +77,83 @@ export default {
   data() {
     return {
       serviceList: [
-        {
-          name: 'LOGO设计',
-          value: 'AA'
-        },
-        {
-          name: '画册设计',
-          value: 'AA'
-        },
-        {
-          name: '易拉宝',
-          value: 'AA'
-        },
-        {
-          name: '海报设计',
-          value: 'AA'
-        },
-        {
-          name: 'VI品牌',
-          value: 'AA'
-        },
-        {
-          name: '品牌包装',
-          value: 'AA'
-        },
-        {
-          name: '宣传页',
-          value: 'AA'
-        },
-        {
-          name: '名片设计',
-          value: 'AA'
-        },
-        {
-          name: '网站开发',
-          value: 'AA'
-        },
-        {
-          name: '小程序',
-          value: 'AA'
-        },
-        {
-          name: '网站维护',
-          value: 'AA'
-        },
-        {
-          name: 'APP开发',
-          value: 'AA'
-        },
-        {
-          name: '智能灌溉',
-          value: 'AA'
-        },
-        {
-          name: '智能家居',
-          value: 'AA'
-        },
-        // "LOGO设计",
-        // "画册设计",
-        // "易拉宝",
-        // "海报设计",
-        // "VI品牌",
-        // "品牌包装",
-        // "宣传页",
-        // "名片设计",
-        // "网站开发",
-        // "小程序",
-        // "网站维护",
-        // "APP开发",
-        // "智能灌溉",
-        // "智能家居"
+        // {
+        //   name: 'LOGO设计',
+        //   value: 'AA'
+        // },
+        // {
+        //   name: '画册设计',
+        //   value: 'AA'
+        // },
+        // {
+        //   name: '易拉宝',
+        //   value: 'AA'
+        // },
+        // {
+        //   name: '海报设计',
+        //   value: 'AA'
+        // },
+        // {
+        //   name: 'VI品牌',
+        //   value: 'AA'
+        // },
+        // {
+        //   name: '品牌包装',
+        //   value: 'AA'
+        // },
+        // {
+        //   name: '宣传页',
+        //   value: 'AA'
+        // },
+        // {
+        //   name: '名片设计',
+        //   value: 'AA'
+        // },
+        // {
+        //   name: '网站开发',
+        //   value: 'AA'
+        // },
+        // {
+        //   name: '小程序',
+        //   value: 'AA'
+        // },
+        // {
+        //   name: '网站维护',
+        //   value: 'AA'
+        // },
+        // {
+        //   name: 'APP开发',
+        //   value: 'AA'
+        // },
+        // {
+        //   name: '智能灌溉',
+        //   value: 'AA'
+        // },
+        // {
+        //   name: '智能家居',
+        //   value: 'AA'
+        // },
+        "LOGO设计",
+        "画册设计",
+        "易拉宝",
+        "海报设计",
+        "VI品牌",
+        "品牌包装",
+        "宣传页",
+        "名片设计",
+        "网站开发",
+        "小程序",
+        "网站维护",
+        "APP开发",
+        "智能灌溉",
+        "智能家居"
       ]
     };
   },
   methods: {
-    goCase(value) {
-      this.$router.push({ name: "project", query: { val: value } })
-    }
+    // goCase(value) {
+    //   this.$router.push({ name: "project", query: { val: value } })
+    // }
   }
 };
 </script>

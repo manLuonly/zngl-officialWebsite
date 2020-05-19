@@ -1,6 +1,7 @@
 <!-- 布局页面 -->
 <template>
   <div class="base-layout">
+    <!-- 头部 -->
     <page-header></page-header>
     <transition enter-active-class="animated fadeIn">
       <router-view></router-view>
@@ -8,7 +9,8 @@
      <!-- 悬浮案例 -->
     <suspended-case></suspended-case>
     <!-- 分享组件 -->
-    <share></share>
+    <!-- <share></share> -->
+    <!-- 尾部 -->
     <page-footer></page-footer>
   </div>
 </template>

@@ -1,37 +1,36 @@
 <!-- 联系我们-->
 <template>
   <div class="link-us">
-    <div class="banner">
-      <img src="../../assets/img/program-img/test-banner.png" />
-    </div>
+      <div class="banner">
+        <img src="../../assets/img/linkUs-img/banner.jpg" />
+      </div>
+   
     <div class="select section">
-      <p class="title font16 color333">欢迎来到LGT工作室！请选择您需要的服务项目</p>
+      <p class="title font24 color333">欢迎来到智能桂联！请选择您需要的服务项目</p>
       <div class="radio-group section">
-        <a-checkbox-group
-          :options="plainOptions"
-          @change="onChange1"
-          class="checkbox font20 color333"
-        />
+        <a-checkbox-group :options="plainOptions" @change="onChange1" class="checkbox color333" />
 
-        <a-checkbox-group :options="options" @change="onChange2" class="checkbox font20 color333" />
+        <a-checkbox-group :options="options" @change="onChange2" class="checkbox color333" />
 
         <a-checkbox-group
           :options="optionsWithDisabled"
           @change="onChange3"
-          class="checkbox font20 color333"
+          class="checkbox color333"
         />
       </div>
     </div>
-    <div class="bottom-box section">
+    <div class="bottom-box ">
+
       <div class="left-box">
-        <div class="text-box">
+        <!-- <div class="text-box">
           <div class="text-box text color333 font28">
             <div class="text-box sign"></div>一群狂热的年轻人，用自己的视野重新塑造产品、爱生活，爱艺术，希望通过一己之力改变周围的世界.
           </div>
-        </div>
+        </div> -->
+        <!-- <img src="../../assets/img/linkUs-img/20.png" style="width:100%;line-height:572px;" /> -->
       </div>
       <div class="right-box">
-        <span class="title font14 color333">欢迎来到LGT品牌！</span>
+        <span class="title font14 color333">欢迎来到智能桂联</span>
         <div class="form-box">
           <a-form :form="form" class="form">
             <a-form-item
@@ -150,18 +149,21 @@ import { submitInfoForm } from "@/api/project";
 
 const plainOptions = [
   { label: "LOGO设计", value: "LOGO设计" },
-  { label: "宣传册设计", value: "宣传册设计" },
-  { label: "品牌VI手册设计", value: "品牌VI手册设计" }
+  { label: "产品包装", value: "产品包装" },
+  { label: "微店装修", value: "微店装修" },
+  { label: "公众号开发", value: "公众号开发" }
 ];
 const options = [
-  { label: "名片设计", value: "名片设计" },
-  { label: "展架设计", value: "展架设计" },
-  { label: "小程序开发", value: "小程序开发" }
+  { label: "画册设计", value: "画册设计" },
+  { label: "品牌VI手册设计", value: "品牌VI手册设计" },
+  { label: "小程序开发", value: "小程序开发" },
+  { label: "智能灌溉", value: "智能灌溉" }
 ];
 const optionsWithDisabled = [
   { label: "海报设计", value: "海报设计" },
   { label: "易拉宝设计", value: "易拉宝设计" },
-  { label: "网站开发", value: "网站开发" }
+  { label: "网站开发", value: "网站开发" },
+  { label: "智能家居", value: "智能家居" }
 ];
 const formItemLayout = {
   labelCol: { span: 4 },
@@ -244,17 +246,6 @@ export default {
 
 <style lang="less" scoped>
 .link-us {
-  .banner {
-    height: 300px;
-    img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-  }
-  // .title {
-  //   font-size: 22px;
-  // }
   .select {
     margin-top: 40px;
     .title {
@@ -266,14 +257,20 @@ export default {
       justify-content: center;
       .checkbox {
         margin: 0 108px;
+        /deep/ span {
+          font-size: 16px;
+        }
       }
     }
   }
   .bottom-box {
     display: flex;
     padding-top: 40px;
+    background-image: url('../../assets/img/linkUs-img/leavemsg.jpg');
+    justify-content: space-around;
     .left-box {
-      width: 310px;
+      // width: 310px;
+      width: 50%;
       .text-box {
         .sign {
           display: inline-block;
@@ -288,15 +285,13 @@ export default {
       }
     }
     .right-box {
+      width: 50%;
       position: relative;
       width: 558px;
       height: 572px;
-      margin-left: 276px;
+      // margin-left: 276px;
       border-style: solid;
-      border-top-width: 12px;
-      border-right-width: 6px;
-      border-bottom-width: 12px;
-      border-left-width: 6px;
+      border-width: 12px 6px 12px 6px;
       border-radius: 10px;
       color: #348ccd;
       .title {

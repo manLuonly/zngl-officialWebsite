@@ -1,4 +1,4 @@
-# lgt
+# zngl
 
 ## Project setup
 ```
