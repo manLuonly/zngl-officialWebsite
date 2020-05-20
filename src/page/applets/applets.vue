@@ -97,7 +97,7 @@ export default {
         },
         {
           text: "推荐给好友",
-          start: -164,
+          start: -161,
           end: 0
         }
       ],
