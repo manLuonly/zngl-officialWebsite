@@ -1,6 +1,6 @@
 <!-- 智能桂联创意-->
 <template>
-  <div class="brand">
+  <div class="program">
     <div class="banner">
       <img src="../../assets/img/program-img/banner.jpg" />
     </div>
@@ -83,7 +83,7 @@
 import { WOW } from "wowjs";
 
 export default {
-  name: "Brand",
+  name: "Program",
   data() {
     return {
       navList: [
@@ -164,7 +164,7 @@ export default {
   justify-content: center;
 }
 
-.brand {
+.program {
   .nav {
     .flex();
     height: 56px;

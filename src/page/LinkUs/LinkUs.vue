@@ -1,10 +1,10 @@
 <!-- 联系我们-->
 <template>
   <div class="link-us">
-      <div class="banner">
-        <img src="../../assets/img/linkUs-img/banner.jpg" />
-      </div>
-   
+    <div class="banner">
+      <img src="../../assets/img/linkUs-img/banner.jpg" />
+    </div>
+
     <div class="select section">
       <p class="title font24 color333">欢迎来到智能桂联！请选择您需要的服务项目</p>
       <div class="radio-group section">
@@ -19,15 +19,123 @@
         />
       </div>
     </div>
-    <div class="bottom-box ">
+    <div class="bottom-box">
+      <div class="section">
+        <div class="text-box">
+          <h1 class="title">关于我们</h1>
+          <h2 class="title-eg">
+            <span>Contact</span>
+          </h2>
+          <div class="text-content">
+            <span
+              class="text_indent2"
+            >科技改变未来,发展移动互联网是大势所趋，智能桂联就已切入移动互联网领域，为客户制作网站建设，APP开发，小程序开发等，拥有大量长期客户的智能桂联，为满足客户需求，成立了移动媒体事业部，由一帮更年轻，更具活力的设计与技术团队组成。</span>
+            <span class="text_indent2">智能桂联涉及的的领域有：平面设计、UI设计、广告设计、网站建设、小程序开发、APP开发、公众号开发、智能家居、智能灌溉等。</span>
+            <span class="text_indent2">我们时刻准备着为您服务，如有需求，欢迎咨询了解详情。</span>
+          </div>
+        </div>
+        <div class="form-box">
+          <div class="left">
+            <a-form layout="vertical" :form="form" class="form">
+              <a-form-item
+                :label-col="formItemLayout.labelCol"
+                :wrapper-col="formItemLayout.wrapperCol"
+              >
+                <a-input
+                  class="item-input"
+                  v-decorator="[
+                'username',
+                  {rules: [{ required: true, message: '请输入您的姓名！' }]}
+                ]"
+                  placeholder="您的姓名"
+                />
+              </a-form-item>
+              <a-form-item
+                :label-col="formItemLayout.labelCol"
+                :wrapper-col="formItemLayout.wrapperCol"
+              >
+                <a-input
+                  class="item-input"
+                  maxlength="11"
+                  v-decorator="[
+                'tel',
+                  {rules: [
+                  {
+                    min:11,
+                    message: '请输入正确的电话号码！'
+                  },
+                  {
+                  pattern: /^1[3456789]\d{9}$/,
+                  message: '手机格式不正确！',
+                  },
+                  { required: true,
+                  whitespace: true,
+                   type:'number',
+                   transform(value) {
+                      if(value){
+                        return Number(value);
+                      }
+                    },
+                   message: '请输入正确的电话号码！' },
+                   ]}
+                ]"
+                  placeholder="您的联系方法"
+                />
+              </a-form-item>
+              <a-form-item
+                :label-col="formItemLayout.labelCol"
+                :wrapper-col="formItemLayout.wrapperCol"
+              >
+                <a-input
+                  class="item-input"
+                  v-decorator="[
+                'email',
+                  {rules: [
+                  { required: true, message: '请输入您的邮箱！' },
+                  {
+                  pattern: /^[a-zA-Z0-9_.-]+@[a-zA-Z0-9-]+(\.[a-zA-Z0-9-]+)*\.[a-zA-Z0-9]{2,6}$/,
+                  message: '邮箱格式不正确',
+                  },
+                  {
+                  max: 50,
+                  message: '邮箱不得超过50字符',
+                  },
+                  ]}
+                ]"
+                  placeholder="电子邮箱"
+                />
+              </a-form-item>
+            </a-form>
+          </div>
+          <div class="right">
+            <a-form :form="form" class="form">
+              <a-form-item
+                :label-col="formItemLayout.labelCol"
+                :wrapper-col="formItemLayout.wrapperCol"
+              >
+                <a-textarea
+                  class="item-input-last"
+                  v-decorator="[
+                  'leavingMsg',
+                  {rules: [{ required: true, message: '请输入您的留言内容！' }]}
+                ]"
+                  placeholder="请写下您的想法或想了解咨询的项目,我们将很快联系您"
+                ></a-textarea>
+              </a-form-item>
+            </a-form>
+          </div>
+        </div>
+        <div style="text-align: center;">
+          <a-button type="primary" @click="submit" class="submit-btn">提交</a-button>
+        </div>
+      </div>
 
-      <div class="left-box">
-        <!-- <div class="text-box">
+      <!-- <div class="left-box">
+        <div class="text-box">
           <div class="text-box text color333 font28">
             <div class="text-box sign"></div>一群狂热的年轻人，用自己的视野重新塑造产品、爱生活，爱艺术，希望通过一己之力改变周围的世界.
           </div>
-        </div> -->
-        <!-- <img src="../../assets/img/linkUs-img/20.png" style="width:100%;line-height:572px;" /> -->
+        </div>
       </div>
       <div class="right-box">
         <span class="title font14 color333">欢迎来到智能桂联</span>
@@ -139,7 +247,7 @@
             </a-form-item>
           </a-form>
         </div>
-      </div>
+      </div>-->
     </div>
   </div>
 </template>
@@ -167,11 +275,11 @@ const optionsWithDisabled = [
 ];
 const formItemLayout = {
   labelCol: { span: 4 },
-  wrapperCol: { span: 8 }
+  wrapperCol: { span: 20 }
 };
 const formTailLayout = {
   labelCol: { span: 4 },
-  wrapperCol: { span: 8, offset: 4 }
+  wrapperCol: { span: 20, offset: 4 }
 };
 export default {
   name: "LinkUs",
@@ -245,6 +353,20 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.pseudo-class() {
+  content: "";
+  position: absolute;
+  top: 50%;
+  background: #ffffff;
+  width: 35%;
+  height: 1px;
+}
+.text_indent2 {
+  display: block;
+  text-indent: 2em;
+  line-height: 28px;
+}
+
 .link-us {
   .select {
     margin-top: 40px;
@@ -264,47 +386,132 @@ export default {
     }
   }
   .bottom-box {
-    display: flex;
-    padding-top: 40px;
-    background-image: url('../../assets/img/linkUs-img/leavemsg.jpg');
-    justify-content: space-around;
-    .left-box {
-      // width: 310px;
-      width: 50%;
+    width: 100%;
+    height: 612px;
+    margin-top: 40px;
+    background-image: url("../../assets/img/linkUs-img/leavemsg.png");
+    .section {
       .text-box {
-        .sign {
-          display: inline-block;
-          width: 13px;
-          height: 26px;
-          margin-right: 25px;
-          background-color: #348ccd;
+        padding-top: 40px;
+        .title {
+          color: #ffffff;
+          font-size: 30px;
+          text-align: center;
         }
-        .text {
-          display: inline-block;
+        .title-eg {
+          width: 20%;
+          margin: 20px auto;
+          span {
+            display: block;
+            position: relative;
+            text-align: center;
+            color: #ffffff;
+            &:before {
+              .pseudo-class();
+              left: -3%;
+            }
+            &:after {
+              .pseudo-class();
+              right: -3%;
+            }
+          }
+        }
+        .text-content {
+          color: #ffffff;
+          font-size: 16px;
+          padding-bottom: 84px;
         }
       }
     }
-    .right-box {
-      width: 50%;
-      position: relative;
-      width: 558px;
-      height: 572px;
-      // margin-left: 276px;
-      border-style: solid;
-      border-width: 12px 6px 12px 6px;
-      border-radius: 10px;
-      color: #348ccd;
-      .title {
-        position: absolute;
-        top: 42px;
-        left: 43px;
+    .form-box {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around;
+      height: 172px;
+      .left,
+      .right {
+        width: 50%;
+        // margin: 0 auto;
+        /deep/ .form {
+          height: 100%;
+          .ant-form-item {
+            padding-bottom: 2px;
+            .item-input {
+              height: 40px;
+              background-color: rgba(0, 0, 0, 0) !important;
+              color: #ffffff !important;
+            }
+          }
+        }
       }
-      .form-box {
-        width: 454px;
-        margin-top: 100px;
-        margin-left: 58px;
+      .right {
+        /deep/ .ant-form-item {
+          height: 100%;
+          padding-bottom: 0 !important;
+          .ant-col-20 {
+            height: 100%;
+            .ant-form-item-control {
+              height: 100%;
+              .ant-input {
+                height: 100%;
+                background-color: rgba(0, 0, 0, 0);
+                color: #ffffff;
+              }
+            }
+          }
+        }
       }
     }
+    .submit-btn {
+      width: 380px;
+      margin-top: 15px;
+      background-color: #eeeeee;
+      border-radius: 5px;
+      border: solid 1px #ffffff;
+      color: #000000;
+      font-size: 14px;
+    }
+
+    // display: flex;
+    // padding-top: 40px;
+    // background-image: url('../../assets/img/linkUs-img/leavemsg.jpg');
+    // justify-content: space-around;
+    // background-repeat: no-repeat;
+    // .left-box {
+    //   width: 50%;
+    //   .text-box {
+    //     .sign {
+    //       display: inline-block;
+    //       width: 13px;
+    //       height: 26px;
+    //       margin-right: 25px;
+    //       background-color: #348ccd;
+    //     }
+    //     .text {
+    //       display: inline-block;
+    //     }
+    //   }
+    // }
+    // .right-box {
+    //   width: 50%;
+    //   position: relative;
+    //   width: 558px;
+    //   height: 572px;
+    //   border-style: solid;
+    //   border-width: 12px 6px 12px 6px;
+    //   border-radius: 10px;
+    //   color: #348ccd;
+    //   .title {
+    //     position: absolute;
+    //     top: 42px;
+    //     left: 43px;
+    //   }
+    //   .form-box {
+    //     width: 454px;
+    //     margin-top: 100px;
+    //     margin-left: 58px;
+    //   }
+    // }
   }
 }
 </style>

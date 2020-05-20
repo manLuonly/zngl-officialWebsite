@@ -1,41 +1,43 @@
 <!-- 经典项目-->
 <template>
-  <div class="project">
-    <div class="banner">
-      <img src="../../assets/img/project-img/banner.jpg" />
-    </div>
-    <div class="section">
-      <div class="select-project font24">
-        <a-row type="flex" justify="center" v-for="(row, index) in projectNameList" :key="index">
-          <a-col
-            :span="3"
-            v-for="(col, index) in row"
-            :key="index"
-            @click="changeSelectProjectAction(col.type)"
-            class="col mr-5 text-center"
-            :class="{ active: currentSelect == col.type }"
-          >
-            <span>{{col.type_name}}</span>
-          </a-col>
-        </a-row>
+  <div>
+    <div class="project">
+      <div class="banner" @click="test">
+        <img src="../../assets/img/project-img/banner.jpg" />
       </div>
+      <div class="section">
+        <div class="select-project font24">
+          <a-row type="flex" justify="center" v-for="(row, index) in projectNameList" :key="index">
+            <a-col
+              :span="3"
+              v-for="(col, index) in row"
+              :key="index"
+              @click="changeSelectProjectAction(col.type)"
+              class="col mr-5 text-center"
+              :class="{ active: currentSelect == col.type }"
+            >
+              <span>{{col.type_name}}</span>
+            </a-col>
+          </a-row>
+        </div>
 
-      <div class="logo-list">
-        <ul class="clearfix font18">
-          <li v-for="(item, index) in projectList[currentSelect]" :key="index">
-            <a-button
-              type="primary"
-              class="look-details"
-              @click="gotodetails(item)"
-              v-show="isShowDetailsBtn"
-            >查看详情</a-button>
-            <img v-lazy="item.img" style="object-fit: cover;width:100%;height:100%;" />
-            <span class="logo-list text">{{ item.name }}</span>
-          </li>
-        </ul>
+        <div class="logo-list">
+          <ul class="clearfix font18">
+            <li v-for="(item, index) in projectList[currentSelect]" :key="index">
+              <a-button
+                type="primary"
+                class="look-details"
+                @click="gotodetails(item)"
+                v-show="isShowDetailsBtn"
+              >查看详情</a-button>
+              <img v-lazy="item.img" style="object-fit: cover;width:100%;height:100%;" />
+              <span class="logo-list text">{{ item.name }}</span>
+            </li>
+          </ul>
 
-        <div class="look-more d-flex justify-content-end align-items-center">
-          <a-button class="look-more-btn" @click="lookMore">查看更多</a-button>
+          <div class="look-more d-flex justify-content-end align-items-center">
+            <a-button class="look-more-btn" @click="lookMore">查看更多</a-button>
+          </div>
         </div>
       </div>
     </div>
@@ -57,7 +59,7 @@ export default {
       },
       isShowDetailsBtn: false,
       type: "",
-      classificationArr:[]
+      classificationArr: []
     };
   },
   watch: {
@@ -70,16 +72,18 @@ export default {
     // 重置数据
     watchRouter(to, from) {
       const type = this.$route.query.type;
-      if (to.path == "/project" && type) {
-        this.getDesignatedData(type);
-      } else {
-        this.pageForm = {
-          pageNum: 1, // 当前页码
-          pageSize: 10 // 每页条数
-        };
-
-        this.currentSelect = "logo"; // 类型
-        this.getAllProject();
+      if (to.path == "/project"){
+        if (to.path == "/project" && type) {
+          this.getDesignatedData(type);
+        } else {
+          this.pageForm = {
+            pageNum: 1, // 当前页码
+            pageSize: 10 // 每页条数
+          };
+  
+          this.currentSelect = "logo"; // 类型
+          this.getAllProject();
+        }
       }
     },
     // 获取数据
@@ -104,7 +108,7 @@ export default {
         await casetype().then(res => {
           if (res.code === 0) {
             const result = res.data;
-            this.classificationArr =  result.map(i=> i.type);
+            this.classificationArr = result.map(i => i.type);
             var arr = [];
             // 一维数组分割为多维数组
             for (var i = 0; i < result.length; i += 4) {
@@ -210,6 +214,9 @@ export default {
           this.sortAllProject();
         }
       });
+    },
+    test() {
+      this.$router.push({ name: "details" });
     }
   }
 };

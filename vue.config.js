@@ -72,7 +72,7 @@ module.exports = {
     },
     devServer: {
         disableHostCheck: true,
-        port: 8081, // 端口
+        port: 8000, // 端口
         proxy: {
             "/": {
                 "target": "http://192.168.31.80",

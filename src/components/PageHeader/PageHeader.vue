@@ -30,7 +30,7 @@ export default {
     return {
       navList: [
         { name: "首页", path: "/home" },
-        { name: "应用方案", path: "/brand" },
+        { name: "应用方案", path: "/program" },
         { name: "小程序", path: "/applets" },
         { name: "经典项目", path: "/project" },
         { name: "联系我们", path: "/linkus" }

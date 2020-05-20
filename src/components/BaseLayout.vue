@@ -2,14 +2,20 @@
 <template>
   <div class="base-layout">
     <!-- 头部 -->
-    <page-header></page-header>
+    <page-header v-model="isShow" v-show="isShow"></page-header>
+
     <transition enter-active-class="animated fadeIn">
+      <keep-alive include="Project">
       <router-view></router-view>
+      </keep-alive>
     </transition>
-     <!-- 悬浮案例 -->
+
+    <!-- 悬浮案例 -->
     <suspended-case></suspended-case>
+
     <!-- 分享组件 -->
     <!-- <share></share> -->
+
     <!-- 尾部 -->
     <page-footer></page-footer>
   </div>
@@ -17,7 +23,16 @@
 
 <script>
 export default {
-  name: "BaseLayout"
+  name: "BaseLayout",
+  computed: {
+    isShow() {
+      if (this.$route.name == "details") {
+        return false;
+      } else {
+        return true;
+      }
+    }
+  }
 };
 </script>
 

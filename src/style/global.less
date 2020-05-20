@@ -75,29 +75,7 @@ body {
     box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.75);
 }
 
-//滚动条样式修改
-@media (min-width: 768px) {
-    ::-webkit-scrollbar-thumb {
-        min-height: 28px;
-        background-color: rgba(0, 0, 0, .2);
-        background-clip: padding-box;
-        border-radius: 4px;
-        box-shadow: inset 1px 1px 0 rgba(0, 0, 0, .1), inset 0 -1px 0 rgba(0, 0, 0, .07);
 
-        &:hover {
-            background-color: rgba(0, 0, 0, .4);
-
-        }
-    }
-    ::-webkit-scrollbar-button {
-        width: 0;
-        height: 0;
-    }
-    ::-webkit-scrollbar {
-        width: 10px;
-        height: 10px;
-    }
-}
 
 //中间居中块
 .section {
@@ -107,7 +85,7 @@ body {
     margin: 0 auto;
 }
 
-// 除去首页的banner图样式
+// 除首页外的banner图样式
 .banner {
     img {
         max-width: 100%;

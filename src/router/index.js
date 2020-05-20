@@ -25,13 +25,14 @@ let routes = [{
                     import ( /* webpackChunkName: "page" */ '@/page/Home/Home')
             },
             {
-                path: '/brand',
-                name: 'brand',
+                path: '/program',
+                name: 'program',
                 meta: {
                     title: '应用方案'
                 },
                 component: () =>
-                    import ( /* webpackChunkName: "page" */ '@/page/Brand/Brand')
+                    import ( /* webpackChunkName: "page" */ '@/page/Program/Program')
+
             },
             {
                 path: '/applets',
@@ -46,10 +47,21 @@ let routes = [{
                 path: '/project',
                 name: 'project',
                 meta: {
-                    title: '经典项目',
+                    title: '经典项目'
                 },
                 component: () =>
                     import ( /* webpackChunkName: "page" */ '@/page/Project/Project'),
+                //     children: [
+                //         {
+                //         path: 'details',
+                //         name: 'details',
+                //         mate: {
+                //             title: '详情',
+                //         },
+                //         component: () =>
+                //             import ( /* webpackChunkName: "page" */ '@/page/Project/details')
+                //     }
+                // ]
 
             },
             {
@@ -61,6 +73,15 @@ let routes = [{
                 component: () =>
                     import ( /* webpackChunkName: "page" */ '@/page/LinkUs/LinkUs')
             },
+            {
+                path: '/project/details',
+                name: 'details',
+                mate: {
+                    title: '详情'
+                },
+                component: () =>
+                    import ( /* webpackChunkName: "page" */ '@/page/Project/details')
+            }
         ]
     },
 

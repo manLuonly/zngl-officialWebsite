@@ -32,5 +32,8 @@
         "less": "^3.0.4",
         "less-loader": "^5.0.0",
         "vue-template-compiler": "^2.6.10"
+    },
+    "resolutions": {
+        "@vue/cli-service/portfinder": "1.0.21"
     }
 }
