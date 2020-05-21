@@ -6,11 +6,15 @@
   //   }
   // }
 
-    .banner {
-      img {
-        min-width: 100% !important;
-      }
+  .banner {
+    img {
+      min-width: 100% !important;
     }
+  }
+  
+  .suspended-case {
+    left: 50px !important;
+  }
 }
 
 // 屏幕尺寸 1660-1680（中屏幕）
@@ -55,27 +59,26 @@
   }
 }
 
-
 //滚动条样式修改
 @media (min-width: 768px) {
   ::-webkit-scrollbar-thumb {
-      min-height: 28px;
-      background-color: rgba(0, 0, 0, .2);
-      background-clip: padding-box;
-      border-radius: 4px;
-      box-shadow: inset 1px 1px 0 rgba(0, 0, 0, .1), inset 0 -1px 0 rgba(0, 0, 0, .07);
+    min-height: 28px;
+    background-color: rgba(0, 0, 0, 0.2);
+    background-clip: padding-box;
+    border-radius: 4px;
+    box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.1),
+      inset 0 -1px 0 rgba(0, 0, 0, 0.07);
 
-      &:hover {
-          background-color: rgba(0, 0, 0, .4);
-
-      }
+    &:hover {
+      background-color: rgba(0, 0, 0, 0.4);
+    }
   }
   ::-webkit-scrollbar-button {
-      width: 0;
-      height: 0;
+    width: 0;
+    height: 0;
   }
   ::-webkit-scrollbar {
-      width: 10px;
-      height: 10px;
+    width: 10px;
+    height: 10px;
   }
 }

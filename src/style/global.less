@@ -1,150 +1,147 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 body,
 html {
-    width: 100%;
-    height: 100%;
+  width: 100%;
+  height: 100%;
 }
 body {
-    overflow-x: hidden;
+  overflow-x: hidden;
 }
 
 .font12 {
-    font-size: 12px;
+  font-size: 12px;
 }
 .font14 {
-    font-size: 14px;
+  font-size: 14px;
 }
 .font16 {
-    font-size: 16px;
+  font-size: 16px;
 }
 .font18 {
-    font-size: 18px;
+  font-size: 18px;
 }
 .font20 {
-    font-size: 20px;
+  font-size: 20px;
 }
 .font22 {
-    font-size: 22px;
+  font-size: 22px;
 }
 .font24 {
-    font-size: 24px;
+  font-size: 24px;
 }
 .font28 {
-    font-size: 28px;
+  font-size: 28px;
 }
 .font30 {
-    font-size: 30px;
+  font-size: 30px;
 }
-
 
 .color348 {
-    color: #348ccd;
+  color: #348ccd;
 }
 .colorfff {
-    color: #ffffff;
+  color: #ffffff;
 }
 .colorccc {
-    color: #cccccc;
+  color: #cccccc;
 }
 .color666 {
-    color: #666;
+  color: #666;
 }
 .colora7 {
-    color: #a7c7e5;
+  color: #a7c7e5;
 }
 .color333 {
-    color: #333333;
+  color: #333333;
 }
 .color000 {
-    color: #000000;
+  color: #000000;
 }
 
 .bg2c {
-    background-color: #2c2c2c;
+  background-color: #2c2c2c;
 }
 
-
 .lineheight1 {
-    line-height: 1;
+  line-height: 1;
 }
 
 .box-shadow1 {
-    box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.75);
 }
-
-
 
 //中间居中块
 .section {
-    width: 100%;
-    max-width: 1200px;
-    height: 100%;
-    margin: 0 auto;
+  width: 100%;
+  max-width: 1200px;
+  height: 100%;
+  margin: 0 auto;
 }
 
 // 除首页外的banner图样式
 .banner {
-    img {
-        max-width: 100%;
-        max-height: 100%;
-        object-fit: cover;
-    }
+  img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+  }
 }
 
 //图片占满外层盒子
 .img_cover {
-    //防止被压缩变形
-    flex-shrink: 0;
-    // width: 100%;
-    // height: 100%;
-    // max-width: 100%;
-    max-width: 100%;
-    height: 100%;
-    object-fit: cover;
+  //防止被压缩变形
+  flex-shrink: 0;
+  // width: 100%;
+  // height: 100%;
+  // max-width: 100%;
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 //选中的路由
 .router-link-active {
-    background-color: #0556a8;
-    color: #ffffff !important;
-    text-decoration: none !important;
+  background-color: #0556a8;
+  color: #ffffff !important;
+  text-decoration: none !important;
 }
 
 //路由hover样式
 .r-link {
-    &:hover {
-        background-color: #0556a8;
-    }
+  &:hover {
+    background-color: #0556a8;
+  }
 }
 
 //懒加载图片 样式
-img[lazy="loading"]{ 
-   
+img[lazy="loading"] {
 }
-img[lazy="loaded"]{ 
-    
+img[lazy="loaded"] {
+}
+img[lazy="error"] {
 }
 
 // 分享Dropdown样式
 .resetStyle {
-    /deep/ .share1-menu {
-        height: 72px;
-        width: 40px;
-        line-height: 40px;
-        border-radius: 4px;
-        background-color: Rgba(0,0,0,0.5);
-        text-align: center;
-        .ant-dropdown-menu-item {
-            border-bottom: 1px solid #ffffff;
-        }
-        .ant-dropdown-menu-item:hover, .ant-dropdown-menu-submenu-title:hover {
-            background-color: #F05352;
-        }
-        .ant-dropdown-menu {
-            padding: 0;
-        }
+  /deep/ .share1-menu {
+    height: 72px;
+    width: 40px;
+    line-height: 40px;
+    border-radius: 4px;
+    background-color: Rgba(0, 0, 0, 0.5);
+    text-align: center;
+    .ant-dropdown-menu-item {
+      border-bottom: 1px solid #ffffff;
     }
+    .ant-dropdown-menu-item:hover,
+    .ant-dropdown-menu-submenu-title:hover {
+      background-color: #f05352;
+    }
+    .ant-dropdown-menu {
+      padding: 0;
+    }
+  }
 }

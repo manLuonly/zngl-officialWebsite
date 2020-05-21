@@ -174,7 +174,7 @@ export default {
   z-index: 100;
   display: block;
   bottom: 3px;
-  left: 20px;
+  left: 30px;
 
   .suspended-box {
     display: flex;
@@ -188,6 +188,7 @@ export default {
     }
     .suspended-text-box {
       position: absolute;
+      left: 0;
       width: 132px;
       height: 552px;
       padding-top: 60px;
@@ -195,6 +196,7 @@ export default {
       display: flex;
       flex-direction: column;
       justify-content: space-around;
+      z-index: 99;
 
       .suspended-text {
         &:nth-child(1) {
@@ -231,22 +233,23 @@ export default {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    height: 82px;
+    height: 100px;
     background: #333;
     border-radius: 0 0.5rem 0.5rem 0;
-    width: 20px;
+    width: 30px;
     overflow: hidden;
     text-align: center;
     color: #f5f7fa;
-    // animation: 2s linear infinite;
-    // transition: right 0.4s;
     cursor: pointer;
+    /deep/ i {
+      font-size: 20px;
+    }
   }
 
   .wechat-QRcode-box {
     position: fixed;
     left: 40px;
-    top: 390px;
+    top: 397px;
     margin-top: 10px;
     background-color: #ffffff;
     color: #000000;

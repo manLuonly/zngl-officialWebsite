@@ -285,7 +285,7 @@ export default {
   }
 
   .select-project {
-    height: 150px;
+    // height: 150px;
     margin-top: 40px;
     .ant-row-flex {
       margin-top: 30px;

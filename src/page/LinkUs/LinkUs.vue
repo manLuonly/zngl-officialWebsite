@@ -36,7 +36,7 @@
         </div>
         <div class="form-box">
           <div class="left">
-            <a-form layout="vertical" :form="form" class="form">
+            <a-form :form="form" class="form">
               <a-form-item
                 :label-col="formItemLayout.labelCol"
                 :wrapper-col="formItemLayout.wrapperCol"
@@ -275,11 +275,11 @@ const optionsWithDisabled = [
 ];
 const formItemLayout = {
   labelCol: { span: 4 },
-  wrapperCol: { span: 20 }
+  wrapperCol: { span: 20, offset: 2 }
 };
 const formTailLayout = {
   labelCol: { span: 4 },
-  wrapperCol: { span: 20, offset: 4 }
+  wrapperCol: { span: 20, offset: 2 }
 };
 export default {
   name: "LinkUs",
@@ -386,10 +386,11 @@ export default {
     }
   }
   .bottom-box {
-    width: 100%;
     height: 612px;
     margin-top: 40px;
-    background-image: url("../../assets/img/linkUs-img/leavemsg.png");
+    background: url("../../assets/img/linkUs-img/leavemsg.png") #fff 100% 100% / cover no-repeat;
+    background-position: center;
+    // background-size: cover 100% 100%;
     .section {
       .text-box {
         padding-top: 40px;
@@ -431,7 +432,6 @@ export default {
       .left,
       .right {
         width: 50%;
-        // margin: 0 auto;
         /deep/ .form {
           height: 100%;
           .ant-form-item {
@@ -439,7 +439,8 @@ export default {
             .item-input {
               height: 40px;
               background-color: rgba(0, 0, 0, 0) !important;
-              color: #ffffff !important;
+              color: #fff;
+              border: 2px solid #fff;
             }
           }
         }
@@ -454,8 +455,9 @@ export default {
               height: 100%;
               .ant-input {
                 height: 100%;
-                background-color: rgba(0, 0, 0, 0);
-                color: #ffffff;
+                background-color: rgba(0, 0, 0, 0) !important;
+                color: #fff;
+                border: 2px solid #fff;
               }
             }
           }
@@ -464,12 +466,17 @@ export default {
     }
     .submit-btn {
       width: 380px;
-      margin-top: 15px;
+      margin-top: 36px;
       background-color: #eeeeee;
       border-radius: 5px;
       border: solid 1px #ffffff;
       color: #000000;
       font-size: 14px;
+      &:hover {
+        border:1px solid #005aab;
+        background-color: #005aab;
+        color: #fff;
+      }
     }
 
     // display: flex;

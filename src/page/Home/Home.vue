@@ -20,16 +20,31 @@
           </a-col>
         </a-row>
 
-        <div class="center-text">
-          <h1 class="center_title wow slideInUp">用设计塑造品牌价值</h1>
-          <div class="text_indent2 font16 wow slideInUp">
-           智能桂联已经服务各行业超过三百多家的公司以及店铺，我们有信心赢得客户良好口碑和高度满意的依据，唯有客户的满意才能让我们继续努力向前冲，追随时
-            代的发展，保持设计的原创。秉承“客户满意就是我们的成功”的服务理念，为用户提供便利、经济的个性化全程智能应用解决方案，让用户体验互联网智能时代。
+        <div class="section">
+          <div class="center-text">
+            <h1 class="center_title wow slideInUp">用设计塑造品牌价值</h1>
+            <div class="text_indent2 font16 wow slideInUp">
+              智能桂联已经服务各行业超过三百多家的公司以及店铺，我们有信心赢得客户良好口碑和高度满意的依据，唯有客户的满意才能让我们继续努力向前冲，追随时
+              代的发展，保持设计的原创。秉承“客户满意就是我们的成功”的服务理念，为用户提供便利、经济的个性化全程智能应用解决方案，让用户体验互联网智能时代。
+            </div>
+          </div>
+          <div class="bottom-box wow slideInUp">
+            <img src="../../assets/img/home-img/bottom-img.jpg" class="bottom-img" />
           </div>
         </div>
 
-        <div class="bottom-box wow slideInUp">
-          <img src="../../assets/img/home-img/bottom-img.jpg" class="bottom-img" />
+        <div class="section zngl-partner">
+          <div class="center-text">
+            <h1 class="center_title wow slideInUp">合作伙伴</h1>
+            <div
+              class="text_indent2 font16 wow slideInUp"
+            >智能桂联一直奉行“智能快捷、互惠双赢”的合作原则。一直相信“合作创造价值”，建立在双方资源互补、双赢基础上的商业合作能够为合作伙伴带来最大的利益。在合作过程中，智能桂联所表现出的专业、务实和坦诚态度，获得了合作商的极大赞誉和认可。</div>
+          </div>
+          <div class="bottom-box wow slideInUp sprites">
+            <div class="sprites-img-box" v-for="item in spriteList" :key="item.text">
+              <div class="sprites-img" :style="bg(item.start,item.end)"></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -43,7 +58,50 @@ export default {
   name: "Home",
 
   data() {
-    return {};
+    return {
+      spriteList: [
+        {
+          start: 0,
+          end: 0
+        },
+        {
+          start: -37,
+          end: 0
+        },
+        {
+          start: -74,
+          end: 0
+        },
+        {
+          start: -120,
+          end: 0
+        },
+        {
+          start: -161,
+          end: 0
+        },
+        {
+          start: 0,
+          end: -50
+        },
+        {
+          start: -38,
+          end: -50
+        },
+        {
+          start: -83,
+          end: -50
+        },
+        {
+          start: -127,
+          end: -50
+        },
+        {
+          start: -174,
+          end: -50
+        }
+      ]
+    };
   },
   created() {},
   mounted() {
@@ -56,15 +114,20 @@ export default {
     });
     wow.init();
   },
-  methods: {}
+  methods: {
+    bg(start, end) {
+      return {
+        background: `url(${require(`../../assets/img/home-img/sprites.png`)}) ${start}px ${end}px`
+      };
+    }
+  }
 };
 </script>
 
 <style lang="less" scoped>
 .home {
   // min-height: 100%;
-  .color-Piece {
-  }
+
   .home-intro {
     .text_indent2 {
       text-indent: 2em;
@@ -113,11 +176,33 @@ export default {
         font-size: 30px;
       }
     }
-
     .bottom-box {
       margin-top: 40px;
       .bottom-img {
         width: 100%;
+      }
+    }
+
+    .zngl-partner {
+      .center-text {
+        margin-top: 40px !important;
+      }
+      .sprites {
+        display: flex;
+        // justify-content: space-between;
+        flex-direction: row;
+        justify-content: space-around;
+        flex-wrap:wrap;
+        height: 420px;
+        .sprites-img-box {
+          width: 200px;
+          height: 113px;
+          margin-right: 10px;
+          border: 1px solid #000;
+          // background: gold;
+          .sprites-img {
+          }
+        }
       }
     }
   }

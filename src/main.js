@@ -12,9 +12,15 @@ import VueLazyload from 'vue-lazyload'
  */
 Vue.use(VueLazyload, {
     //加载失败显示的图片
-    // error: require('./assets/img/error.png'),
+    preLoad: 1,
     error: `https://fakeimg.pl/500x500/eeeeee/?text=加载图片失败&font=noto&font_size=30`,
-    loading: 'https://img.zcool.cn/community/01114d59941891000000212989593d.gif',
+    loading: 'https://fakeimg.pl/500x500/eeeeee/?text=加载中...&font=noto&font_size=30',
+    attempt: 1,
+    observer: true,
+    observerOptions: {
+        rootMargin: '0px',
+        threshold: 0.1
+    }
 })
 
 

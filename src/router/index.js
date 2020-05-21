@@ -22,7 +22,7 @@ let routes = [{
                     banner: 0
                 },
                 component: () =>
-                    import ( /* webpackChunkName: "page" */ '@/page/Home/Home')
+                    import ( /* webpackChunkName: "home" */ '@/page/Home/Home')
             },
             {
                 path: '/program',
@@ -31,7 +31,7 @@ let routes = [{
                     title: '应用方案'
                 },
                 component: () =>
-                    import ( /* webpackChunkName: "page" */ '@/page/Program/Program')
+                    import ( /* webpackChunkName: "program" */ '@/page/Program/Program')
 
             },
             {
@@ -41,7 +41,7 @@ let routes = [{
                     title: '小程序',
                 },
                 component: () =>
-                    import ( /* webpackChunkName: "page" */ '@/page/applets/applets')
+                    import ( /* webpackChunkName: "applets" */ '@/page/applets/applets')
             },
             {
                 path: '/project',
@@ -50,7 +50,7 @@ let routes = [{
                     title: '经典项目'
                 },
                 component: () =>
-                    import ( /* webpackChunkName: "page" */ '@/page/Project/Project'),
+                    import ( /* webpackChunkName: "project" */ '@/page/Project/Project'),
                 //     children: [
                 //         {
                 //         path: 'details',
@@ -71,7 +71,7 @@ let routes = [{
                     title: '联系我们'
                 },
                 component: () =>
-                    import ( /* webpackChunkName: "page" */ '@/page/LinkUs/LinkUs')
+                    import ( /* webpackChunkName: "linkus" */ '@/page/LinkUs/LinkUs')
             },
             {
                 path: '/project/details',
@@ -80,7 +80,7 @@ let routes = [{
                     title: '详情'
                 },
                 component: () =>
-                    import ( /* webpackChunkName: "page" */ '@/page/Project/details')
+                    import ( /* webpackChunkName: "details" */ '@/page/Project/details')
             }
         ]
     },
