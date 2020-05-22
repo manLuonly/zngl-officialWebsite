@@ -1,9 +1,9 @@
 import request from './index'
 import QS from 'qs';
 
-export function casetype() {
+export function caseTypes() {
     return request({
-        url: '/casetype',
+        url: "/caseTypes?model='project'&pid='pc'",
         method: 'get'
     })
 }
@@ -11,9 +11,9 @@ export function casetype() {
 
 
 
-export function caselist(data) {
+export function caseLists(data) {
     return request({
-        url: '/caselist',
+        url: '/caseLists',
         method: 'post',
         headers: { 'content-type': 'application/x-www-form-urlencoded; charset=utf-8' },
         data: QS.stringify(data)
@@ -21,9 +21,9 @@ export function caselist(data) {
 }
 
 
-export function management(params) {
+export function znglStatic(params) {
     return request({
-        url: '/management',
+        url: '/zngl/static',
         method: 'get',
         headers: { 'content-type': 'application/x-www-form-urlencoded; charset=utf-8' },
         params

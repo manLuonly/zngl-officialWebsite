@@ -1,7 +1,6 @@
 <template>
   <div class="suspended-case">
     <div class="suspended-box">
-      <!-- srcset="../../assets/img/home-img/uspendedCase.png 800w, ../../assets/img/home-img/uspendedCase.png 1024w, ../../assets/img/home-img/uspendedCase.png 1440w" -->
       <img class="suspended-img" src="../../assets/img/home-img/uspendedCase.png" v-show="hideNav" />
       <a-icon type="close" @click="closeNav" v-show="hideNav" class="close-nave" />
       <div class="suspended-text-box" v-show="hideNav">
@@ -17,12 +16,11 @@
     </div>
 
     <div class="icon" v-show="hideIcon">
-      <!-- @click="isShowQRcode" -->
       <div @mouseenter="enter" @mouseleave="leave">
         <a-icon type="qrcode" />
       </div>
       <div @click="closeIcon">
-        <a-icon type="right" />
+        <a-icon type="left" />
       </div>
       <div @click="backTop">
         <a-icon type="up" />
@@ -41,6 +39,8 @@
 </template>
 
 <script>
+import store from "@/store";
+
 export default {
   name: "suspendedCase",
 
@@ -121,6 +121,7 @@ export default {
       } else {
         this.$router.push({ name: item.path, query: { type: item.type } });
       }
+      // this.$store.commit("setIsProject", true);
     },
     // 关闭导航栏
     closeNav() {
@@ -131,9 +132,6 @@ export default {
     closeIcon() {
       this.hideNav = true;
       this.hideIcon = false;
-    },
-    isShowQRcode() {
-      this.isShowWechatQRCode = !this.isShowWechatQRCode;
     },
     // 移入
     enter() {
@@ -183,7 +181,6 @@ export default {
     }
     .close-nave {
       cursor: pointer;
-      // margin-top: 10px;
       font-size: 20px;
     }
     .suspended-text-box {
@@ -227,29 +224,29 @@ export default {
 
   .icon {
     position: fixed;
-    left: 0;
+    right: 50px;
     top: 430px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100px;
-    background: #333;
-    border-radius: 0 0.5rem 0.5rem 0;
-    width: 30px;
+    width: 50px;
     overflow: hidden;
     text-align: center;
     color: #f5f7fa;
     cursor: pointer;
-    /deep/ i {
-      font-size: 20px;
+    div {
+      width: 100%;
+      height: 50px;
+      line-height: 50px;
+      margin: 2px auto;
+      background-color: #333;
+      /deep/ i {
+        font-size: 20px;
+      }
     }
   }
 
   .wechat-QRcode-box {
     position: fixed;
-    left: 40px;
-    top: 397px;
+    right: 120px;
+    top: 408px;
     margin-top: 10px;
     background-color: #ffffff;
     color: #000000;
@@ -257,8 +254,8 @@ export default {
     text-align: center;
     .wx-arrow {
       position: absolute;
-      top: 35px;
-      right: 69px;
+      top: 28px;
+      right: -17px;
       z-index: -1;
       span {
         font-family: Simsun;

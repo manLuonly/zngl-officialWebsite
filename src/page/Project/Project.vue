@@ -30,7 +30,7 @@
                 @click="gotodetails(item)"
                 v-show="isShowDetailsBtn"
               >查看详情</a-button>
-              <img v-lazy="item.img" style="object-fit: cover;width:100%;height:100%;" />
+              <img v-lazy="item.name + item.directory + item.suffix" style="object-fit: cover;width:100%;height:100%;" />
               <span class="logo-list text">{{ item.name }}</span>
             </li>
           </ul>
@@ -45,7 +45,7 @@
 </template>
 
 <script>
-import { casetype, caselist } from "../../api/project";
+import { caseTypes, caseLists } from "../../api/project";
 export default {
   name: "Project",
   data() {
@@ -59,7 +59,9 @@ export default {
       },
       isShowDetailsBtn: false,
       type: "",
-      classificationArr: []
+      classificationArr: [],
+      model: 'project',
+      pid: "pc"
     };
   },
   watch: {
@@ -72,7 +74,7 @@ export default {
     // 重置数据
     watchRouter(to, from) {
       const type = this.$route.query.type;
-      if (to.path == "/project"){
+      if (to.path == "/project") {
         if (to.path == "/project" && type) {
           this.getDesignatedData(type);
         } else {
@@ -80,7 +82,7 @@ export default {
             pageNum: 1, // 当前页码
             pageSize: 10 // 每页条数
           };
-  
+
           this.currentSelect = "logo"; // 类型
           this.getAllProject();
         }
@@ -97,16 +99,22 @@ export default {
         : this.$route.query.type
         ? this.$route.query.type
         : "logo";
+      const model = this.model; 
+      const pid = this.pid; 
 
       let form = {
         pageNum,
         pageSize,
-        type
+        type,
+        model,
+        pid
       };
 
       try {
-        await casetype().then(res => {
+        await caseTypes().then(res => {
+          console.log(res,'res');
           if (res.code === 0) {
+            
             const result = res.data;
             this.classificationArr = result.map(i => i.type);
             var arr = [];
@@ -118,7 +126,7 @@ export default {
           }
         });
 
-        await caselist(form).then(res => {
+        await caseLists(form).then(res => {
           if (res.code === 0) {
             this.projectList = res.data;
 
@@ -169,14 +177,18 @@ export default {
       const pageNum = this.pageForm.pageNum;
       const pageSize = this.pageForm.pageSize;
       const type = this.currentSelect;
+      const model = this.model;
+      const pid = this.pid; 
 
       let form = {
         pageNum,
         pageSize,
-        type
+        type,
+        model,
+        pid
       };
 
-      caselist(form).then(res => {
+      caseLists(form).then(res => {
         // 追加数据
         if (res.code === 0 && res.data.length !== 0) {
           this.projectList[this.currentSelect] = this.projectList[
@@ -193,9 +205,11 @@ export default {
       const url = item.url;
       const name = item.name;
       const type = item.type;
+      const model = this.model;
+      const pid = this.pid;
 
       if (!url) {
-        window.open(`/management?id=${name}&type=pdf/${type}&suffix=pdf`);
+        window.open(`/zngl/static?id=${name}&type=pdf/${type}&suffix=pdf&model=${model}&pid=${pid}`);
       } else {
         window.open(url);
       }
@@ -205,10 +219,12 @@ export default {
       let form = {
         pageNum: 1, // 当前页码
         pageSize: 10, // 每页条数
-        type
+        type,
+        model:"project",
+        pid: "pc"
       };
 
-      caselist(form).then(res => {
+      caseLists(form).then(res => {
         if (res.code === 0) {
           this.projectList = res.data;
           this.sortAllProject();
@@ -246,7 +262,8 @@ export default {
         top: -74px;
         float: left;
         width: 24%;
-        height: 281px;
+        // height: 281px;
+        height: 208px;
         margin: 74px 1% 20px 0;
         box-shadow: 0px 0px 7px -5px rgba(0, 0, 0);
         background-color: #eee;

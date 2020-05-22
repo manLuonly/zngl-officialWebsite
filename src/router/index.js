@@ -6,7 +6,7 @@ Vue.use(Router)
 import NProgress from 'nprogress';
 import 'nprogress/nprogress.css';
 const NotFound = () =>
-    import ( /* webpackChunkName: "page" */ '@/components/error/notFound');
+    import ( /* webpackChunkName: "notFound" */ '@/components/error/notFound');
 
 
 let routes = [{
@@ -42,6 +42,15 @@ let routes = [{
                 },
                 component: () =>
                     import ( /* webpackChunkName: "applets" */ '@/page/applets/applets')
+            },
+            {
+                path: '/publicnumber',
+                name: 'publicnumber',
+                meta: {
+                    title: '公众号',
+                },
+                component: () =>
+                    import ( /* webpackChunkName: "publicnumber" */ '@/page/publicNumber/publicNumber')
             },
             {
                 path: '/project',

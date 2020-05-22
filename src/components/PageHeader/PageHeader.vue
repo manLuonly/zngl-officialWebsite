@@ -24,6 +24,8 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
+
 export default {
   name: "PageHeader",
   data() {
@@ -32,6 +34,7 @@ export default {
         { name: "首页", path: "/home" },
         { name: "应用方案", path: "/program" },
         { name: "小程序", path: "/applets" },
+        { name: "公众号", path: "/publicnumber" },
         { name: "经典项目", path: "/project" },
         { name: "联系我们", path: "/linkus" }
       ]
@@ -39,13 +42,21 @@ export default {
   },
   watch: {},
   computed: {
+    ...mapState({
+      isProject: state => state.isProject
+    }),
     _navStyle() {
+      // if (this.isProject) {
+      //   return 'router-link-active'
+      // } else {
+      //   return 
+      // }
       return this.$route.meta.title === "详情" ? "detailsCol" : "col-xl r-link";
     }
   },
   methods: {
     goHome() {
-      this.$router.push({ name: "home"});
+      this.$router.push({ name: "home" });
     }
   }
 };
@@ -58,7 +69,7 @@ export default {
   .logo-box {
     position: absolute;
     left: 10%;
-    top: 50%; 
+    top: 50%;
     z-index: 11;
     width: 76px;
     height: 45px;
@@ -90,7 +101,7 @@ export default {
       height: 80px;
       font-size: 14px;
       .col-xl {
-        padding:30px 5px;
+        padding: 30px 5px;
         text-align: center;
         color: #ffffff;
       }

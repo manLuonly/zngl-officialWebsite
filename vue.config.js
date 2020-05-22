@@ -16,7 +16,8 @@ module.exports = {
      */
     // baseUrl: '/', //开发环境
     // baseUrl: '/dist', //线上环境
-    publicPath: process.env.NODE_ENV === 'production' ? '/dist' : '/',
+    // publicPath: process.env.NODE_ENV === 'production' ? '/dist' : '/',
+    publicPath: process.env.NODE_ENV === 'production' ? './' : '/',
     /**
      * 经过一顿搜索，发现js的map文件.原来map文件只是帮助我们调试用的，
      * 毕竟打包后的代码都是压缩的，调试起来很不方便。测试没问题，正式上线时，我们完全可以去掉这个文件
@@ -75,7 +76,7 @@ module.exports = {
         port: 8000, // 端口
         proxy: {
             "/": {
-                "target": "http://192.168.31.80",
+                "target": "http://192.168.31.50:8080",
                 "changeOrigin": true, //是否跨域
                 ws: false, //  是否代理websockets
                 // port: 8081, // 端口

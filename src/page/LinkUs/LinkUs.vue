@@ -323,6 +323,8 @@ export default {
           const phone = this.form.getFieldValue("tel"); // 手机号码
           const email = this.form.getFieldValue("email"); // 邮箱
           const content = this.form.getFieldValue("leavingMsg"); // 补充说明
+          const model = "pc-submitForm"; // 哪个模块发出的请求
+          const pid = "pc"; //pc或者小程序
 
           let form = {
             service,
@@ -330,7 +332,9 @@ export default {
             name,
             phone,
             email,
-            content
+            content,
+            model,
+            pid
           };
 
           submitInfoForm(form).then(res => {
@@ -388,7 +392,8 @@ export default {
   .bottom-box {
     height: 612px;
     margin-top: 40px;
-    background: url("../../assets/img/linkUs-img/leavemsg.png") #fff 100% 100% / cover no-repeat;
+    background: url("../../assets/img/linkUs-img/leavemsg.png") #fff 100% 100% /
+      cover no-repeat;
     background-position: center;
     // background-size: cover 100% 100%;
     .section {
@@ -473,7 +478,7 @@ export default {
       color: #000000;
       font-size: 14px;
       &:hover {
-        border:1px solid #005aab;
+        border: 1px solid #005aab;
         background-color: #005aab;
         color: #fff;
       }

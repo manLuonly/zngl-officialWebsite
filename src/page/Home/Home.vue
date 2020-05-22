@@ -33,7 +33,7 @@
           </div>
         </div>
 
-        <div class="section zngl-partner">
+        <div class=" zngl-partner">
           <div class="center-text">
             <h1 class="center_title wow slideInUp">合作伙伴</h1>
             <div
@@ -62,44 +62,80 @@ export default {
       spriteList: [
         {
           start: 0,
-          end: 0
-        },
-        {
-          start: -37,
-          end: 0
-        },
-        {
-          start: -74,
-          end: 0
-        },
-        {
-          start: -120,
-          end: 0
-        },
-        {
-          start: -161,
-          end: 0
+          end: -15
         },
         {
           start: 0,
-          end: -50
+          end: -15
         },
         {
-          start: -38,
-          end: -50
+          start: 0,
+          end: -15
         },
         {
-          start: -83,
-          end: -50
+          start: 0,
+          end: -15
         },
         {
-          start: -127,
-          end: -50
+          start: 0,
+          end: -15
         },
         {
-          start: -174,
-          end: -50
-        }
+          start: 0,
+          end: -15
+        },
+        {
+          start: 0,
+          end: -15
+        },
+        {
+          start: 0,
+          end: -15
+        },
+        {
+          start: 0,
+          end: -15
+        },
+        {
+          start: 0,
+          end: -15
+        },
+        // {
+        //   start: -37,
+        //   end: 0
+        // },
+        // {
+        //   start: -74,
+        //   end: 0
+        // },
+        // {
+        //   start: -120,
+        //   end: 0
+        // },
+        // {
+        //   start: -161,
+        //   end: 0
+        // },
+        // {
+        //   start: 0,
+        //   end: -50
+        // },
+        // {
+        //   start: -38,
+        //   end: -50
+        // },
+        // {
+        //   start: -83,
+        //   end: -50
+        // },
+        // {
+        //   start: -127,
+        //   end: -50
+        // },
+        // {
+        //   start: -174,
+        //   end: -50
+        // }
       ]
     };
   },
@@ -189,18 +225,17 @@ export default {
       }
       .sprites {
         display: flex;
-        // justify-content: space-between;
         flex-direction: row;
         justify-content: space-around;
         flex-wrap:wrap;
-        height: 420px;
+        height: 300px;
         .sprites-img-box {
           width: 200px;
-          height: 113px;
+          height: 110px;
           margin-right: 10px;
           border: 1px solid #000;
-          // background: gold;
           .sprites-img {
+            height: 100%;
           }
         }
       }
