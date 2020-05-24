@@ -239,6 +239,9 @@ export default {
             height: 74px;
             display: block;
             margin: 0 auto;
+            text-align: justify; // 文本两端对齐
+            text-justify: distribute-all-lines; //兼容ie
+            display: block; //ie下需设为block
           }
         }
       }

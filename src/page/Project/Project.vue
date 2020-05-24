@@ -2,7 +2,8 @@
 <template>
   <div>
     <div class="project">
-      <div class="banner" @click="test">
+      <!-- @click="test" -->
+      <div class="banner" >
         <img src="../../assets/img/project-img/banner.jpg" />
       </div>
       <div class="section">
@@ -45,7 +46,7 @@
 </template>
 
 <script>
-import { caseTypes, caseLists } from "../../api/project";
+import { caseTypes, caseLists } from "@/api/project";
 export default {
   name: "Project",
   data() {

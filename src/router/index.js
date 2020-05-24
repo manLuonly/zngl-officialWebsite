@@ -118,7 +118,7 @@ router.beforeEach((to, from, next) => {
     //对网页 title 进行改变
     const title = to.meta && to.meta.title;
     if (title) {
-        document.title = title;
+        document.title = `${title} - 智能桂联`;
     }
     next();
 })

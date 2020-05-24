@@ -224,7 +224,7 @@ export default {
 
   .icon {
     position: fixed;
-    right: 50px;
+    right: 30px;
     top: 430px;
     width: 50px;
     overflow: hidden;

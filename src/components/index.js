@@ -8,6 +8,9 @@ import PageFooter from '@/components/PageFooter/PageFooter'
 import Banner from '@/components/Banner/Banner'
 import share from '@/components/share/share'
 import suspendedCase from '@/components/suspendedCase/suspendedCase'
+import carousel from '@/components/swiper/carousel'
+import carouselItem from '@/components/swiper/carousel-item'
+
 
 //使用阿里图标库 的IconFont组件
 import { Icon } from 'ant-design-vue';
@@ -24,6 +27,8 @@ export default {
         Vue.component('Banner', Banner)
         Vue.component('share', share)
         Vue.component('suspendedCase', suspendedCase)
+        Vue.component('el-carousel', carousel)
+        Vue.component('el-carousel-item', carouselItem)
 
         publicFn(Vue)
             //假的占位图地址  后面接上尺寸

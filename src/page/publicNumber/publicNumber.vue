@@ -26,7 +26,11 @@
       <h1 class="title pd wow slideInUp">案例展示</h1>
       <div class="bg"></div>
       <div class="img-box wow slideInUp">
-        <img v-lazy="require('../../assets/img/publicnumber-img/showCase.png')" class="show-case" />
+        <el-carousel :interval="4000" arrow="always" type="card" height="468px">
+          <el-carousel-item v-for="item in imgList" :key="item.url">
+            <img v-lazy="item.url" />
+          </el-carousel-item>
+        </el-carousel>
       </div>
     </div>
   </div>
@@ -36,7 +40,7 @@
 import { WOW } from "wowjs";
 
 export default {
-  name: "",
+  name: "publicNumber",
 
   data() {
     return {
@@ -65,6 +69,23 @@ export default {
           url: require("../../assets/img/publicnumber-img/5.png"),
           title: "一键咨询",
           content: "企业地址信息展示，支持一键导航，一键拔号咨询"
+        }
+      ],
+      imgList: [
+        {
+          url: require("../../assets/img/swiper/1.png")
+        },
+        {
+          url: require("../../assets/img/swiper/2.png")
+        },
+        {
+          url: require("../../assets/img/swiper/3.png")
+        },
+        {
+          url: require("../../assets/img/swiper/4.png")
+        },
+        {
+          url: require("../../assets/img/swiper/6.png")
         }
       ]
     };
@@ -142,6 +163,14 @@ export default {
   .show-product {
     height: 675px;
     background-color: #f5f5f5;
+  }
+
+  .el-carousel {
+    width: 100%;
+    .el-carousel__item {
+      text-align: center;
+      overflow: hidden;
+    }
   }
 }
 </style>
