@@ -1,53 +1,57 @@
 <!-- 首页-->
 <template>
   <div class="home">
-    <div class="color-Piece"></div>
-    <Banner></Banner>
-    <div class="section">
-      <div class="home-intro">
-        <a-row :gutter="30" class="row font16" type="flex">
-          <a-col :span="11" class="wow fadeInLeft">
-            <h1 class="left_title">公司简介</h1>
-            <div
-              class="text_indent2"
-            >智能桂联是一家具有原创作经验丰富的团队，专业UI设计、网站开发、小程序开发、结合自主研发的智能灌溉、智能家居等智能核心技术。拥有多维度的万物互联应用解决方案，以7×24×4的服务理念为用户提供满意的设计、技术服务及专业解决方案。</div>
-          </a-col>
-          <a-col :span="13" class="d-flex align-items-end justify-content-end wow fadeInRight">
-            <img
-              v-lazy="require('../../assets/img/home-img/LOGO.png')"
-              style="height:300px; width:430px;"
-            />
-          </a-col>
-        </a-row>
+    <header>
+      <Banner></Banner>
+    </header>
 
-        <div class="section">
-          <div class="center-text">
-            <h1 class="center_title wow slideInUp">用设计塑造品牌价值</h1>
-            <div class="text_indent2 font16 wow slideInUp">
-              智能桂联已经服务各行业超过三百多家的公司以及店铺，我们有信心赢得客户良好口碑和高度满意的依据，唯有客户的满意才能让我们继续努力向前冲，追随时
-              代的发展，保持设计的原创。秉承“客户满意就是我们的成功”的服务理念，为用户提供便利、经济的个性化全程智能应用解决方案，让用户体验互联网智能时代。
-            </div>
-          </div>
-          <div class="bottom-box wow slideInUp">
-            <img src="../../assets/img/home-img/bottom-img.jpg" class="bottom-img" />
-          </div>
-        </div>
+    <main>
+      <section class="section">
+        <div class="home-intro">
+          <a-row :gutter="30" class="row font16" type="flex">
+            <a-col :span="11" class="wow fadeInLeft">
+              <h1 class="left_title">公司简介</h1>
+              <div
+                class="text_indent2"
+              >智能桂联是一家具有原创作经验丰富的团队，专业UI设计、网站开发、小程序开发、结合自主研发的智能灌溉、智能家居等智能核心技术。拥有多维度的万物互联应用解决方案，以7×24×4的服务理念为用户提供满意的设计、技术服务及专业解决方案。</div>
+            </a-col>
+            <a-col :span="13" class="d-flex align-items-end justify-content-end wow fadeInRight">
+              <img
+                v-lazy="require('../../assets/img/home-img/LOGO.png')"
+                style="height:300px; width:430px;"
+              />
+            </a-col>
+          </a-row>
 
-        <div class=" zngl-partner">
-          <div class="center-text">
-            <h1 class="center_title wow slideInUp">合作伙伴</h1>
-            <div
-              class="text_indent2 font16 wow slideInUp"
-            >智能桂联一直奉行“智能快捷、互惠双赢”的合作原则。一直相信“合作创造价值”，建立在双方资源互补、双赢基础上的商业合作能够为合作伙伴带来最大的利益。在合作过程中，智能桂联所表现出的专业、务实和坦诚态度，获得了合作商的极大赞誉和认可。</div>
-          </div>
-          <div class="bottom-box wow slideInUp sprites">
-            <div class="sprites-img-box" v-for="item in spriteList" :key="item.text">
-              <div class="sprites-img" :style="bg(item.start,item.end)"></div>
+          <section class="section">
+            <div class="center-text">
+              <h1 class="center_title wow slideInUp">用设计塑造品牌价值</h1>
+              <div class="text_indent2 font16 wow slideInUp">
+                智能桂联已经服务各行业超过三百多家的公司以及店铺，我们有信心赢得客户良好口碑和高度满意的依据，唯有客户的满意才能让我们继续努力向前冲，追随时
+                代的发展，保持设计的原创。秉承“客户满意就是我们的成功”的服务理念，为用户提供便利、经济的个性化全程智能应用解决方案，让用户体验互联网智能时代。
+              </div>
             </div>
-          </div>
+            <div class="bottom-box wow slideInUp">
+              <img src="../../assets/img/home-img/bottom-img.jpg" class="bottom-img" />
+            </div>
+          </section>
+
+          <section class="zngl-partner">
+            <div class="center-text">
+              <h1 class="center_title wow slideInUp">合作伙伴</h1>
+              <div
+                class="text_indent2 font16 wow slideInUp"
+              >智能桂联一直奉行“智能快捷、互惠双赢”的合作原则。一直相信“合作创造价值”，建立在双方资源互补、双赢基础上的商业合作能够为合作伙伴带来最大的利益。在合作过程中，智能桂联所表现出的专业、务实和坦诚态度，获得了合作商的极大赞誉和认可。</div>
+            </div>
+            <div class="bottom-box wow slideInUp sprites">
+              <div class="sprites-img-box" v-for="item in spriteList" :key="item.text">
+                <div class="sprites-img" :style="bg(item.start,item.end)"></div>
+              </div>
+            </div>
+          </section>
         </div>
-      </div>
-    </div>
+      </section>
+    </main>
   </div>
 </template>
 
@@ -99,7 +103,7 @@ export default {
         {
           start: 0,
           end: -15
-        },
+        }
         // {
         //   start: -37,
         //   end: 0
@@ -227,7 +231,7 @@ export default {
         display: flex;
         flex-direction: row;
         justify-content: space-around;
-        flex-wrap:wrap;
+        flex-wrap: wrap;
         height: 300px;
         .sprites-img-box {
           width: 200px;

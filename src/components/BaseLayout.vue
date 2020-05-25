@@ -2,7 +2,8 @@
 <template>
   <div class="base-layout">
     <!-- 头部 -->
-    <page-header v-model="isShow" v-show="isShow"></page-header>
+    <!-- v-model="isShow" v-show="isShow" -->
+    <page-header ></page-header>
 
     <transition enter-active-class="animated fadeIn">
       <keep-alive include="Project">

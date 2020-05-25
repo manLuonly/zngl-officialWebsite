@@ -2,45 +2,59 @@
 <template>
   <div>
     <div class="project">
-      <!-- @click="test" -->
-      <div class="banner" >
-        <img src="../../assets/img/project-img/banner.jpg" />
-      </div>
-      <div class="section">
-        <div class="select-project font24">
-          <a-row type="flex" justify="center" v-for="(row, index) in projectNameList" :key="index">
-            <a-col
-              :span="3"
-              v-for="(col, index) in row"
-              :key="index"
-              @click="changeSelectProjectAction(col.type)"
-              class="col mr-5 text-center"
-              :class="{ active: currentSelect == col.type }"
-            >
-              <span>{{col.type_name}}</span>
-            </a-col>
-          </a-row>
+      <header>
+        <div class="banner" @click="test">
+          <img src="../../assets/img/project-img/banner.jpg" />
         </div>
+      </header>
 
-        <div class="logo-list">
-          <ul class="clearfix font18">
-            <li v-for="(item, index) in projectList[currentSelect]" :key="index">
-              <a-button
-                type="primary"
-                class="look-details"
-                @click="gotodetails(item)"
-                v-show="isShowDetailsBtn"
-              >查看详情</a-button>
-              <img v-lazy="item.name + item.directory + item.suffix" style="object-fit: cover;width:100%;height:100%;" />
-              <span class="logo-list text">{{ item.name }}</span>
-            </li>
-          </ul>
+      <main>
+        <section class="section">
+          <nav>
+            <div class="select-project font24">
+              <a-row
+                type="flex"
+                justify="center"
+                v-for="(row, index) in projectNameList"
+                :key="index"
+              >
+                <a-col
+                  :span="3"
+                  v-for="(col, index) in row"
+                  :key="index"
+                  @click="changeSelectProjectAction(col.type)"
+                  class="col mr-5 text-center"
+                  :class="{ active: currentSelect == col.type }"
+                >
+                  <span>{{col.type_name}}</span>
+                </a-col>
+              </a-row>
+            </div>
+          </nav>
 
-          <div class="look-more d-flex justify-content-end align-items-center">
-            <a-button class="look-more-btn" @click="lookMore">查看更多</a-button>
+          <div class="logo-list">
+            <ul class="clearfix font18">
+              <li v-for="(item, index) in projectList[currentSelect]" :key="index">
+                <a-button
+                  type="primary"
+                  class="look-details"
+                  @click="gotodetails(item)"
+                  v-show="isShowDetailsBtn"
+                >查看详情</a-button>
+                <img
+                  v-lazy="item.name + item.directory + item.suffix"
+                  style="object-fit: cover;width:100%;height:100%;"
+                />
+                <span class="logo-list text">{{ item.name }}</span>
+              </li>
+            </ul>
+
+            <div class="look-more d-flex justify-content-end align-items-center">
+              <a-button class="look-more-btn" @click="lookMore">查看更多</a-button>
+            </div>
           </div>
-        </div>
-      </div>
+        </section>
+      </main>
     </div>
   </div>
 </template>
@@ -61,7 +75,7 @@ export default {
       isShowDetailsBtn: false,
       type: "",
       classificationArr: [],
-      model: 'project',
+      model: "project",
       pid: "pc"
     };
   },
@@ -100,8 +114,8 @@ export default {
         : this.$route.query.type
         ? this.$route.query.type
         : "logo";
-      const model = this.model; 
-      const pid = this.pid; 
+      const model = this.model;
+      const pid = this.pid;
 
       let form = {
         pageNum,
@@ -113,9 +127,8 @@ export default {
 
       try {
         await caseTypes().then(res => {
-          console.log(res,'res');
+          console.log(res, "res");
           if (res.code === 0) {
-            
             const result = res.data;
             this.classificationArr = result.map(i => i.type);
             var arr = [];
@@ -179,7 +192,7 @@ export default {
       const pageSize = this.pageForm.pageSize;
       const type = this.currentSelect;
       const model = this.model;
-      const pid = this.pid; 
+      const pid = this.pid;
 
       let form = {
         pageNum,
@@ -210,7 +223,9 @@ export default {
       const pid = this.pid;
 
       if (!url) {
-        window.open(`/zngl/static?id=${name}&type=pdf/${type}&suffix=pdf&model=${model}&pid=${pid}`);
+        window.open(
+          `/zngl/static?id=${name}&type=pdf/${type}&suffix=pdf&model=${model}&pid=${pid}`
+        );
       } else {
         window.open(url);
       }
@@ -221,7 +236,7 @@ export default {
         pageNum: 1, // 当前页码
         pageSize: 10, // 每页条数
         type,
-        model:"project",
+        model: "project",
         pid: "pc"
       };
 

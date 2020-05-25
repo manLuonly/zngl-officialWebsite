@@ -9,12 +9,13 @@
           <img v-lazy="item.url" />
         </div>
       </div>-->
+      <header>
         <div class="banner">
-          <img src="../../assets/img/applets-img/banner.jpg" >
+          <img src="../../assets/img/applets-img/banner.jpg" />
         </div>
-     
+      </header>
 
-      <div class="module1 section" style="margin-top:40px">
+      <section class="module1 section" style="margin-top:40px">
         <h1 class="module1-title-text animated slideInUp">一站式微信小程序解决方案满足多场景的业务需求</h1>
         <span
           class="module1-content-text animated slideInUp"
@@ -22,32 +23,36 @@
         <div class="module1-img-box animated slideInUp">
           <img v-lazy="require('../../assets/img/applets-img/big-img-1.png')" />
         </div>
-      </div>
+      </section>
 
-      <div class="module1">
+      <section class="module1">
         <h1 class="module1-title-text padding-h1 wow slideInUp">一站式微信小程序界面展示</h1>
-        <span class="module1-content-text center-text wow slideInUp">强劲的功能系统，专属品牌小程序+门店小程序，适合个人、门店、商家。</span>
+        <span
+          class="module1-content-text center-text wow slideInUp"
+        >强劲的功能系统，专属品牌小程序+门店小程序，适合个人、门店、商家。</span>
         <div class="module1-img-box wow slideInUp">
           <img v-lazy="require('../../assets/img/applets-img/big-img-2.png')" />
         </div>
-      </div>
+      </section>
 
-      <div class="module2">
-        <h1 class="module2-title-text wow slideInUp">小程序核心功能</h1>
-        <span class="module2-content-text wow slideInUp">标准化界面，支持灵活拖拽，功能板块丰富。</span>
-        <div class="module2-nav wow slideInUp">
-          <div class="module2-nav-box" v-for="item in spriteList1" :key="item.text">
-            <div class="module2-nav-img" :style="bg(item.start,item.end)"></div>
-            <div class="module2-nav-text">{{ item.text }}</div>
+      <section>
+        <div class="module2">
+          <h1 class="module2-title-text wow slideInUp">小程序核心功能</h1>
+          <span class="module2-content-text wow slideInUp">标准化界面，支持灵活拖拽，功能板块丰富。</span>
+          <div class="module2-nav wow slideInUp">
+            <div class="module2-nav-box" v-for="item in spriteList1" :key="item.text">
+              <div class="module2-nav-img" :style="bg(item.start,item.end)"></div>
+              <div class="module2-nav-text">{{ item.text }}</div>
+            </div>
+          </div>
+          <div class="module2-nav wow slideInUp" style="margin-top: 70px;">
+            <div class="module2-nav-box" v-for="item in spriteList2" :key="item.text">
+              <div class="module2-nav-img" :style="bg(item.start,item.end)"></div>
+              <div class="module2-nav-text">{{ item.text }}</div>
+            </div>
           </div>
         </div>
-        <div class="module2-nav wow slideInUp" style="margin-top: 70px;">
-          <div class="module2-nav-box" v-for="item in spriteList2" :key="item.text">
-            <div class="module2-nav-img" :style="bg(item.start,item.end)"></div>
-            <div class="module2-nav-text">{{ item.text }}</div>
-          </div>
-        </div>
-      </div>
+      </section>
     </div>
   </div>
 </template>

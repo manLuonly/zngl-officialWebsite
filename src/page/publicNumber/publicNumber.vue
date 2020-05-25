@@ -1,38 +1,47 @@
 <template>
   <div class="public-number">
-    <div class="banner">
-      <img src="../../assets/img/publicnumber-img/banner.jpg" />
-    </div>
-    <div class="section features-introduction">
-      <h1 class="title animated slideInUp">功能介绍</h1>
-      <div class="bg"></div>
-      <div class="flex animated slideInUp">
-        <div class="nav" v-for="(item,index) in navList" :key="index">
-          <img v-lazy="item.url" />
-          <h3 class="font20 color000">{{ item.title }}</h3>
-          <span class="font12 color000">{{ item.content }}</span>
-        </div>
+    <header>
+      <div class="banner">
+        <img src="../../assets/img/publicnumber-img/banner.jpg" />
       </div>
-    </div>
-    <div class="show-product">
-      <h1 class="title pd wow slideInUp">产品展示</h1>
-      <div class="bg"></div>
-      <div class="img-box wow slideInUp">
-        <img v-lazy="require('../../assets/img/publicnumber-img/left.png')" class="left" />
-        <img v-lazy="require('../../assets/img/publicnumber-img/right.png')" class="right" />
-      </div>
-    </div>
-    <div class="section">
-      <h1 class="title pd wow slideInUp">案例展示</h1>
-      <div class="bg"></div>
-      <div class="img-box wow slideInUp">
-        <el-carousel :interval="4000" arrow="always" type="card" height="468px">
-          <el-carousel-item v-for="item in imgList" :key="item.url">
+    </header>
+
+    <main>
+
+      <section class="section features-introduction">
+        <h1 class="title animated slideInUp">功能介绍</h1>
+        <div class="bg"></div>
+        <div class="flex animated slideInUp">
+          <div class="nav" v-for="(item,index) in navList" :key="index">
             <img v-lazy="item.url" />
-          </el-carousel-item>
-        </el-carousel>
-      </div>
-    </div>
+            <h3 class="font20 color000">{{ item.title }}</h3>
+            <span class="font12 color000">{{ item.content }}</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="show-product">
+        <h1 class="title pd wow slideInUp">产品展示</h1>
+        <div class="bg"></div>
+        <div class="img-box wow slideInUp">
+          <img v-lazy="require('../../assets/img/publicnumber-img/left.png')" class="left" />
+          <img v-lazy="require('../../assets/img/publicnumber-img/right.png')" class="right" />
+        </div>
+      </section>
+
+      <section class="section">
+        <h1 class="title pd wow slideInUp">案例展示</h1>
+        <div class="bg"></div>
+        <div class="img-box wow slideInUp">
+          <el-carousel :interval="4000" arrow="always" type="card" height="468px">
+            <el-carousel-item v-for="item in imgList" :key="item.url">
+              <img v-lazy="item.url" />
+            </el-carousel-item>
+          </el-carousel>
+        </div>
+      </section>
+      
+    </main>
   </div>
 </template>
 

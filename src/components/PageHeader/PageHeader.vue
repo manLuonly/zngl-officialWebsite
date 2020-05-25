@@ -10,12 +10,12 @@
       </div>
       <div class="nav d-flex justify-content-center">
         <div class="row align-items-center">
+          <!-- exact -->
           <router-link
             :class="_navStyle"
             v-for="(tab, i) in navList"
             :key="i"
             :to="{path:tab.path}"
-            exact
           >{{ tab.name }}</router-link>
         </div>
       </div>
