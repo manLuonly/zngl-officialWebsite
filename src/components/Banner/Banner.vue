@@ -14,9 +14,6 @@
       <div class="carousel">
         <img src="~@/assets/img/home-img/banner2.jpg" alt="slide" class="img_cover" />
       </div>
-      <!-- <div class="carousel">
-        <img src="~@/assets/img/banner3.jpg" alt="slide" class="img_cover" />
-      </div> -->
     </a-carousel>
   </div>
 </template>
@@ -35,7 +32,7 @@ export default {
 <style lang='less' scoped>
 .carousel {
   width: 100%;
-  height: calc(100vh - 80px);
+  // height: calc(100vh - 80px);
 }
 
 .ant-carousel /deep/ .custom-slick-arrow {

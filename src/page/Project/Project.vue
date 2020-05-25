@@ -3,7 +3,7 @@
   <div>
     <div class="project">
       <header>
-        <div class="banner" @click="test">
+        <div class="banner" @click="goDetails">
           <img src="../../assets/img/project-img/banner.jpg" />
         </div>
       </header>
@@ -38,7 +38,7 @@
                 <a-button
                   type="primary"
                   class="look-details"
-                  @click="gotodetails(item)"
+                  @click="gotoDetails(item)"
                   v-show="isShowDetailsBtn"
                 >查看详情</a-button>
                 <img
@@ -214,7 +214,7 @@ export default {
       });
     },
     // 查看详情
-    gotodetails(item) {
+    gotoDetails(item) {
       // this.$router.push({ name: "details", query: { name: item.name } });
       const url = item.url;
       const name = item.name;
@@ -247,7 +247,7 @@ export default {
         }
       });
     },
-    test() {
+    goDetails() {
       this.$router.push({ name: "details" });
     }
   }

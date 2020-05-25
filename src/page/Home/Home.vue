@@ -209,7 +209,7 @@ export default {
     }
 
     .center-text {
-      margin-top: 80px;
+      margin-top: 40px;
       .center_title {
         margin-bottom: 20px;
         text-align: center;
