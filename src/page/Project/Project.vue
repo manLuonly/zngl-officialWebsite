@@ -42,7 +42,7 @@
                   v-show="isShowDetailsBtn"
                 >查看详情</a-button>
                 <img
-                  v-lazy="item.name + item.directory + item.suffix"
+                  v-lazy="`http://192.168.31.50/zngl/fileOperate?name=${item.type_name}&suffix=${item.suffix}&directory=${item.directory}`"
                   style="object-fit: cover;width:100%;height:100%;"
                 />
                 <span class="logo-list text">{{ item.name }}</span>
@@ -60,7 +60,7 @@
 </template>
 
 <script>
-import { caseTypes, caseLists } from "@/api/project";
+import { caseType, caseList } from "@/api/project";
 export default {
   name: "Project",
   data() {
@@ -126,8 +126,7 @@ export default {
       };
 
       try {
-        await caseTypes().then(res => {
-          console.log(res, "res");
+        await caseType().then(res => {
           if (res.code === 0) {
             const result = res.data;
             this.classificationArr = result.map(i => i.type);
@@ -140,7 +139,7 @@ export default {
           }
         });
 
-        await caseLists(form).then(res => {
+        await caseList(form).then(res => {
           if (res.code === 0) {
             this.projectList = res.data;
 
@@ -202,7 +201,7 @@ export default {
         pid
       };
 
-      caseLists(form).then(res => {
+      caseList(form).then(res => {
         // 追加数据
         if (res.code === 0 && res.data.length !== 0) {
           this.projectList[this.currentSelect] = this.projectList[
@@ -240,7 +239,7 @@ export default {
         pid: "pc"
       };
 
-      caseLists(form).then(res => {
+      caseList(form).then(res => {
         if (res.code === 0) {
           this.projectList = res.data;
           this.sortAllProject();
@@ -325,10 +324,11 @@ export default {
     }
     .col {
       width: 160px;
-      height: 30px;
+      height: 36px;
       margin: 0 50px;
       font-size: 20px;
       color: #333333;
+      line-height: 36px;
       border-radius: 5px;
       background: #ffffff;
       box-shadow: 0px 0px 10px -5px rgba(0, 0, 0);
@@ -338,7 +338,7 @@ export default {
         background-color: #348ccd;
         border-radius: 5px;
         transition: background 0.5s;
-        font-weight: bold;
+        // font-weight: bold;
       }
     }
   }

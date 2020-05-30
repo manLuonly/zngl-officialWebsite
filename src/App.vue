@@ -5,6 +5,8 @@
 </template>
 
 <script>
+import { senToken } from "@/api/project";
+
 export default {
   name: "app",
   // created() {
@@ -21,6 +23,13 @@ export default {
   //   window.addEventListener("DOMContentLoaded", resizeFun, false);
   //   resizeFun();
   // }
+  created() {
+    // senToken().then(res => {
+    //   console.log(res,'res');
+      
+    // })
+  }
+  
 };
 </script>
 

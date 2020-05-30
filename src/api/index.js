@@ -13,7 +13,7 @@ import Message from '@/ui/antd-vue-ui'
 let service = axios.create({
         timeout: 5000, // 请求超时时间
         // application/x-www-form-urlencoded
-        // headers: { 'content-type': 'application/json; charset=utf-8' }
+        headers: { 'content-type': 'application/json; charset=utf-8' }
     })
     // request拦截器
 service.interceptors.request.use(config => {
