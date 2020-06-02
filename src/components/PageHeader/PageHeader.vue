@@ -3,11 +3,14 @@
   <div class="page-header" ref="container">
     <a-affix :offsetTop="0.00000001">
       <div class="logo-box" @click="goHome">
-        <div>
+        <div class="logo">
           <img src="../../assets/img/logo.png" class="logo" />
         </div>
         <span class="name">智能桂联</span>
       </div>
+  
+        <span class="title-name">智能桂联</span>
+     
       <div class="nav d-flex justify-content-center">
         <div class="row align-items-center">
           <!-- exact -->
@@ -72,7 +75,7 @@ export default {
     top: 50%;
     z-index: 11;
     width: 76px;
-    height: 45px;
+    // height: 45px;
     transform: translateY(-50%);
     cursor: pointer;
     .logo {
@@ -91,6 +94,9 @@ export default {
       letter-spacing: 2px;
       color: #ffffff;
     }
+  }
+  .title-name {
+    display: none;
   }
   .nav {
     position: relative;

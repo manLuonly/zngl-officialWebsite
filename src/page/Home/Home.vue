@@ -15,10 +15,11 @@
                 class="text_indent2"
               >智能桂联是一家具有原创作经验丰富的团队，专业UI设计、网站开发、小程序开发、结合自主研发的智能灌溉、智能家居等智能核心技术。拥有多维度的万物互联应用解决方案，以7×24×4的服务理念为用户提供满意的设计、技术服务及专业解决方案。</div>
             </a-col>
+            <!--  style="height:300px; width:430px;" -->
             <a-col :span="13" class="d-flex align-items-end justify-content-end wow fadeInRight">
               <img
                 v-lazy="require('../../assets/img/home-img/LOGO.png')"
-                style="height:300px; width:430px;"
+               style="max-width:100%;max-height:100%;object-fit: cover;"
               />
             </a-col>
           </a-row>

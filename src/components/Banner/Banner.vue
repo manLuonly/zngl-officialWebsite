@@ -20,7 +20,7 @@
 
 <script>
 export default {
-  name: "",
+  name: "carousel",
 
   data() {
     return {};
