@@ -60,17 +60,23 @@
   }
 }
 
-/* 平板之类的宽度 1024 以下设备 */
+/* 平板之类的宽度 1024 以下设备(最低iphone6，iphone5不适配(320x568)) */ 
 @media only screen and (min-width: 321px) and (max-width: 1024px) {
+  .center() {
+    margin: 0.6rem 0;
+    text-align: center;
+    font-weight: bold;
+  }
+  // 头部
   .page-header {
     position: fixed;
     z-index: 99;
     top: 0;
-    height: 50px !important;
+    height: 3rem !important;
     background: black;
     .logo-box {
       left: 0 !important;
-      line-height: 50px !important;
+      line-height: 3rem !important;
       margin: 0 1rem;
       transform: translateY(0) !important;
       .name {
@@ -81,9 +87,9 @@
       display: inline-block !important;
       position: absolute;
       top: 0;
-      line-height: 50px;
+      line-height: 3rem;
       padding: 0 7rem;
-      color: #Fff;
+      color: #fff;
     }
     .nav {
       .row {
@@ -92,16 +98,87 @@
     }
   }
 
+  // 轮播图
   .carousel {
-    padding-top: 25px;
+    padding-top: 1.47rem;
+  }
+
+  // 首页
+  .home {
+    .about-us {
+      .center();
+      .about-us-text {
+        display: inline-block !important;
+        font-size: 1.2rem;
+      }
+    }
+    .home-intro {
+      .module1 {
+        margin: 0 !important;
+        background: url("../assets/img/home-img/LOGO.png") #000 100% 100% /
+          cover no-repeat;
+        .left_title {
+          display: none;
+        }
+        .right-img {
+          display: none !important;
+        }
+        .introduction1 {
+          padding: 2.4rem 0.9rem;
+          color: #fff;
+        }
+      }
+      .zngl-partner {
+        .partner-icon {
+          display: flex;
+          justify-content: center;
+          .sprites {
+            width: 20rem;
+            height: 18rem !important;
+            margin-bottom: 0.708rem !important;
+            .sprites-img-box {
+              width: 3.5rem !important;
+              margin-right: 0 !important;
+            }
+          }
+        }
+      }
+    }
+
+    .center-text {
+      margin: 0 !important;
+      .center_title {
+        .center();
+        margin-bottom: 0.6rem !important;
+        font-size: 1.2rem !important;
+      }
+      .text_indent2 {
+        padding: 0 0.9rem;
+      }
+    }
+
+    .bottom-box {
+      margin: 1.41rem  0  0  0 !important;
+
+    }
+
+    .ant-col-11 {
+      width: 100% !important;
+      background-color: rgba(0, 0, 0, 0.6);
+    }
   }
 
   .suspended-case {
     display: none !important;
   }
 
+  // 尾部
   .page-footer {
     display: none;
+  }
+
+  .mobile-nav-footer {
+    display: block !important;
   }
 }
 
@@ -131,18 +208,18 @@
 
 @media screen and (max-width: 321px) {
   body {
-    font-size: 16px ;
+    font-size: 16px;
   }
 }
 
 @media screen and (min-width: 321px) and (max-width: 400px) {
   body {
-    font-size: 17px ;
+    font-size: 17px;
   }
 }
 
 @media screen and (min-width: 400px) {
   body {
-    font-size: 19px ;
+    font-size: 19px;
   }
 }

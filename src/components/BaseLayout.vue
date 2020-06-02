@@ -19,6 +19,8 @@
 
     <!-- 尾部 -->
     <page-footer></page-footer>
+    <!-- 手机端尾部 -->
+    <mobile-nav-footer></mobile-nav-footer>
   </div>
 </template>
 
