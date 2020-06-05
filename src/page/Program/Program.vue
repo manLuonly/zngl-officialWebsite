@@ -23,15 +23,15 @@
     <main>
       <section class="section introduction1">
         <a-row class="row font16" type="flex">
-          <a-col :span="12" class="animated fadeInLeft">
+          <a-col :span="12" class="animated fadeInLeft left-img">
             <img
               v-lazy="require('../../assets/img/program-img/img-1.png')"
               style="max-width: 100%;height: 100%;"
             />
           </a-col>
-          <a-col :span="12" class="animated fadeInRight">
+          <a-col :span="12" class="animated fadeInRight right-text">
             <div class="text-box">
-              <h1 class="right_title font30 color000">“智能家居” （Smart Home）</h1>
+              <h1 class="right_title font30 color000">“智能家居”(Smart Home)</h1>
               <div
                 class="text_indent2"
               >又称智能生活。它利用先进的计算机、嵌入式系统和网络通讯技术及现代控制技术，将家中的各种设备（如照明、环境控制、安防、网络、空调，窗户、门锁）通过家庭网络连接到一起。能根据不同的环境状态相互协作，从而给用户带来最大程度的高效、便利、舒适与安全。帮助人们有效安排时间，增强家居生活的健康性、安全性，舒适性。</div>
@@ -41,9 +41,10 @@
       </section>
 
       <section class="introduction2">
+        <!--  style="width:100%;height: 380px;" -->
         <img
           v-lazy="require('../../assets/img/program-img/img-2.png')"
-          style="width:100%;height: 380px;"
+          style="max-width:100%;max-height:100%;object-fit: cover;"
         />
         <div class="introduction2-info">
           <div
@@ -65,7 +66,7 @@
       <section class="bg-box">
         <div class="architecture section color000">
           <h1 class="font30 wow slideInUp">智能家居系统架构</h1>
-          <h3 class="font16 wow slideInUp">根据不同用户的实际情况、使用需求、允许搭建的系统架构，我们将系统分为以下版本</h3>
+          <h3 class="font16 wow slideInUp text-content">根据不同用户的实际情况、使用需求、允许搭建的系统架构，我们将系统分为以下版本</h3>
           <div class="version-box">
             <div
               class="furniture wow slideInUp"
@@ -177,7 +178,7 @@ export default {
     border-bottom: 1px solid #dcdcdc;
     margin-bottom: 40px;
     .nav-box {
-      margin-right: 40px;
+      margin:0 20px;
       color: #000000;
       line-height: 56px;
       cursor: pointer;
@@ -216,7 +217,7 @@ export default {
         height: 280px;
         background-color: #ffffff;
         border: solid 2px #023c7c;
-        margin-right: 14px;
+        margin: 0 7px;
         margin-bottom: 40px;
         .top-circle {
           position: relative;

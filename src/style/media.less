@@ -1,5 +1,8 @@
 // 屏幕1920px（大屏幕）
 @media screen and (min-width: 1920px) {
+  body {
+    font-size: 14px !important;
+  }
   .banner {
     img {
       min-width: 100% !important;
@@ -60,13 +63,27 @@
   }
 }
 
-/* 平板之类的宽度 1024 以下设备(最低iphone6，iphone5不适配(320x568)) */ 
+/* 平板之类的宽度 1024 以下设备(最低iphone6，iphone5不适配(320x568)) */
 @media only screen and (min-width: 321px) and (max-width: 1024px) {
+
+  .mobile-nav-footer {
+    display: block !important;
+    .nav-bar {
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+  }
+
+
   .center() {
     margin: 0.6rem 0;
     text-align: center;
     font-weight: bold;
   }
+
+  .banner {
+    padding-top: 3rem;
+  }
+
   // 头部
   .page-header {
     position: fixed;
@@ -75,7 +92,7 @@
     height: 3rem !important;
     background: black;
     .logo-box {
-      left: 0 !important;
+      position: static !important;
       line-height: 3rem !important;
       margin: 0 1rem;
       transform: translateY(0) !important;
@@ -134,14 +151,18 @@
           justify-content: center;
           .sprites {
             width: 20rem;
-            height: 18rem !important;
+            height: 5rem !important;
             margin-bottom: 0.708rem !important;
             .sprites-img-box {
               width: 3.5rem !important;
               margin-right: 0 !important;
+              margin-bottom: 0.5rem;
             }
           }
         }
+      }
+      .bottom-box {
+        margin-top: 0.588rem !important;
       }
     }
 
@@ -157,16 +178,151 @@
       }
     }
 
-    .bottom-box {
-      margin: 1.41rem  0  0  0 !important;
-
-    }
+    // .bottom-box {
+    //   margin: 1.41rem  0  0  0 !important;
+    // }
 
     .ant-col-11 {
       width: 100% !important;
       background-color: rgba(0, 0, 0, 0.6);
     }
   }
+
+  // 应用方案
+  .program {
+    .nav {
+      height: 3.29rem !important;
+      margin-bottom: 1.35rem !important;
+      .nav-box {
+        margin: 0 1.17rem;
+      }
+    }
+    .introduction1 {
+      .left-img {
+        display: none;
+      }
+      .right-text {
+        width: 100%;
+        background: url("../assets/img/program-img/img-1.png") #000 100% 100% /
+          cover no-repeat;
+        color: #fff;
+        .text-box {
+          width: 100% !important;
+          background-color: rgba(0, 0, 0, 0.6);
+          padding: 2.4rem 0.9rem;
+          .right_title {
+            color: #fff;
+            font-size: 1.2rem;
+            text-align: center;
+          }
+        }
+      }
+    }
+    .introduction2 {
+      .introduction2-info {
+        height: 37.35rem !important;
+        flex-wrap: wrap;
+        .introduction2-info-list {
+          top: 0 !important;
+          width: 44% !important;
+          // overflow: hidden;
+          .text-box {
+            h3 {
+              margin-bottom: 0.7rem !important;
+            }
+            span {
+              width: 9.47rem !important;
+            }
+          }
+        }
+      }
+      .text-box {
+        .font16 {
+          padding: 0 0.5rem;
+        }
+      }
+    }
+
+    .bg-box {
+      background: #fff !important;
+      .architecture {
+        .font30 {
+          font-size: 22px !important;
+        }
+        .text-content {
+          padding: 0.9rem;
+          text-align: left;
+          text-indent: 2em;
+        }
+        .version-box {
+          flex-wrap: wrap;
+          .furniture {
+            width: 10rem !important;
+            height: 13.52rem !important;
+            margin: 0 0.3rem;
+            img {
+              width: 100%;
+            }
+            .text-box {
+              left: -10px !important;
+              top: -190px !important;
+              h3 {
+                text-align: center;
+                font-size: 1rem !important;
+              }
+              span {
+                font-size: 0.82rem !important;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // 小程序
+  .applets {
+    .module1 {
+      margin-top: 1.17rem !important;
+      .module1-title-text {
+        margin-bottom: 0 !important;
+        font-size: 0.88rem !important;
+        font-weight: bold;
+      }
+      .module1-content-text {
+        padding: 0.9rem;
+        font-size: 0.82rem !important;
+        margin-bottom: 0 !important;
+      }
+      .module1-img-box {
+        img {
+          width: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+    .module2 {
+      .module2-nav {
+        .module2-nav-box {
+          width: 8.82rem !important;
+          .module2-nav-text {
+            font-size: 0.82rem !important;
+            margin-top: 0.588rem !important;
+          }
+        }
+      }
+    }
+  }
+
+  // 公众号
+  .public-number {
+    .features-introduction {
+      
+    }
+  }
+
+
+
 
   .suspended-case {
     display: none !important;
@@ -177,9 +333,7 @@
     display: none;
   }
 
-  .mobile-nav-footer {
-    display: block !important;
-  }
+
 }
 
 //滚动条样式修改
@@ -223,3 +377,10 @@
     font-size: 19px;
   }
 }
+
+// 解决 iphoneX 底部黑条
+// @media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
+//   .nav-bar {
+//     padding-bottom: 100px;
+//   }
+// }
