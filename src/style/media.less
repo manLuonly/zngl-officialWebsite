@@ -12,17 +12,6 @@
   .suspended-case {
     left: 50px !important;
   }
-  // .home {
-  //   .zngl-partner {
-  //     margin: 0 autp;
-  //     .sprites {
-  //       min-width: 1600px !important;
-  //       .sprites-img-box {
-  //         margin-right: 80px !important;
-  //       }
-  //     }
-  //   }
-  // }
   .icon {
     top: 730px !important;
   }
@@ -65,19 +54,14 @@
 
 /* 平板之类的宽度 1024 以下设备(最低iphone6，iphone5不适配(320x568)) */
 @media only screen and (min-width: 321px) and (max-width: 1024px) {
-
   .mobile-nav-footer {
     display: block !important;
-    .nav-bar {
-      padding-bottom: env(safe-area-inset-bottom);
-    }
+    padding-top: env(safe-area-inset-bottom);
   }
 
-
   .center() {
-    margin: 0.6rem 0;
+    margin: .6rem 0;
     text-align: center;
-    font-weight: bold;
   }
 
   .banner {
@@ -108,6 +92,15 @@
       padding: 0 7rem;
       color: #fff;
     }
+
+    .nav-btn,.nav-btn-on {
+      display: inline-block !important;
+    }
+
+    .menu  {
+      display: inline-block !important;
+    }
+
     .nav {
       .row {
         display: none;
@@ -126,7 +119,7 @@
       .center();
       .about-us-text {
         display: inline-block !important;
-        font-size: 1.2rem;
+        font-size: 1.06rem;
       }
     }
     .home-intro {
@@ -141,7 +134,7 @@
           display: none !important;
         }
         .introduction1 {
-          padding: 2.4rem 0.9rem;
+          padding: 2.4rem .9rem;
           color: #fff;
         }
       }
@@ -152,17 +145,17 @@
           .sprites {
             width: 20rem;
             height: 5rem !important;
-            margin-bottom: 0.708rem !important;
+            margin-bottom: .708rem !important;
             .sprites-img-box {
               width: 3.5rem !important;
               margin-right: 0 !important;
-              margin-bottom: 0.5rem;
+              margin-bottom: .5rem;
             }
           }
         }
       }
       .bottom-box {
-        margin-top: 0.588rem !important;
+        margin-top: .588rem !important;
       }
     }
 
@@ -170,17 +163,13 @@
       margin: 0 !important;
       .center_title {
         .center();
-        margin-bottom: 0.6rem !important;
-        font-size: 1.2rem !important;
+        margin-bottom: .6rem !important;
+        font-size: 1.06rem !important;
       }
       .text_indent2 {
-        padding: 0 0.9rem;
+        padding: 0 .9rem;
       }
     }
-
-    // .bottom-box {
-    //   margin: 1.41rem  0  0  0 !important;
-    // }
 
     .ant-col-11 {
       width: 100% !important;
@@ -209,7 +198,7 @@
         .text-box {
           width: 100% !important;
           background-color: rgba(0, 0, 0, 0.6);
-          padding: 2.4rem 0.9rem;
+          padding: 2.4rem .9rem;
           .right_title {
             color: #fff;
             font-size: 1.2rem;
@@ -228,7 +217,7 @@
           // overflow: hidden;
           .text-box {
             h3 {
-              margin-bottom: 0.7rem !important;
+              margin-bottom: .7rem !important;
             }
             span {
               width: 9.47rem !important;
@@ -238,7 +227,7 @@
       }
       .text-box {
         .font16 {
-          padding: 0 0.5rem;
+          padding: 0 .5rem;
         }
       }
     }
@@ -247,10 +236,11 @@
       background: #fff !important;
       .architecture {
         .font30 {
-          font-size: 22px !important;
+          font-size: 1.06rem !important;
+          margin-bottom:0 !important;
         }
         .text-content {
-          padding: 0.9rem;
+          padding: .9rem;
           text-align: left;
           text-indent: 2em;
         }
@@ -258,8 +248,8 @@
           flex-wrap: wrap;
           .furniture {
             width: 10rem !important;
-            height: 13.52rem !important;
-            margin: 0 0.3rem;
+            // height: 13.52rem !important;
+            margin: 0 .3rem;
             img {
               width: 100%;
             }
@@ -271,7 +261,7 @@
                 font-size: 1rem !important;
               }
               span {
-                font-size: 0.82rem !important;
+                font-size: .82rem !important;
               }
             }
           }
@@ -286,15 +276,15 @@
       margin-top: 1.17rem !important;
       .module1-title-text {
         margin-bottom: 0 !important;
-        font-size: 0.88rem !important;
-        font-weight: bold;
+        font-size: 1.06rem !important;
       }
       .module1-content-text {
-        padding: 0.9rem;
-        font-size: 0.82rem !important;
+        padding: .9rem;
+        font-size: .82rem !important;
         margin-bottom: 0 !important;
       }
       .module1-img-box {
+        padding: 0 .9rem;
         img {
           width: 100%;
           object-fit: cover;
@@ -302,27 +292,150 @@
       }
     }
     .module2 {
+      padding: 0 .9rem;
+      .module2-title-text {
+        font-size: 1.06rem !important;
+      }
+      .module2-content-text {
+        font-size: .82rem !important;
+        margin-bottom: 1.17rem !important;
+      }
       .module2-nav {
         .module2-nav-box {
           width: 8.82rem !important;
           .module2-nav-text {
-            font-size: 0.82rem !important;
-            margin-top: 0.588rem !important;
+            font-size: .82rem !important;
+            margin-top: .588rem !important;
           }
         }
+      }
+      .ps2 {
+        margin-top: 2.5rem !important;
       }
     }
   }
 
   // 公众号
   .public-number {
+    .title {
+      font-size: 1.06rem !important;
+    }
+    .bg {
+      margin: 1.18rem auto !important;
+    }
     .features-introduction {
-      
+      margin-top: 1.18rem !important;
+      .flex {
+        // width: 30%;
+        flex-wrap: wrap;
+        .nav {
+          padding-bottom: 1.18rem !important;
+          h3 {
+            margin: 1.18rem auto !important;
+            font-size:1.06rem ;
+          }
+        }
+      }
+    }
+    .img-box {
+      height: 100%;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+      padding: 0 .9rem;
+      img {
+        width: 100%;
+        height: 100%;
+        // object-fit: cover;
+        object-fit: contain;
+      }
+    }
+    .el-carousel__container {
+      height: 17.65rem !important;
     }
   }
 
-
-
+  .link-us {
+    .select {
+      margin-top: 1.18rem !important;
+      .title {
+        margin-bottom: 1.18rem !important;
+        font-size: .95rem;
+      }
+      .radio-group {
+        .checkbox {
+          width: 33%;
+          margin: 0 .8rem !important;
+          span {
+            font-size: .7rem !important;
+          }
+          .ant-checkbox-wrapper {
+            // width:0.9rem !important;
+            margin: .3rem 0 !important;
+          }
+        }
+      }
+    }
+    .bottom-box {
+      margin-top: 1.18rem !important;
+      .text-box {
+        padding-top: 1.18rem !important;
+        .title {
+          font-size: 1.06rem !important;
+        }
+        .title-eg {
+          margin: .6rem auto !important;
+          span {
+            &:before {
+              width: 80% !important;
+              left: -80% !important;
+            }
+            &:after {
+              width: 80% !important;
+              right: -80% !important;
+            }
+          }
+        }
+        .text-content {
+          padding-bottom: .78rem !important;
+          .paragraph1 {
+            display: none;
+          }
+          .text_indent2 {
+            padding: 0 .9rem;
+          }
+        }
+      }
+      .form-box {
+        flex-wrap: wrap;
+        
+        .left,.right {
+          width:75% !important;
+          // /deep/ .form {
+          //   .ant-form-item-control {
+          //     line-height: 1.77rem !important;
+          //   }
+          //   .ant-form-item {
+          //     padding-bottom: 0 !important;
+          //     .ant-col-20 {
+          //       margin-left: 0 !important;
+          //       .item-input {
+          //         height: 1.77rem !important;
+          //         border: 1px solid #fff !important;
+          //       }
+          //     }
+          //   }
+          // }
+        }    
+      }
+      .submit-btn {
+        width:75% !important;
+        margin-top: 8.4rem !important;
+        color: #fff!important;
+        border: 0 !important;
+        background-color: rgb(1, 90, 171) !important;
+      }
+    }
+  }
 
   .suspended-case {
     display: none !important;
@@ -332,8 +445,6 @@
   .page-footer {
     display: none;
   }
-
-
 }
 
 //滚动条样式修改

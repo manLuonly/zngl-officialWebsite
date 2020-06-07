@@ -170,7 +170,7 @@ export default {
   }
 
   .show-product {
-    height: 675px;
+    // height: 675px;
     background-color: #f5f5f5;
   }
 

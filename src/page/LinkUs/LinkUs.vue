@@ -39,7 +39,7 @@
               </h2>
               <div class="text-content">
                 <span
-                  class="text_indent2"
+                  class="text_indent2 paragraph1"
                 >科技改变未来,发展移动互联网是大势所趋，智能桂联就已切入移动互联网领域，为客户制作网站建设，APP开发，小程序开发等，拥有大量长期客户的智能桂联，为满足客户需求，成立了移动媒体事业部，由一帮更年轻，更具活力的设计与技术团队组成。</span>
                 <span
                   class="text_indent2"
@@ -159,7 +159,7 @@ const plainOptions = [
 ];
 const options = [
   { label: "画册设计", value: "画册设计" },
-  { label: "品牌VI手册设计", value: "品牌VI手册设计" },
+  { label: "VIS设计", value: "VIS设计" },
   { label: "小程序开发", value: "小程序开发" },
   { label: "智能灌溉", value: "智能灌溉" }
 ];
@@ -171,11 +171,11 @@ const optionsWithDisabled = [
 ];
 const formItemLayout = {
   labelCol: { span: 4 },
-  wrapperCol: { span: 20, offset: 2 }
+  wrapperCol: { span: 20 }
 };
 const formTailLayout = {
   labelCol: { span: 4 },
-  wrapperCol: { span: 20, offset: 2 }
+  wrapperCol: { span: 20 }
 };
 export default {
   name: "LinkUs",
@@ -233,12 +233,16 @@ export default {
             pid
           };
 
-          submitInfoForm(form).then(res => {
-            if (res.code === 0) {
-              this.$message.success("保存成功");
-              this.form.resetFields();
-            }
-          });
+          submitInfoForm(form)
+            .then(res => {
+              if (res.code === 0) {
+                this.$message.success("保存成功");
+                this.form.resetFields();
+              }
+            })
+            .catch(err => {
+              this.$message.error("提交失败,请重新尝试!");
+            });
         }
       });
     },
@@ -276,7 +280,7 @@ export default {
     }
     .radio-group {
       display: flex;
-      justify-content: center;
+
       .checkbox {
         margin: 0 108px;
         /deep/ span {
@@ -332,16 +336,19 @@ export default {
       height: 172px;
       .left,
       .right {
-        width: 50%;
+        width: 40%;
         /deep/ .form {
           height: 100%;
           .ant-form-item {
             padding-bottom: 2px;
-            .item-input {
-              height: 40px;
-              background-color: rgba(0, 0, 0, 0) !important;
-              color: #fff;
-              border: 2px solid #fff;
+            .ant-col-20 {
+              width: 100% !important;
+              .item-input {
+                height: 40px;
+                background-color: rgba(0, 0, 0, 0) !important;
+                color: #fff;
+                border: 2px solid #fff;
+              }
             }
           }
         }

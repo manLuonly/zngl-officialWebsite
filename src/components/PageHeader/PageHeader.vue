@@ -2,26 +2,45 @@
 <template>
   <div class="page-header" ref="container">
     <a-affix :offsetTop="0.00000001">
-      <div class="logo-box" @click="goHome">
-        <div class="logo">
-          <img src="../../assets/img/logo.png" class="logo" />
+
+      <div style="position:relative;z-index:99">
+        <div class="logo-box" @click="goHome">
+          <div class="logo">
+            <img src="@/assets/img/logo.png" class="logo" />
+          </div>
+          <span class="name">智能桂联</span>
         </div>
-        <span class="name">智能桂联</span>
-      </div>
-  
         <span class="title-name">智能桂联</span>
-     
+        <div :class="src" @click="isShowNavIcon"></div>
+      </div>
+
+      <div class="menu">
+        <ul class="menu-ul" v-show="isShowOnIcon">
+          <router-link
+            v-for="item in projectNavList"
+            :key="item.text"
+            :to="{ path: item.path  }"
+            tag="li"
+          >
+            <span class="nuxt-link-exact-active" @click="goProject(item)">{{ item.text }}</span>
+          </router-link>
+        </ul>
+      </div>
+
+      <div class="mask" v-show="isShowOnIcon"></div>
+
       <div class="nav d-flex justify-content-center">
         <div class="row align-items-center">
           <!-- exact -->
           <router-link
             :class="_navStyle"
-            v-for="(tab, i) in navList"
-            :key="i"
+            v-for="tab in navList"
+            :key="tab.name"
             :to="{path:tab.path}"
           >{{ tab.name }}</router-link>
         </div>
       </div>
+
     </a-affix>
   </div>
 </template>
@@ -40,7 +59,55 @@ export default {
         { name: "公众号", path: "/publicnumber" },
         { name: "经典项目", path: "/project" },
         { name: "联系我们", path: "/linkus" }
-      ]
+      ],
+      projectNavList: [
+        {
+          text: "logo设计",
+          path: "project",
+          type: "logo"
+        },
+        {
+          text: "包装设计",
+          path: "project",
+          type: "pg"
+        },
+        {
+          text: "品牌VI设计",
+          path: "project",
+          type: "vi"
+        },
+        {
+          text: "广告设计",
+          path: "project",
+          type: "pt"
+        },
+        {
+          text: "画册设计",
+          path: "project",
+          type: "pa"
+        },
+        {
+          text: "APP开发",
+          path: "project",
+          type: "app"
+        },
+        {
+          text: "网站开发",
+          path: "project",
+          type: "web"
+        },
+        {
+          text: "小程序开发",
+          path: "project",
+          type: "sm"
+        },
+        {
+          text: "公众号开发",
+          path: "project",
+          type: "pb"
+        }
+      ],
+      isShowOnIcon: false
     };
   },
   watch: {},
@@ -49,17 +116,23 @@ export default {
       isProject: state => state.isProject
     }),
     _navStyle() {
-      // if (this.isProject) {
-      //   return 'router-link-active'
-      // } else {
-      //   return 
-      // }
       return this.$route.meta.title === "详情" ? "detailsCol" : "col-xl r-link";
+    },
+    src() {
+      return this.isShowOnIcon ? "nav-btn-on" : "nav-btn";
     }
   },
   methods: {
     goHome() {
       this.$router.push({ name: "home" });
+    },
+    isShowNavIcon() {
+      this.isShowOnIcon = !this.isShowOnIcon;
+    },
+    // 跳转项目页
+    goProject(item) {
+      this.$router.push({ name: item.path, query: { type: item.type } });
+      this.isShowOnIcon = false;
     }
   }
 };
@@ -73,14 +146,13 @@ export default {
     position: absolute;
     left: 10%;
     top: 50%;
-    z-index: 11;
+    z-index: 99;
     width: 76px;
-    // height: 45px;
+    height: 48px;
     transform: translateY(-50%);
     cursor: pointer;
     .logo {
       width: 100%;
-      height: 100%;
       padding-bottom: 3px;
     }
     .name {
@@ -98,6 +170,61 @@ export default {
   .title-name {
     display: none;
   }
+
+  .navCss() {
+    position: absolute;
+    display: none;
+    top: 0;
+    right: 0;
+    width: 48px;
+    height: 48px;
+  }
+
+  .nav-btn {
+    .navCss();
+    background: url("../../assets/img/mobile-footer/menu.png");
+  }
+  .nav-btn-on {
+    .navCss();
+    background: url("../../assets/img/mobile-footer/menu-on.png") 100% 100%
+      no-repeat;
+  }
+
+  .menu {
+    display: none;
+    width: 100%;
+    z-index: 99;
+    position: relative;
+    .menu-ul {
+      width: 100%;
+      transition: all 0.5s;
+      li {
+        height: 3rem;
+        color: #fff;
+        padding: 0 1rem;
+        border-bottom: 1px solid hsla(0, 0%, 100%, 0.1);
+        box-sizing: border-box;
+        background: #505050;
+        line-height: 3rem;
+        .nuxt-link-exact-active {
+          color: #fff;
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+
+  .mask {
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    z-index: 98;
+    background: rgba(0, 0, 0, 0.8);
+    touch-action: none; // 手机禁止拖动
+  }
+
   .nav {
     position: relative;
     background-color: #000000;

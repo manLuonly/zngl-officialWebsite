@@ -249,11 +249,11 @@ export default {
         flex-direction: row;
         justify-content: space-around;
         flex-wrap: wrap;
-        height: 300px;
         .sprites-img-box {
           width: 200px;
           height: 110px;
           margin-right: 10px;
+          margin-bottom: 20px;
           border: 1px solid #000;
           .sprites-img {
             height: 100%;

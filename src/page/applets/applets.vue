@@ -16,7 +16,7 @@
       </header>
 
       <section class="module1 section" style="margin-top:40px">
-        <h1 class="module1-title-text animated slideInUp">一站式微信小程序解决方案满足多场景的业务需求</h1>
+        <h1 class="module1-title-text animated slideInUp">一站式微信小程序满足多场景的业务需求</h1>
         <span
           class="module1-content-text animated slideInUp"
         >小程序解决方案致力于为商家提供一体化智能营销解决方案。包括活动优惠、商品销售，会员管理，产品折扣，商品上架、下架数据体系，二次营销等服务，帮助商家快速时间获客能力，实现商品及订单双倍高，为商家获取最大的收益。</span>
@@ -45,7 +45,7 @@
               <div class="module2-nav-text">{{ item.text }}</div>
             </div>
           </div>
-          <div class="module2-nav wow slideInUp" style="margin-top: 70px;">
+          <div class="module2-nav wow slideInUp ps2" style="margin-top: 70px;">
             <div class="module2-nav-box" v-for="item in spriteList2" :key="item.text">
               <div class="module2-nav-img" :style="bg(item.start,item.end)"></div>
               <div class="module2-nav-text">{{ item.text }}</div>

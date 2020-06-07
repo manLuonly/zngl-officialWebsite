@@ -40,14 +40,14 @@ export default {
 <style lang='less' scoped>
 .mobile-nav-footer {
   display: none;
-
+  height: 2.5rem;
   .nav-bar {
     position: fixed;
     bottom: 0;
     display: flex;
     flex-shrink: 0;
     width: 100%;
-    height: 2.94rem;
+    height: 2.5rem;
     border-top: 0.5px solid #ededed;
     background: #eeeeee;
     img {
@@ -69,50 +69,51 @@ export default {
       }
       &.home {
         .img {
-          background-image: url("../../assets/img/mobile-footer/home.png");
+          // background: url("../../assets/img/mobile-footer/home.png") 100% 100% no-repeat;
+          background: url("../../assets/img/mobile-footer/home.png") no-repeat;
         }
         &.z-act .img {
-          background-image: url("../../assets/img/mobile-footer/home.png");
+          background: url("../../assets/img/mobile-footer/home-on.png") no-repeat;
         }
       }
       &.program {
         .img {
-          background-image: url("../../assets/img/mobile-footer/program.png");
+          background: url("../../assets/img/mobile-footer/program.png") no-repeat;
         }
         &.z-act .img {
-          background-image: url("../../assets/img/mobile-footer/program.png");
+          background: url("../../assets/img/mobile-footer/program-on.png") no-repeat;
         }
       }
       &.applets {
         .img {
-          background-image: url("../../assets/img/mobile-footer/sm.png");
+          background: url("../../assets/img/mobile-footer/sm.png") no-repeat;
         }
         &.z-act .img {
-          background-image: url("../../assets/img/mobile-footer/sm.png");
+          background: url("../../assets/img/mobile-footer/sm-on.png") no-repeat;
         }
       }
       &.publicnumber {
         .img {
-          background-image: url("../../assets/img/mobile-footer/pb-num.png");
+          background: url("../../assets/img/mobile-footer/pb-num.png") no-repeat;
         }
         &.z-act .img {
-          background-image: url("../../assets/img/mobile-footer/pb-num.png");
+          background: url("../../assets/img/mobile-footer/pb-num-on.png") no-repeat;
         }
       }
       &.project {
         .img {
-          background-image: url("../../assets/img/mobile-footer/case.png");
+          background: url("../../assets/img/mobile-footer/case.png") no-repeat;
         }
         &.z-act .img {
-          background-image: url("../../assets/img/mobile-footer/case.png");
+          background: url("../../assets/img/mobile-footer/case-on.png") no-repeat;
         }
       }
       &.linkus {
         .img {
-          background-image: url("../../assets/img/mobile-footer/contact-us.png");
+          background-image: url("../../assets/img/mobile-footer/contact-us.png") no-repeat;
         }
         &.z-act .img {
-          background-image: url("../../assets/img/mobile-footer/contact-us.png");
+          background-image: url("../../assets/img/mobile-footer/contact-us-on.png") no-repeat;
         }
       }
       &.z-act {
