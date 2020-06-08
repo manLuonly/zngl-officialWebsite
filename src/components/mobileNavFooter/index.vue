@@ -110,10 +110,10 @@ export default {
       }
       &.linkus {
         .img {
-          background-image: url("../../assets/img/mobile-footer/contact-us.png") no-repeat;
+          background: url("../../assets/img/mobile-footer/contact-us.png") no-repeat;
         }
         &.z-act .img {
-          background-image: url("../../assets/img/mobile-footer/contact-us-on.png") no-repeat;
+          background: url("../../assets/img/mobile-footer/contact-us-on.png") no-repeat;
         }
       }
       &.z-act {

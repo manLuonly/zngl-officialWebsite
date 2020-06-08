@@ -18,8 +18,8 @@
 
     <footer class="footer section">
       <div class="text-box">
-        <span class="up" @click="getArticle">上一篇: 震惊!专家说在非洲每过60秒我们就会过去一分钟!</span>
-        <span class="down" @click="getArticle">下一篇: 是中国人都转起来!</span>
+        <span class="up text-truncate" @click="getArticle">上一篇: 震惊!专家说在非洲每过60秒我们就会过去一分钟!</span>
+        <span class="down text-truncate" @click="getArticle">下一篇: 是中国人都转起来!</span>
       </div>
     </footer>
   </div>
@@ -27,7 +27,7 @@
 
 <script>
 export default {
-  name: "details",
+  name: "details1",
 
   data() {
     return {
@@ -57,9 +57,7 @@ export default {
       this.$router.push({ name: "project" });
     },
     // 获取文章
-    getArticle() {
-
-    }
+    getArticle() {}
   }
 };
 </script>
@@ -76,7 +74,7 @@ export default {
       }
       .back {
         display: block;
-        width: 60px;
+        width: 100px;
         cursor: pointer;
         i {
           display: inline-flex;
@@ -103,6 +101,7 @@ export default {
       justify-content: space-around;
     }
     span {
+      flex: 1;
       cursor: pointer;
     }
   }

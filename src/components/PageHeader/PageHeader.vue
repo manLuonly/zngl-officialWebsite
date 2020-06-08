@@ -1,9 +1,8 @@
 <!-- 公共头部  -->
 <template>
   <div class="page-header" ref="container">
-    <a-affix :offsetTop="0.00000001">
-
-      <div style="position:relative;z-index:99">
+    <a-affix :offsetTop="0.00000001" style="height:48px">
+      <div class="logo-layout-box" style="position:relative;z-index:99">
         <div class="logo-box" @click="goHome">
           <div class="logo">
             <img src="@/assets/img/logo.png" class="logo" />
@@ -19,15 +18,16 @@
           <router-link
             v-for="item in projectNavList"
             :key="item.text"
+            @click.native="goProject(item)"
             :to="{ path: item.path  }"
             tag="li"
           >
-            <span class="nuxt-link-exact-active" @click="goProject(item)">{{ item.text }}</span>
+            <span class="nuxt-link-exact-active">{{ item.text }}</span>
           </router-link>
         </ul>
       </div>
 
-      <div class="mask" v-show="isShowOnIcon"></div>
+      <div class="mask m-0" v-show="isShowOnIcon" @click="hideMen"></div>
 
       <div class="nav d-flex justify-content-center">
         <div class="row align-items-center">
@@ -40,7 +40,6 @@
           >{{ tab.name }}</router-link>
         </div>
       </div>
-
     </a-affix>
   </div>
 </template>
@@ -130,8 +129,11 @@ export default {
       this.isShowOnIcon = !this.isShowOnIcon;
     },
     // 跳转项目页
-    goProject(item) {
+    goProject(item) {    
       this.$router.push({ name: item.path, query: { type: item.type } });
+      this.isShowOnIcon = false;      
+    },
+    hideMen() {
       this.isShowOnIcon = false;
     }
   }
@@ -148,8 +150,7 @@ export default {
     top: 50%;
     z-index: 99;
     width: 76px;
-    height: 48px;
-    transform: translateY(-50%);
+    height: 80px;
     cursor: pointer;
     .logo {
       width: 100%;
@@ -174,15 +175,16 @@ export default {
   .navCss() {
     position: absolute;
     display: none;
-    top: 0;
-    right: 0;
-    width: 48px;
-    height: 48px;
+    top: 8px;
+    right: 10px;
+    width: 26px;
+    height: 30px;
   }
 
   .nav-btn {
     .navCss();
-    background: url("../../assets/img/mobile-footer/menu.png");
+    background: url("../../assets/img/mobile-footer/menu.png") 100% 100%
+      no-repeat;
   }
   .nav-btn-on {
     .navCss();
@@ -199,13 +201,13 @@ export default {
       width: 100%;
       transition: all 0.5s;
       li {
-        height: 3rem;
+        height: 2.5rem;
         color: #fff;
         padding: 0 1rem;
         border-bottom: 1px solid hsla(0, 0%, 100%, 0.1);
         box-sizing: border-box;
         background: #505050;
-        line-height: 3rem;
+        line-height: 2.5rem;
         .nuxt-link-exact-active {
           color: #fff;
           font-size: 0.9rem;

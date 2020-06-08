@@ -6,7 +6,7 @@
     </header>
 
     <div class="about-us">
-      <span class="about-us-text">关于我们</span>
+      <h1 class="about-us-text">关于我们</h1>
     </div>
 
     <main>
@@ -195,7 +195,7 @@ export default {
         margin-bottom: 20px;
         padding-left: 10px;
         font-size: 30px;
-        font-weight: bold;
+        // font-weight: bold;
       }
       .left_title_noboder {
         .left_title;

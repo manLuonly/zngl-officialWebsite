@@ -120,7 +120,10 @@ router.beforeEach((to, from, next) => {
     if (title) {
         document.title = `${title} - 智能桂联`;
     }
+
     next();
+    // 回到页面顶部
+    window.scrollTo(0, 0);
 })
 
 

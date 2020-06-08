@@ -23,7 +23,7 @@
                   v-for="(col, index) in row"
                   :key="index"
                   @click="changeSelectProjectAction(col.type)"
-                  class="col mr-5 text-center"
+                  class="col text-center"
                   :class="{ active: currentSelect == col.type }"
                 >
                   <span>{{col.type_name}}</span>
@@ -37,7 +37,7 @@
               <li v-for="(item, index) in projectList[currentSelect]" :key="index">
                 <a-button
                   type="primary"
-                  class="look-details"
+                  class="look-details details-btn"
                   @click="gotoDetails(item)"
                   v-show="isShowDetailsBtn"
                 >查看详情</a-button>
@@ -214,20 +214,20 @@ export default {
     },
     // 查看详情
     gotoDetails(item) {
-      // this.$router.push({ name: "details", query: { name: item.name } });
-      const url = item.url;
-      const name = item.name;
-      const type = item.type;
-      const model = this.model;
-      const pid = this.pid;
+      this.$router.push({ name: "details", query: { name: item.name } });
+      // const url = item.url;
+      // const name = item.name;
+      // const type = item.type;
+      // const model = this.model;
+      // const pid = this.pid;
 
-      if (!url) {
-        window.open(
-          `/zngl/static?id=${name}&type=pdf/${type}&suffix=pdf&model=${model}&pid=${pid}`
-        );
-      } else {
-        window.open(url);
-      }
+      // if (!url) {
+      //   window.open(
+      //     `/zngl/static?id=${name}&type=pdf/${type}&suffix=pdf&model=${model}&pid=${pid}`
+      //   );
+      // } else {
+      //   window.open(url);
+      // }
     },
     // 获取特定数据
     getDesignatedData(type) {

@@ -15,12 +15,20 @@
   .icon {
     top: 730px !important;
   }
+  // 遮罩层
+  .m-0 {
+    display: none;
+  }
 }
 
 // 屏幕尺寸 1660-1680（中屏幕）
 @media screen and (min-width: 1600px) and (max-width: 1680px) {
   .icon {
     top: 730px !important;
+  }
+  // 遮罩层
+  .m-0 {
+    display: none;
   }
 }
 
@@ -50,6 +58,10 @@
       }
     }
   }
+  // 遮罩层
+  .m-0 {
+    display: none;
+  }
 }
 
 /* 平板之类的宽度 1024 以下设备(最低iphone6，iphone5不适配(320x568)) */
@@ -60,7 +72,7 @@
   }
 
   .center() {
-    margin: .6rem 0;
+    margin: 0.6rem 0;
     text-align: center;
   }
 
@@ -75,13 +87,15 @@
     top: 0;
     height: 3rem !important;
     background: black;
-    .logo-box {
-      position: static !important;
-      line-height: 3rem !important;
-      margin: 0 1rem;
-      transform: translateY(0) !important;
-      .name {
-        display: none;
+    .logo-layout-box {
+      height: 48px;
+      .logo-box {
+        position: static !important;
+        line-height: 3rem !important;
+        margin: 0 1rem;
+        .name {
+          display: none;
+        }
       }
     }
     .title-name {
@@ -93,11 +107,12 @@
       color: #fff;
     }
 
-    .nav-btn,.nav-btn-on {
+    .nav-btn,
+    .nav-btn-on {
       display: inline-block !important;
     }
 
-    .menu  {
+    .menu {
       display: inline-block !important;
     }
 
@@ -108,18 +123,18 @@
     }
   }
 
-  // 轮播图
-  .carousel {
-    padding-top: 1.47rem;
-  }
-
   // 首页
   .home {
+    // 轮播图
+    header {
+      padding-top: 48px;
+    }
     .about-us {
-      .center();
+      margin: 0.3rem 0;
+      text-align: center;
+      font-size: 1.06rem;
       .about-us-text {
-        display: inline-block !important;
-        font-size: 1.06rem;
+        display: block !important;
       }
     }
     .home-intro {
@@ -134,7 +149,7 @@
           display: none !important;
         }
         .introduction1 {
-          padding: 2.4rem .9rem;
+          padding: 2.4rem 0.9rem;
           color: #fff;
         }
       }
@@ -144,18 +159,18 @@
           justify-content: center;
           .sprites {
             width: 20rem;
-            height: 5rem !important;
-            margin-bottom: .708rem !important;
+            // height: 14rem !important;
+            margin-bottom: 0.708rem !important;
             .sprites-img-box {
               width: 3.5rem !important;
               margin-right: 0 !important;
-              margin-bottom: .5rem;
+              margin-bottom: 0.5rem !important;
             }
           }
         }
       }
       .bottom-box {
-        margin-top: .588rem !important;
+        margin-top: 0.588rem !important;
       }
     }
 
@@ -163,11 +178,11 @@
       margin: 0 !important;
       .center_title {
         .center();
-        margin-bottom: .6rem !important;
+        margin-bottom: 0.6rem !important;
         font-size: 1.06rem !important;
       }
       .text_indent2 {
-        padding: 0 .9rem;
+        padding: 0 0.9rem;
       }
     }
 
@@ -198,7 +213,7 @@
         .text-box {
           width: 100% !important;
           background-color: rgba(0, 0, 0, 0.6);
-          padding: 2.4rem .9rem;
+          padding: 2.4rem 0.9rem;
           .right_title {
             color: #fff;
             font-size: 1.2rem;
@@ -217,7 +232,7 @@
           // overflow: hidden;
           .text-box {
             h3 {
-              margin-bottom: .7rem !important;
+              margin-bottom: 0.7rem !important;
             }
             span {
               width: 9.47rem !important;
@@ -227,7 +242,7 @@
       }
       .text-box {
         .font16 {
-          padding: 0 .5rem;
+          padding: 0 0.5rem;
         }
       }
     }
@@ -237,19 +252,20 @@
       .architecture {
         .font30 {
           font-size: 1.06rem !important;
-          margin-bottom:0 !important;
+          margin-bottom: 0 !important;
         }
         .text-content {
-          padding: .9rem;
+          padding: 0.9rem;
           text-align: left;
           text-indent: 2em;
         }
         .version-box {
           flex-wrap: wrap;
+          margin: 1.18rem 0 2.35rem 0 !important;
           .furniture {
             width: 10rem !important;
             // height: 13.52rem !important;
-            margin: 0 .3rem;
+            margin: 0 0.3rem;
             img {
               width: 100%;
             }
@@ -261,7 +277,7 @@
                 font-size: 1rem !important;
               }
               span {
-                font-size: .82rem !important;
+                font-size: 0.82rem !important;
               }
             }
           }
@@ -279,12 +295,12 @@
         font-size: 1.06rem !important;
       }
       .module1-content-text {
-        padding: .9rem;
-        font-size: .82rem !important;
+        padding: 0.9rem;
+        font-size: 0.82rem !important;
         margin-bottom: 0 !important;
       }
       .module1-img-box {
-        padding: 0 .9rem;
+        padding: 0 0.9rem;
         img {
           width: 100%;
           object-fit: cover;
@@ -292,20 +308,20 @@
       }
     }
     .module2 {
-      padding: 0 .9rem;
+      padding: 0 0.9rem;
       .module2-title-text {
         font-size: 1.06rem !important;
       }
       .module2-content-text {
-        font-size: .82rem !important;
+        font-size: 0.82rem !important;
         margin-bottom: 1.17rem !important;
       }
       .module2-nav {
         .module2-nav-box {
           width: 8.82rem !important;
           .module2-nav-text {
-            font-size: .82rem !important;
-            margin-top: .588rem !important;
+            font-size: 0.82rem !important;
+            margin-top: 0.588rem !important;
           }
         }
       }
@@ -332,7 +348,7 @@
           padding-bottom: 1.18rem !important;
           h3 {
             margin: 1.18rem auto !important;
-            font-size:1.06rem ;
+            font-size: 1.06rem;
           }
         }
       }
@@ -341,7 +357,7 @@
       height: 100%;
       flex-wrap: wrap;
       margin-bottom: 2.5rem;
-      padding: 0 .9rem;
+      padding: 0 0.9rem;
       img {
         width: 100%;
         height: 100%;
@@ -354,23 +370,74 @@
     }
   }
 
+  // 经典项目
+  .project {
+    main {
+      section {
+        nav {
+          .select-project {
+            margin-top: 1.18rem !important;
+            .col {
+              margin: 0.5rem !important;
+            }
+            .ant-row-flex {
+              // margin-top: 1.18rem !important;
+              margin-top: 0 !important;
+            }
+          }
+        }
+        .logo-list {
+          margin-top: 1.18rem !important;
+          .clearfix {
+            padding: 0 0.9rem;
+            li {
+              top: 0;
+              width: 45%;
+              height: 6.88rem;
+              margin: 1.18rem 0.5rem !important;
+              .details-btn {
+                width: 60%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+
+  // 详情
+  .details {
+      .header {
+        .title {
+          .back {
+            margin: 1.18rem 0 !important;
+          }
+          h1 {
+            font-size:1.3rem !important;
+          }
+        }
+      }
+  }
+
+  // 联系我们
   .link-us {
     .select {
       margin-top: 1.18rem !important;
       .title {
         margin-bottom: 1.18rem !important;
-        font-size: .95rem;
+        font-size: 0.95rem;
       }
       .radio-group {
         .checkbox {
           width: 33%;
-          margin: 0 .8rem !important;
+          margin: 0 0.8rem !important;
           span {
-            font-size: .7rem !important;
+            font-size: 0.7rem !important;
           }
           .ant-checkbox-wrapper {
             // width:0.9rem !important;
-            margin: .3rem 0 !important;
+            margin: 0.3rem 0 !important;
           }
         }
       }
@@ -383,7 +450,7 @@
           font-size: 1.06rem !important;
         }
         .title-eg {
-          margin: .6rem auto !important;
+          margin: 0.6rem auto !important;
           span {
             &:before {
               width: 80% !important;
@@ -396,20 +463,21 @@
           }
         }
         .text-content {
-          padding-bottom: .78rem !important;
+          padding-bottom: 0.78rem !important;
           .paragraph1 {
             display: none;
           }
           .text_indent2 {
-            padding: 0 .9rem;
+            padding: 0 0.9rem;
           }
         }
       }
       .form-box {
         flex-wrap: wrap;
-        
-        .left,.right {
-          width:75% !important;
+
+        .left,
+        .right {
+          width: 75% !important;
           // /deep/ .form {
           //   .ant-form-item-control {
           //     line-height: 1.77rem !important;
@@ -425,12 +493,12 @@
           //     }
           //   }
           // }
-        }    
+        }
       }
       .submit-btn {
-        width:75% !important;
+        width: 75% !important;
         margin-top: 8.4rem !important;
-        color: #fff!important;
+        color: #fff !important;
         border: 0 !important;
         background-color: rgb(1, 90, 171) !important;
       }

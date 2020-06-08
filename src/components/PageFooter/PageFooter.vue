@@ -77,62 +77,6 @@ export default {
   data() {
     return {
       serviceList: [
-        // {
-        //   name: 'LOGO设计',
-        //   value: 'AA'
-        // },
-        // {
-        //   name: '画册设计',
-        //   value: 'AA'
-        // },
-        // {
-        //   name: '易拉宝',
-        //   value: 'AA'
-        // },
-        // {
-        //   name: '海报设计',
-        //   value: 'AA'
-        // },
-        // {
-        //   name: 'VI品牌',
-        //   value: 'AA'
-        // },
-        // {
-        //   name: '品牌包装',
-        //   value: 'AA'
-        // },
-        // {
-        //   name: '宣传页',
-        //   value: 'AA'
-        // },
-        // {
-        //   name: '名片设计',
-        //   value: 'AA'
-        // },
-        // {
-        //   name: '网站开发',
-        //   value: 'AA'
-        // },
-        // {
-        //   name: '小程序',
-        //   value: 'AA'
-        // },
-        // {
-        //   name: '网站维护',
-        //   value: 'AA'
-        // },
-        // {
-        //   name: 'APP开发',
-        //   value: 'AA'
-        // },
-        // {
-        //   name: '智能灌溉',
-        //   value: 'AA'
-        // },
-        // {
-        //   name: '智能家居',
-        //   value: 'AA'
-        // },
         "LOGO设计",
         "画册设计",
         "易拉宝",
@@ -150,11 +94,7 @@ export default {
       ]
     };
   },
-  methods: {
-    // goCase(value) {
-    //   this.$router.push({ name: "project", query: { val: value } })
-    // }
-  }
+  methods: {}
 };
 </script>
 

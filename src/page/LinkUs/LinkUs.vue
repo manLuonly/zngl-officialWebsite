@@ -99,9 +99,7 @@
                     :label-col="formItemLayout.labelCol"
                     :wrapper-col="formItemLayout.wrapperCol"
                   >
-                    <a-input
-                      class="item-input"
-                      v-decorator="[
+                  <!-- v-decorator="[
                 'email',
                   {rules: [
                   { required: true, message: '请输入您的邮箱！' },
@@ -114,7 +112,9 @@
                   message: '邮箱不得超过50字符',
                   },
                   ]}
-                ]"
+                ]" -->
+                    <a-input
+                      class="item-input"
                       placeholder="电子邮箱"
                     />
                   </a-form-item>
@@ -126,12 +126,12 @@
                     :label-col="formItemLayout.labelCol"
                     :wrapper-col="formItemLayout.wrapperCol"
                   >
-                    <a-textarea
-                      class="item-input-last"
-                      v-decorator="[
+                  <!--  v-decorator="[
                   'leavingMsg',
                   {rules: [{ required: true, message: '请输入您的留言内容！' }]}
-                ]"
+                ]" -->
+                    <a-textarea
+                      class="item-input-last"
                       placeholder="请写下您的想法或想了解咨询的项目,我们将很快联系您"
                     ></a-textarea>
                   </a-form-item>
