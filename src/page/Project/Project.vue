@@ -3,7 +3,7 @@
   <div>
     <div class="project">
       <header>
-        <div class="banner" @click="goDetails">
+        <div class="banner">
           <img src="../../assets/img/project-img/banner.jpg" />
         </div>
       </header>
@@ -38,11 +38,12 @@
                 <a-button
                   type="primary"
                   class="look-details details-btn"
-                  @click="gotoDetails(item)"
+                  @click="goDetails(item)"
                   v-show="isShowDetailsBtn"
                 >查看详情</a-button>
+                <!-- encodeURI解决IE图片加载失败问题  -->
                 <img
-                  v-lazy="`http://192.168.31.50/zngl/fileOperate?name=${item.type_name}&suffix=${item.suffix}&directory=${item.directory}`"
+                  v-lazy="encodeURI(`${ip}?name=${item.type_name}&suffix=${item.suffix}&directory=${item.directory}`) "
                   style="object-fit: cover;width:100%;height:100%;"
                 />
                 <span class="logo-list text">{{ item.name }}</span>
@@ -50,7 +51,7 @@
             </ul>
 
             <div class="look-more d-flex justify-content-end align-items-center">
-              <a-button class="look-more-btn" @click="lookMore">查看更多</a-button>
+              <a-button class="look-more-btn" :disabled="!isShowMore" @click="lookMore"> {{ isShowMore ? '查看更多': '没有更多' }} </a-button>
             </div>
           </div>
         </section>
@@ -72,11 +73,12 @@ export default {
         pageNum: 1, // 当前页码
         pageSize: 10 // 每页条数
       },
-      isShowDetailsBtn: false,
-      type: "",
-      classificationArr: [],
-      model: "project",
-      pid: "pc"
+      isShowDetailsBtn: false, // 是否展示详情按钮
+      type: "", //
+      classificationArr: [], // 分类列表数据
+      ip: "", // 公网IP
+      count: 0, // 数据库总条数
+      isShowMore: true
     };
   },
   watch: {
@@ -84,6 +86,7 @@ export default {
   },
   mounted() {
     this.getAllProject();
+    this.ip = window.localStorage.getItem("ip");
   },
   methods: {
     // 重置数据
@@ -106,24 +109,13 @@ export default {
     // 获取数据
     async getAllProject(typeVal) {
       this.pageForm.pageNum = 1; // 重置页数
-      const pageNum = this.pageForm.pageNum; // 开始页数
-      const pageSize = this.pageForm.pageSize; // 结束页数
-      // changeSelectProjectAction函数选择类型(typeVal)或者左侧悬浮导航栏跳转类型(this.$route.query.type)或上方路由正常跳转('logo')
+      const { pageNum, pageSize } = this.pageForm;
+      // 函数选择类型(typeVal)或者左侧悬浮导航栏跳转类型(this.$route.query.type)或上方路由正常跳转('logo')
       const type = typeVal
         ? typeVal
         : this.$route.query.type
         ? this.$route.query.type
         : "logo";
-      const model = this.model;
-      const pid = this.pid;
-
-      let form = {
-        pageNum,
-        pageSize,
-        type,
-        model,
-        pid
-      };
 
       try {
         await caseType().then(res => {
@@ -139,17 +131,16 @@ export default {
           }
         });
 
-        await caseList(form).then(res => {
+        await caseList(type, pageNum, pageSize).then(res => {
+          this.count = res.count; // 数据库总条数
+
           if (res.code === 0) {
             this.projectList = res.data;
-
             this.sortAllProject(typeVal);
           }
         });
       } catch (error) {
-        if (error) {
-          this.$message.error("加载失败,请重新尝试");
-        }
+        error && this.$message.error("加载失败,请重新尝试");
       }
     },
     //分类
@@ -167,7 +158,7 @@ export default {
           return item.type == type;
         });
       });
-      // changeSelectProjectAction函数选择类型(typeVal)或者左侧悬浮导航栏跳转类型(this.$route.query.type)或上方路由正常跳转('logo')
+      // 函数选择类型(typeVal)或者左侧悬浮导航栏跳转类型(this.$route.query.type)或上方路由正常跳转('logo')
       const jumpType = typeVal
         ? typeVal
         : this.$route.query.type
@@ -181,73 +172,44 @@ export default {
     },
 
     changeSelectProjectAction(type) {
+      this.isShowMore = true;
       this.currentSelect = type;
       this.getAllProject(type);
     },
     // 查看更多
     lookMore() {
       this.pageForm.pageNum++;
-      const pageNum = this.pageForm.pageNum;
-      const pageSize = this.pageForm.pageSize;
+      const { pageNum, pageSize } = this.pageForm;
       const type = this.currentSelect;
-      const model = this.model;
-      const pid = this.pid;
+      const projectList = this.projectList[type]; // 当前项目类型
+      
+      if (projectList.length === this.count) {
+        this.$message.warning("没有更多数据了！");
+        this.isShowMore = false;
+        return;
+      }
 
-      let form = {
-        pageNum,
-        pageSize,
-        type,
-        model,
-        pid
-      };
-
-      caseList(form).then(res => {
-        // 追加数据
+      caseList(type, pageNum, pageSize).then(res => {
         if (res.code === 0 && res.data.length !== 0) {
-          this.projectList[this.currentSelect] = this.projectList[
-            this.currentSelect
-          ].concat(res.data);
-        } else {
-          this.$message.warning("没有更多数据了！");
+          projectList = projectList.concat(res.data);
         }
       });
     },
     // 查看详情
-    gotoDetails(item) {
-      this.$router.push({ name: "details", query: { name: item.name } });
-      // const url = item.url;
-      // const name = item.name;
-      // const type = item.type;
-      // const model = this.model;
-      // const pid = this.pid;
-
-      // if (!url) {
-      //   window.open(
-      //     `/zngl/static?id=${name}&type=pdf/${type}&suffix=pdf&model=${model}&pid=${pid}`
-      //   );
-      // } else {
-      //   window.open(url);
-      // }
+    goDetails(item) {
+      this.$router.push({ name: "details", query: { id: item.id } });
     },
     // 获取特定数据
     getDesignatedData(type) {
-      let form = {
-        pageNum: 1, // 当前页码
-        pageSize: 10, // 每页条数
-        type,
-        model: "project",
-        pid: "pc"
-      };
+      const pageNum = 1;
+      const pageSize = 10;
 
-      caseList(form).then(res => {
+      caseList(type, pageNum, pageSize).then(res => {
         if (res.code === 0) {
           this.projectList = res.data;
           this.sortAllProject();
         }
       });
-    },
-    goDetails() {
-      this.$router.push({ name: "details" });
     }
   }
 };
@@ -277,7 +239,6 @@ export default {
         top: -74px;
         float: left;
         width: 24%;
-        // height: 281px;
         height: 208px;
         margin: 74px 1% 20px 0;
         box-shadow: 0px 0px 7px -5px rgba(0, 0, 0);
@@ -317,7 +278,6 @@ export default {
   }
 
   .select-project {
-    // height: 150px;
     margin-top: 40px;
     .ant-row-flex {
       margin-top: 30px;
@@ -338,7 +298,7 @@ export default {
         background-color: #348ccd;
         border-radius: 5px;
         transition: background 0.5s;
-        // font-weight: bold;
+        cursor: not-allowed;
       }
     }
   }

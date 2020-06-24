@@ -1,7 +1,8 @@
 <template>
   <div class="mobile-nav-footer">
-    <ul class="nav-bar">
-      <router-link
+    <ul class="nav nav-bar">
+        <router-link
+        class="nav-item"
         v-for="(item, index) in navList"
         :key="index"
         :class="item.class"
@@ -12,6 +13,7 @@
         <i class="img"></i>
         <span v-text="item.name"></span>
       </router-link>
+   
     </ul>
   </div>
 </template>
@@ -73,15 +75,18 @@ export default {
           background: url("../../assets/img/mobile-footer/home.png") no-repeat;
         }
         &.z-act .img {
-          background: url("../../assets/img/mobile-footer/home-on.png") no-repeat;
+          background: url("../../assets/img/mobile-footer/home-on.png")
+            no-repeat;
         }
       }
       &.program {
         .img {
-          background: url("../../assets/img/mobile-footer/program.png") no-repeat;
+          background: url("../../assets/img/mobile-footer/program.png")
+            no-repeat;
         }
         &.z-act .img {
-          background: url("../../assets/img/mobile-footer/program-on.png") no-repeat;
+          background: url("../../assets/img/mobile-footer/program-on.png")
+            no-repeat;
         }
       }
       &.applets {
@@ -97,7 +102,8 @@ export default {
           background: url("../../assets/img/mobile-footer/pb-num.png") no-repeat;
         }
         &.z-act .img {
-          background: url("../../assets/img/mobile-footer/pb-num-on.png") no-repeat;
+          background: url("../../assets/img/mobile-footer/pb-num-on.png")
+            no-repeat;
         }
       }
       &.project {
@@ -105,15 +111,18 @@ export default {
           background: url("../../assets/img/mobile-footer/case.png") no-repeat;
         }
         &.z-act .img {
-          background: url("../../assets/img/mobile-footer/case-on.png") no-repeat;
+          background: url("../../assets/img/mobile-footer/case-on.png")
+            no-repeat;
         }
       }
       &.linkus {
         .img {
-          background: url("../../assets/img/mobile-footer/contact-us.png") no-repeat;
+          background: url("../../assets/img/mobile-footer/contact-us.png")
+            no-repeat;
         }
         &.z-act .img {
-          background: url("../../assets/img/mobile-footer/contact-us-on.png") no-repeat;
+          background: url("../../assets/img/mobile-footer/contact-us-on.png")
+            no-repeat;
         }
       }
       &.z-act {

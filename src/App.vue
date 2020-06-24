@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { senToken } from "@/api/project";
+import { senToken,serviceLink } from "@/api/project";
 
 export default {
   name: "app",
@@ -28,6 +28,10 @@ export default {
     //   console.log(res,'res');
       
     // })
+    serviceLink().then(res => {
+      let ip = res.data.path_link;
+      window.localStorage.setItem('ip',ip)
+    })
   }
   
 };
@@ -41,7 +45,7 @@ export default {
 @import "./style/media.less";
 
 #app {
-  height: 100%;
   width: 100%;
+  // height: 100%;
 }
 </style>

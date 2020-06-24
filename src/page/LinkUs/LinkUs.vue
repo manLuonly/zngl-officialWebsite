@@ -99,7 +99,10 @@
                     :label-col="formItemLayout.labelCol"
                     :wrapper-col="formItemLayout.wrapperCol"
                   >
-                  <!-- v-decorator="[
+                    <a-input
+                      class="item-input"
+                      placeholder="电子邮箱"
+                      v-decorator="[
                 'email',
                   {rules: [
                   { required: true, message: '请输入您的邮箱！' },
@@ -112,10 +115,7 @@
                   message: '邮箱不得超过50字符',
                   },
                   ]}
-                ]" -->
-                    <a-input
-                      class="item-input"
-                      placeholder="电子邮箱"
+                ]"
                     />
                   </a-form-item>
                 </a-form>
@@ -126,14 +126,11 @@
                     :label-col="formItemLayout.labelCol"
                     :wrapper-col="formItemLayout.wrapperCol"
                   >
-                  <!--  v-decorator="[
+                    <!--  v-decorator="[
                   'leavingMsg',
                   {rules: [{ required: true, message: '请输入您的留言内容！' }]}
-                ]" -->
-                    <a-textarea
-                      class="item-input-last"
-                      placeholder="请写下您的想法或想了解咨询的项目,我们将很快联系您"
-                    ></a-textarea>
+                    ]"-->
+                    <a-textarea class="item-input-last" placeholder="请写下您的想法或想了解咨询的项目,我们将很快联系您"></a-textarea>
                   </a-form-item>
                 </a-form>
               </div>
@@ -213,24 +210,53 @@ export default {
           );
 
           const service = res.join(","); // 服务项目
-          const companyVal = this.form.getFieldValue("company");
-          const company = companyVal ? companyVal : ""; // 公司
+
+          const typeArr = [];
+          res.map(item => {
+            switch (item) {
+              case "LOGO设计":
+                typeArr.push("logo");
+                break;
+              case "产品包装":
+                typeArr.push("pg");
+                break;
+              case "公众号开发":
+                typeArr.push("pg");
+                break;
+              case "画册设计":
+                typeArr.push("pa");
+                break;
+              case "VIS设计":
+                typeArr.push("vi");
+                break;
+              case "小程序开发":
+                typeArr.push("sm");
+                break;
+              case "海报设计" || "易拉宝设计":
+                typeArr.push("pt");
+                break;
+              case "网站开发":
+                typeArr.push("web");
+                break;
+              default:        
+                break;
+            }
+          });
+ 
+
           const name = this.form.getFieldValue("username"); // 姓名
           const phone = this.form.getFieldValue("tel"); // 手机号码
           const email = this.form.getFieldValue("email"); // 邮箱
           const content = this.form.getFieldValue("leavingMsg"); // 补充说明
-          const model = "pc-submitForm"; // 哪个模块发出的请求
-          const pid = "pc"; //pc或者小程序
+          const type = typeArr.join(','); // 服务项目(type)
 
           let form = {
             service,
-            company,
             name,
             phone,
             email,
             content,
-            model,
-            pid
+            type
           };
 
           submitInfoForm(form)

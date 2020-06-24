@@ -5,9 +5,12 @@
       <div class="logo-layout-box" style="position:relative;z-index:99">
         <div class="logo-box" @click="goHome">
           <div class="logo">
-            <img src="@/assets/img/logo.png" class="logo" />
+            <div>
+
+            <img src="@/assets/img/logo.png" class="logo-img" />
+            </div>
+            <span class="name">智能桂联</span>
           </div>
-          <span class="name">智能桂联</span>
         </div>
         <span class="title-name">智能桂联</span>
         <div :class="src" @click="isShowNavIcon"></div>
@@ -129,9 +132,9 @@ export default {
       this.isShowOnIcon = !this.isShowOnIcon;
     },
     // 跳转项目页
-    goProject(item) {    
+    goProject(item) {
       this.$router.push({ name: item.path, query: { type: item.type } });
-      this.isShowOnIcon = false;      
+      this.isShowOnIcon = false;
     },
     hideMen() {
       this.isShowOnIcon = false;
@@ -153,8 +156,16 @@ export default {
     height: 80px;
     cursor: pointer;
     .logo {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
       width: 100%;
-      padding-bottom: 3px;
+      height: 100%;
+      max-width: 100%;
+      .logo-img {
+        width:100%;
+        margin: 3px 0;
+      }
     }
     .name {
       width: 76px;

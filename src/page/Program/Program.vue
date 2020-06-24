@@ -20,7 +20,7 @@
       </div>
     </nav>
 
-    <main>
+    <main v-show="activeClass == '0' ">
       <section class="section introduction1">
         <a-row class="row font16" type="flex">
           <a-col :span="12" class="animated fadeInLeft left-img">
@@ -41,7 +41,6 @@
       </section>
 
       <section class="introduction2">
-        <!--  style="width:100%;height: 380px;" -->
         <img
           v-lazy="require('../../assets/img/program-img/img-2.png')"
           style="max-width:100%;max-height:100%;object-fit: cover;"
@@ -83,6 +82,10 @@
         </div>
       </section>
     </main>
+
+    <main v-show="activeClass == '1'">
+      <img src="../../assets/img/test.jpg" style="max-width:100%" />
+    </main>
   </div>
 </template>
 
@@ -93,6 +96,7 @@ export default {
   name: "Program",
   data() {
     return {
+      activeClass: 0,
       navList: [
         {
           text: "智能家居",
@@ -143,8 +147,7 @@ export default {
           title: "豪华智能家居",
           content: "增加多媒体控制,防护功能，更加个性化。可按需求编程"
         }
-      ],
-      activeClass: 0
+      ]
     };
   },
   mounted() {
@@ -178,7 +181,7 @@ export default {
     border-bottom: 1px solid #dcdcdc;
     margin-bottom: 40px;
     .nav-box {
-      margin:0 20px;
+      margin: 0 20px;
       color: #000000;
       line-height: 56px;
       cursor: pointer;

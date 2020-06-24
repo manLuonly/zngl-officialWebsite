@@ -1,9 +1,13 @@
 <template>
   <div class="suspended-case">
     <div class="suspended-box">
-      <img class="suspended-img" src="../../assets/img/home-img/uspendedCase.png" v-show="hideNav" />
-      <a-icon type="close" @click="closeNav" v-show="hideNav" class="close-nave" />
-      <div class="suspended-text-box" v-show="hideNav">
+      <img
+        class="suspended-img u-s"
+        src="../../assets/img/home-img/uspendedCase.png"
+        v-show="hideNav"
+      />
+      <a-icon type="close-circle" @click="closeNav" v-show="hideNav" class="close-nave" />
+      <div class="suspended-text-box t-c" v-show="hideNav">
         <div
           v-for="(item,index) in jumpList"
           :key="index"
@@ -15,19 +19,28 @@
       </div>
     </div>
 
-    <div class="icon" v-show="hideIcon">
+    <div class="icon t-c o-h" v-show="hideIcon">
       <div @mouseenter="enter" @mouseleave="leave">
         <a-icon type="qrcode" />
+        <div class="colorfff">
+          <span>联系我们</span>
+        </div>
       </div>
       <div @click="closeIcon">
         <a-icon type="left" />
+        <div class="colorfff">
+          <span>展开导航</span>
+        </div>
       </div>
       <div @click="backTop">
         <a-icon type="up" />
+        <div class="colorfff">
+          <span>点击至顶</span>
+        </div>
       </div>
     </div>
 
-    <div class="wechat-QRcode-box" v-show="isShowWechatQRCode">
+    <div class="wechat-QRcode-box bg-f t-c color000" v-show="isShowWechatQRCode">
       <div class="wx-arrow">
         <span>◆</span>
       </div>
@@ -121,7 +134,6 @@ export default {
       } else {
         this.$router.push({ name: item.path, query: { type: item.type } });
       }
-      // this.$store.commit("setIsProject", true);
     },
     // 关闭导航栏
     closeNav() {
@@ -189,7 +201,6 @@ export default {
       width: 132px;
       height: 552px;
       padding-top: 60px;
-      text-align: center;
       display: flex;
       flex-direction: column;
       justify-content: space-around;
@@ -226,9 +237,7 @@ export default {
     position: fixed;
     right: 30px;
     top: 430px;
-    width: 50px;
-    overflow: hidden;
-    text-align: center;
+    width: 60px;
     color: #f5f7fa;
     cursor: pointer;
     div {
@@ -237,7 +246,16 @@ export default {
       line-height: 50px;
       margin: 2px auto;
       background-color: #333;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      overflow: hidden;
+      span {
+        font-size: 12px;
+      }
+
       /deep/ i {
+        padding-top: 5px;
         font-size: 20px;
       }
     }
@@ -248,10 +266,7 @@ export default {
     right: 120px;
     top: 408px;
     margin-top: 10px;
-    background-color: #ffffff;
-    color: #000000;
     font-size: 9px;
-    text-align: center;
     .wx-arrow {
       position: absolute;
       top: 28px;
