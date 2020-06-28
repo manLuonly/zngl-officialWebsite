@@ -69,30 +69,19 @@
                   >
                     <a-input
                       class="item-input"
+                      minlength="11"
                       maxlength="11"
                       v-decorator="[
                 'tel',
                   {rules: [
                   {
-                    min:11,
-                    message: '请输入正确的电话号码！'
-                  },
-                  {
+                    required: true,
                   pattern: /^1[3456789]\d{9}$/,
                   message: '手机格式不正确！',
                   },
-                  { required: true,
-                  whitespace: true,
-                   type:'number',
-                   transform(value) {
-                      if(value){
-                        return Number(value);
-                      }
-                    },
-                   message: '请输入正确的电话号码！' },
                    ]}
                 ]"
-                      placeholder="您的联系方法"
+                      placeholder="您的联系方式"
                     />
                   </a-form-item>
                   <a-form-item
@@ -126,11 +115,13 @@
                     :label-col="formItemLayout.labelCol"
                     :wrapper-col="formItemLayout.wrapperCol"
                   >
-                    <!--  v-decorator="[
-                  'leavingMsg',
-                  {rules: [{ required: true, message: '请输入您的留言内容！' }]}
-                    ]"-->
-                    <a-textarea class="item-input-last" placeholder="请写下您的想法或想了解咨询的项目,我们将很快联系您"></a-textarea>
+                    <a-textarea
+                      class="item-input-last"
+                      placeholder="请写下您的想法或想了解咨询的项目,我们将很快联系您"
+                      v-decorator="[
+                  'leavingMsg'
+                    ]"
+                    ></a-textarea>
                   </a-form-item>
                 </a-form>
               </div>
@@ -176,6 +167,7 @@ const formTailLayout = {
 };
 export default {
   name: "LinkUs",
+  inject: ["reload"],
   data() {
     return {
       plainOptions,
@@ -238,24 +230,23 @@ export default {
               case "网站开发":
                 typeArr.push("web");
                 break;
-              default:        
+              default:
                 break;
             }
           });
- 
 
           const name = this.form.getFieldValue("username"); // 姓名
           const phone = this.form.getFieldValue("tel"); // 手机号码
           const email = this.form.getFieldValue("email"); // 邮箱
-          const content = this.form.getFieldValue("leavingMsg"); // 补充说明
-          const type = typeArr.join(','); // 服务项目(type)
+          const leaving = this.form.getFieldValue("leavingMsg"); // 补充说明
+          const type = typeArr.join(","); // 服务项目(type)
 
           let form = {
             service,
             name,
             phone,
             email,
-            content,
+            leaving,
             type
           };
 
@@ -264,18 +255,13 @@ export default {
               if (res.code === 0) {
                 this.$message.success("保存成功");
                 this.form.resetFields();
+                this.reload();
               }
             })
             .catch(err => {
               this.$message.error("提交失败,请重新尝试!");
             });
         }
-      });
-    },
-    handleChange(e) {
-      this.checkNick = e.target.checked;
-      this.$nextTick(() => {
-        this.form.validateFields(["nickname"], { force: true });
       });
     }
   }

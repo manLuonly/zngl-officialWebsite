@@ -26,10 +26,15 @@
           <span>联系我们</span>
         </div>
       </div>
-      <div @click="closeIcon">
-        <a-icon type="left" />
+      <!-- @click="closeIcon" -->
+      <div @click="showDrawer">
+        <!-- <a-icon type="left" />
         <div class="colorfff">
           <span>展开导航</span>
+        </div>-->
+        <a-icon type="phone" />
+        <div class="colorfff">
+          <span>咨询电话</span>
         </div>
       </div>
       <div @click="backTop">
@@ -39,6 +44,30 @@
         </div>
       </div>
     </div>
+
+    <a-drawer
+      title
+      width="290"
+      placement="right"
+      :closable="true"
+      :visible="visible"
+      @close="onClose"
+      :mask="false"
+      wrapClassName="drawew"
+      :maskClosable="true"
+      :zIndex="zIndex"
+    >
+      <img
+        class="avator"
+        src="//b.yzcdn.cn/static/intro/recommend/set_up_a_backup_of_the_advisor's_head_2.png"
+      />
+      <p class="time">咨询热线（9:00 至 23:00）</p>
+      <p class="phone">19195682297</p>
+      <p class="line"></p>
+      <p class="text">你也可以填写你的联系方式，</p>
+      <p class="text2">我们会主动和你联系。</p>
+      <a-button class="contact-manner" type="primary" ghost @click="goAbousUs">填写联系方式</a-button>
+    </a-drawer>
 
     <div class="wechat-QRcode-box bg-f t-c color000" v-show="isShowWechatQRCode">
       <div class="wx-arrow">
@@ -116,7 +145,9 @@ export default {
       ],
       hideNav: true,
       hideIcon: false,
-      isShowWechatQRCode: false
+      isShowWechatQRCode: false, // 显示隐藏二维码
+      visible: false, // 显示隐藏drawer
+      zIndex: 1 // drawer zIndex
     };
   },
 
@@ -173,6 +204,20 @@ export default {
         document.documentElement.scrollTop ||
         document.body.scrollTop;
       that.scrollTop = scrollTop;
+    },
+    // 显示Drawer
+    showDrawer() {
+      this.visible = true;
+      this.zIndex = 100;
+    },
+    // 关闭Drawer
+    onClose() {
+      this.visible = false;
+      this.zIndex = 1;
+    },
+    goAbousUs() {
+      this.onClose();
+      this.$router.push({ name: "linkus" });
     }
   }
 };

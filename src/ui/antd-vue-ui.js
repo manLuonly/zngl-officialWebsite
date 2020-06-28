@@ -26,7 +26,8 @@ import {
     Radio,
     Affix,
     BackTop,
-    Carousel
+    Carousel,
+    Drawer
 
 } from 'ant-design-vue';
 Vue.prototype.$message = Message
@@ -57,6 +58,7 @@ Vue.use(Radio);
 Vue.use(Affix);
 Vue.use(BackTop);
 Vue.use(Carousel);
+Vue.use(Drawer);
 
 
 /**

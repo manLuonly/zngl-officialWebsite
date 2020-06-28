@@ -14,7 +14,7 @@
             <div class="select-project font24">
               <a-row
                 type="flex"
-                justify="center"
+                justify="start"
                 v-for="(row, index) in projectNameList"
                 :key="index"
               >
@@ -34,7 +34,11 @@
 
           <div class="logo-list">
             <ul class="clearfix font18">
-              <li v-for="(item, index) in projectList[currentSelect]" :key="index">
+              <li
+                v-for="(item, index) in projectList[currentSelect]"
+                :key="index"
+                :class="{isShowDetailsBtn: isShowDetailsBtn}"
+              >
                 <a-button
                   type="primary"
                   class="look-details details-btn"
@@ -51,7 +55,11 @@
             </ul>
 
             <div class="look-more d-flex justify-content-end align-items-center">
-              <a-button class="look-more-btn" :disabled="!isShowMore" @click="lookMore"> {{ isShowMore ? '查看更多': '没有更多' }} </a-button>
+              <a-button
+                class="look-more-btn"
+                :disabled="!isShowMore"
+                @click="lookMore"
+              >{{ isShowMore ? '查看更多': '没有更多' }}</a-button>
             </div>
           </div>
         </section>
@@ -77,7 +85,6 @@ export default {
       type: "", //
       classificationArr: [], // 分类列表数据
       ip: "", // 公网IP
-      count: 0, // 数据库总条数
       isShowMore: true
     };
   },
@@ -100,7 +107,6 @@ export default {
             pageNum: 1, // 当前页码
             pageSize: 10 // 每页条数
           };
-
           this.currentSelect = "logo"; // 类型
           this.getAllProject();
         }
@@ -110,7 +116,7 @@ export default {
     async getAllProject(typeVal) {
       this.pageForm.pageNum = 1; // 重置页数
       const { pageNum, pageSize } = this.pageForm;
-      // 函数选择类型(typeVal)或者左侧悬浮导航栏跳转类型(this.$route.query.type)或上方路由正常跳转('logo')
+      // 函数选择类型(typeVal)或者左侧悬浮导航栏跳转类型(this.$route.query.type)或上方路由正常跳转
       const type = typeVal
         ? typeVal
         : this.$route.query.type
@@ -119,24 +125,25 @@ export default {
 
       try {
         await caseType().then(res => {
-          if (res.code === 0) {
-            const result = res.data;
-            this.classificationArr = result.map(i => i.type);
-            var arr = [];
-            // 一维数组分割为多维数组
-            for (var i = 0; i < result.length; i += 4) {
-              arr.push(result.slice(i, i + 4));
-            }
-            this.projectNameList = arr;
+          const result = res.data || [];
+          this.classificationArr = result.map(i => i.type);
+          var arr = [];
+          // 一维数组分割为多维数组
+          for (var i = 0; i < result.length; i += 4) {
+            arr.push(result.slice(i, i + 4));
           }
+          this.projectNameList = arr;
         });
 
         await caseList(type, pageNum, pageSize).then(res => {
-          this.count = res.count; // 数据库总条数
+          this.projectList = res.data || [];
+          this.sortAllProject(typeVal);
 
-          if (res.code === 0) {
-            this.projectList = res.data;
-            this.sortAllProject(typeVal);
+          const projectList = this.projectList[type]; // 当前项目类型
+
+          if (projectList.length === res.count) {
+            // 当前条数等于总条数
+            this.isShowMore = false;
           }
         });
       } catch (error) {
@@ -159,18 +166,17 @@ export default {
         });
       });
       // 函数选择类型(typeVal)或者左侧悬浮导航栏跳转类型(this.$route.query.type)或上方路由正常跳转('logo')
-      const jumpType = typeVal
+      this.currentSelect = typeVal
         ? typeVal
         : this.$route.query.type
         ? this.$route.query.type
         : "logo";
-      this.currentSelect = jumpType;
 
       projectList.all = this.projectList;
 
       this.projectList = projectList;
     },
-
+    // 改变项目类型
     changeSelectProjectAction(type) {
       this.isShowMore = true;
       this.currentSelect = type;
@@ -182,12 +188,6 @@ export default {
       const { pageNum, pageSize } = this.pageForm;
       const type = this.currentSelect;
       const projectList = this.projectList[type]; // 当前项目类型
-      
-      if (projectList.length === this.count) {
-        this.$message.warning("没有更多数据了！");
-        this.isShowMore = false;
-        return;
-      }
 
       caseList(type, pageNum, pageSize).then(res => {
         if (res.code === 0 && res.data.length !== 0) {
@@ -197,6 +197,7 @@ export default {
     },
     // 查看详情
     goDetails(item) {
+      localStorage.setItem("type", this.currentSelect);
       this.$router.push({ name: "details", query: { id: item.id } });
     },
     // 获取特定数据
@@ -205,10 +206,8 @@ export default {
       const pageSize = 10;
 
       caseList(type, pageNum, pageSize).then(res => {
-        if (res.code === 0) {
-          this.projectList = res.data;
-          this.sortAllProject();
-        }
+        this.projectList = res.data || [];
+        this.sortAllProject();
       });
     }
   }
@@ -216,10 +215,6 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.opacity(@val) {
-  opacity: @val;
-}
-
 .project {
   .text {
     font-size: 28px;
@@ -246,12 +241,6 @@ export default {
         color: blue;
         text-align: center;
         cursor: pointer;
-        img {
-          &:hover {
-            .opacity(0.3);
-            transition: 0.8s;
-          }
-        }
         .look-details {
           position: absolute;
           z-index: 1;
@@ -274,13 +263,21 @@ export default {
           color: #333333;
         }
       }
+      .isShowDetailsBtn {
+        img {
+          &:hover {
+            opacity: 0.3;
+            transition: 0.8s;
+          }
+        }
+      }
     }
   }
 
   .select-project {
     margin-top: 40px;
     .ant-row-flex {
-      margin-top: 30px;
+      margin: 30px 80px 0;
     }
     .col {
       width: 160px;

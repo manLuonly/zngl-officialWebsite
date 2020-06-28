@@ -72,7 +72,7 @@
   }
 
   .center() {
-    margin: 0.6rem 0;
+    margin: .6rem 0;
     text-align: center;
   }
 
@@ -94,10 +94,10 @@
         height: 48px !important;
         line-height: 48px;
         margin: 0 1rem;
-        .logo {
-          top: 0 !important;
-          transform: translateY(0) !important;
-        }
+        // .logo {
+        //   top: 0 !important;
+        //   transform: translateY(0) !important;
+        // }
         .name {
           display: none;
         }
@@ -139,8 +139,8 @@
       font-size: 1.06rem;
       .about-us-text {
         display: block !important;
-        margin-top:0.4rem;
-        margin-bottom:0.6rem;
+        margin-top:.4rem;
+        margin-bottom:.6rem;
       }
     }
     .home-intro {
@@ -155,7 +155,7 @@
           display: none !important;
         }
         .introduction1 {
-          padding: 2.4rem 0.9rem;
+          padding: 2.4rem .9rem;
           color: #fff;
         }
       }
@@ -169,13 +169,13 @@
             .sprites-img-box {
               width: 3.5rem !important;
               margin-right: 0 !important;
-              margin-bottom: 0.5rem !important;
+              margin-bottom: .5rem !important;
             }
           }
         }
       }
       .bottom-box {
-        margin-top: 0.588rem !important;
+        margin-top: .588rem !important;
       }
     }
 
@@ -183,11 +183,11 @@
       margin: 0 !important;
       .center_title {
         .center();
-        margin-bottom: 0.6rem !important;
+        margin-bottom: .6rem !important;
         font-size: 1.06rem !important;
       }
       .text_indent2 {
-        padding: 0 0.9rem;
+        padding: 0 .9rem;
       }
     }
 
@@ -218,7 +218,7 @@
         .text-box {
           width: 100% !important;
           background-color: rgba(0, 0, 0, 0.6);
-          padding: 2.4rem 0.9rem;
+          padding: 2.4rem .9rem;
           .right_title {
             color: #fff;
             font-size: 1.2rem;
@@ -236,7 +236,7 @@
           width: 44% !important;
           .text-box {
             h3 {
-              margin-bottom: 0.7rem !important;
+              margin-bottom: .7rem !important;
             }
             span {
               width: 9.47rem !important;
@@ -246,7 +246,7 @@
       }
       .text-box {
         .font16 {
-          padding: 0 0.5rem;
+          padding: 0 .5rem;
         }
       }
     }
@@ -259,7 +259,7 @@
           margin-bottom: 0 !important;
         }
         .text-content {
-          padding: 0.9rem;
+          padding: .9rem;
           text-align: left;
           text-indent: 2em;
         }
@@ -269,7 +269,7 @@
           .furniture {
             width: 10rem !important;
             // height: 13.52rem !important;
-            margin: 0 0.3rem;
+            margin: 0 .3rem;
             img {
               width: 100%;
             }
@@ -281,7 +281,7 @@
                 font-size: 1rem !important;
               }
               span {
-                font-size: 0.82rem !important;
+                font-size: .82rem !important;
               }
             }
           }
@@ -299,12 +299,12 @@
         font-size: 1.06rem !important;
       }
       .module1-content-text {
-        padding: 0.9rem;
-        font-size: 0.82rem !important;
+        padding: .9rem;
+        font-size: .82rem !important;
         margin-bottom: 0 !important;
       }
       .module1-img-box {
-        padding: 0 0.9rem;
+        padding: 0 .9rem;
         img {
           width: 100%;
           object-fit: cover;
@@ -312,20 +312,20 @@
       }
     }
     .module2 {
-      padding: 0 0.9rem;
+      padding: 0 .9rem;
       .module2-title-text {
         font-size: 1.06rem !important;
       }
       .module2-content-text {
-        font-size: 0.82rem !important;
+        font-size: .82rem !important;
         margin-bottom: 1.17rem !important;
       }
       .module2-nav {
         .module2-nav-box {
           width: 8.82rem !important;
           .module2-nav-text {
-            font-size: 0.82rem !important;
-            margin-top: 0.588rem !important;
+            font-size: .82rem !important;
+            margin-top: .588rem !important;
           }
         }
       }
@@ -378,12 +378,17 @@
       section {
         nav {
           .select-project {
+            display: flex;
+            justify-content: center;
             margin-top: 1.18rem !important;
+            padding: 0 .9rem;
             .col {
               margin: 0.5rem !important;
             }
             .ant-row-flex {
-              margin-top: 0 !important;
+              width: 45%;
+              margin: 0 .5rem !important;
+              justify-content: center !important;
             }
           }
         }
@@ -393,12 +398,12 @@
             padding-bottom:1.18rem;
           }
           .clearfix {
-            padding: 0 0.9rem;
+            padding: 0 .9rem;
             li {
               top: 0;
               width: 45%;
               height: 6.88rem;
-              margin: 1.18rem 0.5rem !important;
+              margin: 1.18rem .5rem !important;
               .details-btn {
                 width: 60%;
               }
@@ -420,6 +425,9 @@
           font-size: 1.3rem !important;
         }
       }
+      .select-num {
+        display: none !important;
+      }
     }
   }
 
@@ -429,17 +437,17 @@
       margin-top: 1.18rem !important;
       .title {
         margin-bottom: 1.18rem !important;
-        font-size: 0.95rem;
+        font-size: .95rem;
       }
       .radio-group {
         .checkbox {
           width: 33%;
-          margin: 0 0.8rem !important;
+          margin: 0 .8rem !important;
           span {
-            font-size: 0.7rem !important;
+            font-size: .7rem !important;
           }
           .ant-checkbox-wrapper {
-            margin: 0.3rem 0 !important;
+            margin: .3rem 0 !important;
           }
         }
       }
@@ -465,12 +473,12 @@
           }
         }
         .text-content {
-          padding-bottom: 0.78rem !important;
+          padding-bottom: .78rem !important;
           .paragraph1 {
             display: none;
           }
           .text_indent2 {
-            padding: 0 0.9rem;
+            padding: 0 .9rem;
           }
         }
       }
@@ -480,21 +488,6 @@
         .left,
         .right {
           width: 75% !important;
-          // /deep/ .form {
-          //   .ant-form-item-control {
-          //     line-height: 1.77rem !important;
-          //   }
-          //   .ant-form-item {
-          //     padding-bottom: 0 !important;
-          //     .ant-col-20 {
-          //       margin-left: 0 !important;
-          //       .item-input {
-          //         height: 1.77rem !important;
-          //         border: 1px solid #fff !important;
-          //       }
-          //     }
-          //   }
-          // }
         }
       }
       .submit-btn {
@@ -521,14 +514,14 @@
 @media (min-width: 768px) {
   ::-webkit-scrollbar-thumb {
     min-height: 28px;
-    background-color: rgba(0, 0, 0, 0.2);
+    background-color: rgba(0, 0, 0, .2);
     background-clip: padding-box;
     border-radius: 4px;
-    box-shadow: inset 1px 1px 0 rgba(0, 0, 0, 0.1),
+    box-shadow: inset 1px 1px 0 rgba(0, 0, 0, .1),
       inset 0 -1px 0 rgba(0, 0, 0, 0.07);
 
     &:hover {
-      background-color: rgba(0, 0, 0, 0.4);
+      background-color: rgba(0, 0, 0, .4);
     }
   }
   ::-webkit-scrollbar-button {

@@ -76,7 +76,7 @@ module.exports = {
         port: 8000, // 端口
         proxy: {
             "/": {
-                "target": "http://192.168.31.50:9000",
+                "target": "http://zngl.top",
                 "changeOrigin": true, //是否跨域
                 ws: false, //  是否代理websockets
                 // port: 8081, // 端口

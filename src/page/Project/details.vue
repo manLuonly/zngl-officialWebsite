@@ -9,10 +9,10 @@
         <h1>{{ current.type_name }}</h1>
         <div></div>
       </div>
-      <div class="select-num">
+      <div class="select-num" >
+        <span class="font14">当前页</span>
         <a-input-number
           id="inputNumber"
-          size="small"
           v-model="pageNum"
           :min="1"
           :max="imgList.length"
@@ -156,6 +156,7 @@ export default {
       }
     }
     .select-num {
+      display: inline-block;
       position: fixed;
       top: 100px;
       right: 5px;
