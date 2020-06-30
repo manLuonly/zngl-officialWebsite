@@ -110,7 +110,6 @@ export default {
         this.getAllProject();
       }
 
-      
       // if (to.name == "/project" || "details") {
       //   this.$store.commit('changeHideNav',false)
       // } else {
