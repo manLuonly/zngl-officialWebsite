@@ -129,12 +129,6 @@ export default {
           white-space: nowrap;
           float: left;
           // background-color: #2c2c2c !important; // 覆盖跳转路由样式
-          span {
-            cursor: pointer;
-            &:hover {
-              color: #348ccd;
-            }
-          }
         }
       }
 

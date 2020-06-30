@@ -19,13 +19,13 @@
       <div class="menu">
         <ul class="menu-ul" v-show="isShowOnIcon">
           <router-link
-            v-for="item in projectNavList"
-            :key="item.text"
-            @click.native="goProject(item)"
+            v-for="(item,index) in projectNavList"
+            :key="index"
+            @click.native="goProject(item,index)"
             :to="{ path: item.path  }"
             tag="li"
           >
-            <span class="nuxt-link-exact-active">{{ item.text }}</span>
+            <span class="nuxt-link-exact-active" :class="{active: idx == index }">{{ item.text }}</span>
           </router-link>
         </ul>
       </div>
@@ -48,8 +48,6 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
-
 export default {
   name: "PageHeader",
   data() {
@@ -109,14 +107,12 @@ export default {
           type: "pb"
         }
       ],
-      isShowOnIcon: false
+      isShowOnIcon: false,
+      idx: 99
     };
   },
   watch: {},
   computed: {
-    ...mapState({
-      isProject: state => state.isProject
-    }),
     _navStyle() {
       return this.$route.meta.title === "详情" ? "detailsCol" : "col-xl r-link";
     },
@@ -132,7 +128,8 @@ export default {
       this.isShowOnIcon = !this.isShowOnIcon;
     },
     // 跳转项目页
-    goProject(item) {
+    goProject(item,index) {
+      this.idx = index;
       this.$router.push({ name: item.path, query: { type: item.type } });
       this.isShowOnIcon = false;
     },
@@ -223,7 +220,12 @@ export default {
           color: #fff;
           font-size: 0.9rem;
         }
+        .active {
+          // color: #0556a7;
+          color: rgb(126, 179, 248)
+        }
       }
+      
     }
   }
 

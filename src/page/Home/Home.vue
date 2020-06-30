@@ -14,7 +14,7 @@
         <div class="home-intro">
           <a-row :gutter="30" class="row font16 module1" type="flex">
             <a-col :span="11" class="wow fadeInLeft">
-              <h1 class="left_title">公司简介</h1>
+              <h1 class="left_title font30">公司简介</h1>
               <div
                 class="text_indent2 introduction1"
               >智能桂联是一家具有原创作经验丰富的团队，专业UI设计、网站开发、小程序开发、结合自主研发的智能灌溉、智能家居等智能核心技术。拥有多维度的万物互联应用解决方案，以7×24×4的服务理念为用户提供满意的设计、技术服务及专业解决方案。</div>
@@ -55,11 +55,7 @@
               <div class="bottom-box wow slideInUp sprites">
                 <div class="sprites-img-box br-5" v-for="item in spriteList" :key="item.text">
                   <div class="h-100 flex">
-                    <div
-                      class="m-0-a sprites-img"
-                      style="width:45px;height:45px;"
-                      :style="bg(item.start,item.end)"
-                    ></div>
+                    <div class="m-0-a sprites-img" :style="bg(item.start,item.end)"></div>
                   </div>
                 </div>
               </div>
@@ -85,39 +81,39 @@ export default {
           end: 0
         },
         {
-          start: -45,
+          start: -122,
           end: 0
         },
         {
-          start: -90,
+          start: -244,
           end: 0
         },
         {
-          start: -135,
+          start: -366,
           end: 0
         },
         {
-          start: -180,
+          start: -488,
           end: 0
         },
         {
-          start: -225,
+          start: -610,
           end: 0
         },
         {
-          start: -270,
+          start: -732,
           end: 0
         },
         {
-          start: -315,
+          start: -854,
           end: 0
         },
         {
-          start: -360,
+          start: -976,
           end: 0
         },
         {
-          start: -405,
+          start: -1098,
           end: 0
         }
       ]
@@ -137,7 +133,7 @@ export default {
   methods: {
     bg(start, end) {
       return {
-        background: `url(${require(`../../assets/img/home-img/test.png`)}) ${start}px ${end}px`
+        background: `url(${require(`../../assets/img/home-img/home-sprites.png`)}) ${start}px ${end}px`
       };
     }
   }
@@ -220,6 +216,8 @@ export default {
           margin-bottom: 20px;
           border: 1px solid #c0c0c0;
           .sprites-img {
+            width: 122px;
+            height: 65px;
             object-fit: cover;
           }
         }

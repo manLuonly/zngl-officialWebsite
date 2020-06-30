@@ -75,17 +75,17 @@ export default {
   data() {
     return {
       projectNameList: [],
-      projectList: {},
-      currentSelect: "logo",
+      projectList: {}, 
+      currentSelect: "logo", // 案例默认展示
       pageForm: {
         pageNum: 1, // 当前页码
         pageSize: 10 // 每页条数
       },
       isShowDetailsBtn: false, // 是否展示详情按钮
-      type: "", //
+      type: "", 
       classificationArr: [], // 分类列表数据
       ip: "", // 公网IP
-      isShowMore: true
+      isShowMore: true  // 是否展示更多
     };
   },
   watch: {
@@ -93,24 +93,30 @@ export default {
   },
   mounted() {
     this.getAllProject();
-    this.ip = window.localStorage.getItem("ip");
+    this.ip = localStorage.getItem("ip");
   },
   methods: {
     // 重置数据
     watchRouter(to, from) {
       const type = this.$route.query.type;
-      if (to.path == "/project") {
-        if (to.path == "/project" && type) {
-          this.getDesignatedData(type);
-        } else {
-          this.pageForm = {
-            pageNum: 1, // 当前页码
-            pageSize: 10 // 每页条数
-          };
-          this.currentSelect = "logo"; // 类型
-          this.getAllProject();
-        }
+      if (to.path == "/project" && type) {
+        this.getDesignatedData(type);
+      } else {
+        this.pageForm = {
+          pageNum: 1, // 当前页码
+          pageSize: 10 // 每页条数
+        };
+        this.currentSelect = "logo"; // 类型
+        this.getAllProject();
       }
+
+      
+      // if (to.name == "/project" || "details") {
+      //   this.$store.commit('changeHideNav',false)
+      // } else {
+      //   this.$store.commit('changeHideNav',true)
+      // }
+      
     },
     // 获取数据
     async getAllProject(typeVal) {
@@ -240,7 +246,6 @@ export default {
         background-color: #eee;
         color: blue;
         text-align: center;
-        cursor: pointer;
         .look-details {
           position: absolute;
           z-index: 1;
@@ -268,6 +273,7 @@ export default {
           &:hover {
             opacity: 0.3;
             transition: 0.8s;
+            cursor: pointer;
           }
         }
       }

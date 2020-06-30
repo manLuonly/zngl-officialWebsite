@@ -7,7 +7,7 @@ Vue.use(Vuex)
 const state = {
     ddda: 2222,
     count: 1,
-    isProject: false
+    hideNav: true
 }
 const getters = {
 
@@ -18,8 +18,8 @@ const mutations = {
         // 变更状态
         state.count++
     },
-    setIsProject(state, status) {
-        state.isProject = status;
+    changeHideNav(state, hideNav) {
+        state.hideNav = hideNav;
     }
 }
 

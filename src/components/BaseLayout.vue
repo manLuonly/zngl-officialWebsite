@@ -2,20 +2,16 @@
 <template>
   <div class="base-layout">
     <!-- 头部 -->
-    <!-- v-model="isShow" v-show="isShow" -->
     <page-header></page-header>
 
     <transition enter-active-class="animated fadeIn">
       <keep-alive include="Project">
-      <router-view></router-view>
+        <router-view></router-view>
       </keep-alive>
     </transition>
 
     <!-- 悬浮案例 -->
     <suspended-case></suspended-case>
-
-    <!-- 分享组件 -->
-    <!-- <share></share> -->
 
     <!-- 尾部 -->
     <page-footer></page-footer>

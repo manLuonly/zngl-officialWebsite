@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { senToken, serviceLink } from "@/api/project";
+import { serviceLink } from "@/api/project";
 
 export default {
   name: "app",
@@ -19,6 +19,9 @@ export default {
     return {
       isRouterAlive: true //控制视图是否显示的变量
     };
+  },
+  computed: {
+    isShowNav() {}
   },
   created() {
     serviceLink().then(res => {

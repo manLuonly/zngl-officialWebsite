@@ -42,7 +42,7 @@
 
       <section class="introduction2">
         <img
-          v-lazy="require('../../assets/img/program-img/img-2.png')"
+          src="../../assets/img/program-img/img-2.png"
           style="max-width:100%;max-height:100%;object-fit: cover;"
         />
         <div class="introduction2-info">

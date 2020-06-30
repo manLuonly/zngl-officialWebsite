@@ -7,7 +7,6 @@
     </header>
 
     <main>
-
       <section class="section features-introduction">
         <h1 class="title animated slideInUp">功能介绍</h1>
         <div class="bg"></div>
@@ -34,14 +33,13 @@
         <div class="bg"></div>
         <div class="img-box wow slideInUp">
           <el-carousel :interval="4000" arrow="always" type="card" height="468px">
-            <el-carousel-item v-for="item in imgList" :key="item.url" class="u-s" >
+            <el-carousel-item v-for="item in imgList" :key="item.url" class="u-s">
               <!-- 禁止图片鼠标拖动图片 -->
               <img v-lazy="item.url" ondragstart="return false;" />
             </el-carousel-item>
           </el-carousel>
         </div>
       </section>
-      
     </main>
   </div>
 </template>
@@ -180,6 +178,12 @@ export default {
     .el-carousel__item {
       text-align: center;
       overflow: hidden;
+      cursor: default;
+      img {
+        position: static;
+        z-index: 999;
+        cursor: pointer;
+      }
     }
   }
 }

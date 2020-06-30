@@ -9,7 +9,7 @@
         <h1>{{ current.type_name }}</h1>
         <div></div>
       </div>
-      <div class="select-num" >
+      <div class="select-num">
         <span class="font14">当前页</span>
         <a-input-number
           id="inputNumber"
@@ -55,23 +55,7 @@ export default {
 
   data() {
     return {
-      imgList: [
-        // {
-        //   url: require("../../assets/img/home-img/banner1.jpg")
-        // },
-        // {
-        //   url: require("../../assets/img/swiper/2.png")
-        // },
-        // {
-        //   url: require("../../assets/img/program-img/primary.png")
-        // },
-        // {
-        //   url: require("../../assets/img/publicnumber-img/right.png")
-        // },
-        // {
-        //   url: require("../../assets/img/program-img/technology.png")
-        // }
-      ],
+      imgList: [],
       next: [], // 下一页
       current: [], // 当前页
       previous: [], // 上一页
@@ -83,6 +67,16 @@ export default {
   mounted() {
     this.getDataList();
     this.ip = window.localStorage.getItem("ip");
+    /** 
+     *  监听浏览器返回键触发自定义返回函数
+    */
+    if (window.history && window.history.pushState) {
+      history.pushState(null, null, document.URL);
+      window.addEventListener("popstate", this.goBack, false);
+    }
+  },
+  destroyed() {
+    window.removeEventListener("popstate", this.goBack, false);
   },
   methods: {
     getDataList(Id) {
@@ -97,7 +91,8 @@ export default {
     },
     // 返回上一页
     goBack() {
-      this.$router.push({ name: "project" });
+      let type = localStorage.getItem("type");
+      this.$router.push({ name: "project", query: { type: type } });
     },
     // 获取上页文章
     getUpArticle() {
@@ -109,7 +104,6 @@ export default {
     // 获取下页文章
     getDownArticle() {
       let id = this.next.id;
-
       this.getDataList(id);
       this.spliceImgsUrl();
       window.scrollTo(0, 0);

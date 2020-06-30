@@ -6,7 +6,6 @@ import publicFn from '@/public'
 import PageHeader from '@/components/PageHeader/PageHeader'
 import PageFooter from '@/components/PageFooter/PageFooter'
 import Banner from '@/components/Banner/Banner'
-import share from '@/components/share/share'
 import suspendedCase from '@/components/suspendedCase/suspendedCase'
 import mobileNavFooter from '@/components/mobileNavFooter'
 import carousel from '@/components/swiper/carousel'
@@ -26,7 +25,6 @@ export default {
         Vue.component('PageHeader', PageHeader)
         Vue.component('PageFooter', PageFooter)
         Vue.component('Banner', Banner)
-        Vue.component('share', share)
         Vue.component('suspendedCase', suspendedCase)
         Vue.component('mobileNavFooter', mobileNavFooter)
         Vue.component('el-carousel', carousel)

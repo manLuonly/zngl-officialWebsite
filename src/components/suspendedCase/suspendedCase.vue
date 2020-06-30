@@ -68,11 +68,10 @@
       <p class="text2">我们会主动和你联系。</p>
       <a-button class="contact-manner" type="primary" ghost @click="goAbousUs">填写联系方式</a-button>
     </a-drawer>
-
-    <div class="wechat-QRcode-box bg-f t-c color000" v-show="isShowWechatQRCode">
-      <div class="wx-arrow">
-        <span>◆</span>
-      </div>
+    <div
+      class="wechat-QRcode-box bg-f t-c color000"
+      :class="{'is-show-wechat-QRCode':isShowWechatQRCode }"
+    >
       <div class="wechat-QRcode-img">
         <img src="../../assets/img/gw-qrcode (2).png" />
       </div>
@@ -81,6 +80,7 @@
 </template>
 
 <script>
+import { mapState } from "vuex";
 import store from "@/store";
 
 export default {
@@ -143,19 +143,20 @@ export default {
           type: "logo"
         }
       ],
-      hideNav: true,
       hideIcon: false,
       isShowWechatQRCode: false, // 显示隐藏二维码
       visible: false, // 显示隐藏drawer
       zIndex: 1 // drawer zIndex
     };
   },
-
   mounted() {
     window.addEventListener("scroll", this.scrollToTop);
   },
   destroyed() {
     window.removeEventListener("scroll", this.scrollToTop);
+  },
+  computed: {
+    ...mapState(["hideNav"])
   },
   methods: {
     // 跳转项目页
@@ -168,12 +169,12 @@ export default {
     },
     // 关闭导航栏
     closeNav() {
-      this.hideNav = false;
+      this.$store.commit("changeHideNav", false);
       this.hideIcon = true;
     },
     // 关闭悬浮icon
     closeIcon() {
-      this.hideNav = true;
+      this.$store.commit("changeHideNav", true);
       this.hideIcon = false;
     },
     // 移入
@@ -308,28 +309,17 @@ export default {
 
   .wechat-QRcode-box {
     position: fixed;
-    right: 120px;
-    top: 408px;
-    margin-top: 10px;
+    right: 110px;
+    top: 434px;
     font-size: 9px;
-    .wx-arrow {
-      position: absolute;
-      top: 28px;
-      right: -17px;
-      z-index: -1;
-      span {
-        font-family: Simsun;
-        font-size: 32px;
-        line-height: 32px;
-        overflow: hidden;
-        color: #73d661;
-        color: Rgba(0, 0, 0, 0.5);
-      }
+    opacity: 0;
+    .wechat-QRcode-img {
+      padding: 10px 10px 8px;
     }
-    p {
-      font-size: 9px;
-      margin: 0;
-    }
+  }
+  .is-show-wechat-QRCode {
+    opacity: 1;
+    transition: all 1.2s;
   }
 }
 </style>
