@@ -1,13 +1,9 @@
 <template>
   <div class="suspended-case">
-    <div class="suspended-box">
-      <img
-        class="suspended-img u-s"
-        src="../../assets/img/home-img/uspendedCase.png"
-        v-show="hideNav"
-      />
-      <a-icon type="close-circle" @click="closeNav" v-show="hideNav" class="close-nave" />
-      <div class="suspended-text-box t-c" v-show="hideNav">
+    <div class="suspended-box animated" :class="{ 'fadeOutLeft': !hideNav,'fadeInLeft': addAnimation}">
+      <img class="suspended-img u-s" src="~@/assets/img/home-img/uspendedCase.png" />
+      <a-icon type="close-circle" @click="closeNav" class="close-nave" />
+      <div class="suspended-text-box t-c">
         <div
           v-for="(item,index) in jumpList"
           :key="index"
@@ -19,19 +15,20 @@
       </div>
     </div>
 
-    <div class="icon t-c o-h" v-show="hideIcon">
+    <div class="show-nav animated" :class="{ 'fadeOutLeft': hideNav,'fadeInLeft': !addAnimation}" @click="showNav">
+      <div class="text font12">
+        展开导航
+      </div>
+    </div>
+
+    <div class="icon t-c o-h">
       <div @mouseenter="enter" @mouseleave="leave">
         <a-icon type="qrcode" />
         <div class="colorfff">
           <span>联系我们</span>
         </div>
       </div>
-      <!-- @click="closeIcon" -->
       <div @click="showDrawer">
-        <!-- <a-icon type="left" />
-        <div class="colorfff">
-          <span>展开导航</span>
-        </div>-->
         <a-icon type="phone" />
         <div class="colorfff">
           <span>咨询电话</span>
@@ -50,7 +47,7 @@
       width="290"
       placement="right"
       :closable="true"
-      :visible="visible"
+      :visible="isShowDrawer"
       @close="onClose"
       :mask="false"
       wrapClassName="drawew"
@@ -59,7 +56,7 @@
     >
       <img
         class="avator"
-        src="//b.yzcdn.cn/static/intro/recommend/set_up_a_backup_of_the_advisor's_head_2.png"
+        src="~@/assets/img/avatar.png"
       />
       <p class="time">咨询热线（9:00 至 23:00）</p>
       <p class="phone">19195682297</p>
@@ -73,7 +70,7 @@
       :class="{'is-show-wechat-QRCode':isShowWechatQRCode }"
     >
       <div class="wechat-QRcode-img">
-        <img src="../../assets/img/gw-qrcode (2).png" />
+        <img src="~@/assets/img/gw-qrcode (2).png" />
       </div>
     </div>
   </div>
@@ -143,10 +140,10 @@ export default {
           type: "logo"
         }
       ],
-      hideIcon: false,
       isShowWechatQRCode: false, // 显示隐藏二维码
-      visible: false, // 显示隐藏drawer
-      zIndex: 1 // drawer zIndex
+      isShowDrawer: false, // 显示隐藏drawer
+      zIndex: 1, // drawer zIndex
+      addAnimation: false
     };
   },
   mounted() {
@@ -170,12 +167,12 @@ export default {
     // 关闭导航栏
     closeNav() {
       this.$store.commit("changeHideNav", false);
-      this.hideIcon = true;
+      this.addAnimation = false;
     },
-    // 关闭悬浮icon
-    closeIcon() {
+    // 展示导航栏
+    showNav() {
       this.$store.commit("changeHideNav", true);
-      this.hideIcon = false;
+      this.addAnimation = true;
     },
     // 移入
     enter() {
@@ -208,12 +205,12 @@ export default {
     },
     // 显示Drawer
     showDrawer() {
-      this.visible = true;
+      this.isShowDrawer = true;
       this.zIndex = 100;
     },
     // 关闭Drawer
     onClose() {
-      this.visible = false;
+      this.isShowDrawer = false;
       this.zIndex = 1;
     },
     goAbousUs() {
@@ -277,6 +274,30 @@ export default {
         }
       }
     }
+  }
+
+  .hidden-nav {
+    display: none;
+  }
+
+  .show-nav {
+    position: fixed;
+    left: 0px;
+    z-index: 99;
+    bottom: 162px;
+    cursor: pointer;
+    .text {
+      width: 20px;
+      color: #f5f7fa;
+      padding: 5px 0;
+      background: #333;
+      overflow: hidden;
+      text-align: center;
+    }
+  }
+
+  .hidden-text {
+    display: none;
   }
 
   .icon {

@@ -20,8 +20,12 @@ export default {
       isRouterAlive: true //控制视图是否显示的变量
     };
   },
+
   computed: {
     isShowNav() {}
+  },
+  watch: {
+    $route: "watchRouter"
   },
   created() {
     serviceLink().then(res => {
@@ -35,6 +39,11 @@ export default {
       this.$nextTick(function() {
         this.isRouterAlive = true; //再打开
       });
+    },
+    watchRouter(to, from) {
+      if (to.name == "project" || to.name == "details") {
+        this.$store.commit("changeHideNav", false);
+      } 
     }
   }
 };

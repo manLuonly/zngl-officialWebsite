@@ -28,7 +28,7 @@
       <div
         v-if="current.details_total === 0"
         class="t-c font30"
-        style="min-height:300px;line-height: 300px;"
+        style="min-height:500px;line-height: 500px;"
       >暂无数据</div>
       <div v-else>
         <section class="img-box section" v-for="(item,index) in imgList" :key="index">

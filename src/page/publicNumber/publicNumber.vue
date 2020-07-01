@@ -2,7 +2,7 @@
   <div class="public-number">
     <header>
       <div class="banner">
-        <img src="../../assets/img/publicnumber-img/banner.jpg" />
+        <img src="~@/assets/img/publicnumber-img/banner.jpg" draggable="false" />
       </div>
     </header>
 
@@ -12,7 +12,7 @@
         <div class="bg"></div>
         <div class="flex animated slideInUp">
           <div class="nav" v-for="(item,index) in navList" :key="index">
-            <img v-lazy="item.url" />
+            <img v-lazy="item.url" draggable="false"/>
             <h3 class="font20 color000">{{ item.title }}</h3>
             <span class="font12 color000">{{ item.content }}</span>
           </div>
@@ -23,8 +23,8 @@
         <h1 class="title pd wow slideInUp">产品展示</h1>
         <div class="bg"></div>
         <div class="img-box wow slideInUp">
-          <img v-lazy="require('../../assets/img/publicnumber-img/left.png')" class="left" />
-          <img v-lazy="require('../../assets/img/publicnumber-img/right.png')" class="right" />
+          <img v-lazy="require('../../assets/img/publicnumber-img/left.png')" class="left" draggable="false"/>
+          <img v-lazy="require('../../assets/img/publicnumber-img/right.png')" class="right" draggable="false"/>
         </div>
       </section>
 
@@ -34,8 +34,8 @@
         <div class="img-box wow slideInUp">
           <el-carousel :interval="4000" arrow="always" type="card" height="468px">
             <el-carousel-item v-for="item in imgList" :key="item.url" class="u-s">
-              <!-- 禁止图片鼠标拖动图片 -->
-              <img v-lazy="item.url" ondragstart="return false;" />
+              <!-- 禁止鼠标拖动图片 -->
+              <img v-lazy="item.url" draggable="false" />
             </el-carousel-item>
           </el-carousel>
         </div>
@@ -178,12 +178,6 @@ export default {
     .el-carousel__item {
       text-align: center;
       overflow: hidden;
-      cursor: default;
-      img {
-        position: static;
-        z-index: 999;
-        cursor: pointer;
-      }
     }
   }
 }

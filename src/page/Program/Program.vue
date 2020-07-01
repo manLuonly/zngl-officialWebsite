@@ -3,7 +3,7 @@
   <div class="program">
     <header>
       <div class="banner">
-        <img src="../../assets/img/program-img/banner.jpg" />
+        <img src="~@/assets/img/program-img/banner.jpg" draggable="false" />
       </div>
     </header>
 
@@ -27,6 +27,7 @@
             <img
               v-lazy="require('../../assets/img/program-img/img-1.png')"
               style="max-width: 100%;height: 100%;"
+              draggable="false"
             />
           </a-col>
           <a-col :span="12" class="animated fadeInRight right-text">
@@ -42,8 +43,9 @@
 
       <section class="introduction2">
         <img
-          src="../../assets/img/program-img/img-2.png"
+          src="~@/assets/img/program-img/img-2.png"
           style="max-width:100%;max-height:100%;object-fit: cover;"
+          draggable="false"
         />
         <div class="introduction2-info">
           <div
@@ -52,7 +54,7 @@
             :key="index"
           >
             <div class="top-circle">
-              <img v-lazy="item.icon" />
+              <img v-lazy="item.icon" draggable="false" />
             </div>
             <div class="text-box">
               <h3 class="font22">{{ item.title }}</h3>
@@ -72,7 +74,7 @@
               v-for="(item,index) in architectureList"
               :key="index"
             >
-              <img v-lazy="item.url" />
+              <img :src="item.url" draggable="false" />
               <div class="text-box">
                 <h3 class="font20 colorfff">{{ item.title }}</h3>
                 <span class="font16 colorfff">{{ item.content }}</span>
@@ -84,7 +86,7 @@
     </main>
 
     <main v-show="activeClass == '1'">
-      <img src="../../assets/img/test.jpg" style="max-width:100%" />
+      <img src="~@/assets/img/test.jpg" style="max-width:100%" />
     </main>
   </div>
 </template>

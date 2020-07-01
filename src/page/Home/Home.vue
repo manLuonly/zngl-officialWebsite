@@ -26,6 +26,7 @@
               <img
                 v-lazy="require('../../assets/img/home-img/LOGO.png')"
                 style="max-width:100%;max-height:100%;object-fit: cover;"
+                draggable="false"
               />
             </a-col>
           </a-row>
@@ -39,7 +40,7 @@
               </div>
             </div>
             <div class="bottom-box wow slideInUp">
-              <img src="../../assets/img/home-img/bottom-img.jpg" class="bottom-img" />
+              <img src="../../assets/img/home-img/bottom-img.jpg" class="bottom-img" draggable="false" />
             </div>
           </section>
 

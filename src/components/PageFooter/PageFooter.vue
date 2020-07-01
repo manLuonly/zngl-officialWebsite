@@ -4,7 +4,7 @@
     <div class="section d-flex">
       <div class="page-footer-section d-flex align-items-center justify-content-between">
         <div class="pic">
-          <img v-lazy="require('../../assets/img/logo.png')" alt="hehe" />
+          <img v-lazy="require('../../assets/img/logo.png')"  draggable="false" />
         </div>
 
         <ul class="service clearfix">
@@ -18,7 +18,7 @@
           <li class="d-flex mb-2">
             <div class="icon d-flex">
               <div class="icon_img">
-                <img src="~@/assets/img/email-white.png" alt srcset />
+                <img src="~@/assets/img/email-white.png"  srcset draggable="false" />
               </div>
               <span class="separation-line">|</span>
             </div>
@@ -27,7 +27,7 @@
           <li class="d-flex mb-2">
             <div class="icon d-flex">
               <div class="icon_img">
-                <img src="~@/assets/img/tel-white.png" alt srcset />
+                <img src="~@/assets/img/tel-white.png"  srcset draggable="false" />
               </div>
               <span class="separation-line">|</span>
             </div>
@@ -36,7 +36,7 @@
           <li class="d-flex">
             <div class="icon d-flex">
               <div class="icon_img">
-                <img src="~@/assets/img/address-white.png" alt srcset />
+                <img src="~@/assets/img/address-white.png"  srcset draggable="false" />
               </div>
               <span class="separation-line">|</span>
             </div>
@@ -54,14 +54,14 @@
               <img
                 class="gw-qrcode"
                 v-lazy="require('../../assets/img/gw-qrcode (2).png')"
-                alt="hehe"
+                draggable="false"
               />
             </div>
             <span class="mt-1">资深品牌顾问</span>
           </a-col>
           <a-col :span="12" class="d-flex flex-column justify-content-center align-items-center">
             <div class>
-              <img v-lazy="require('../../assets/img/wx-qrcode.png')" alt="hehe" />
+              <img v-lazy="require('../../assets/img/wx-qrcode.png')" adraggable="false" />
             </div>
             <span class="mt-1">智能桂联公众号</span>
           </a-col>

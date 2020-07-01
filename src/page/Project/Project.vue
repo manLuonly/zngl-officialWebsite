@@ -4,7 +4,7 @@
     <div class="project">
       <header>
         <div class="banner">
-          <img src="../../assets/img/project-img/banner.jpg" />
+          <img src="../../assets/img/project-img/banner.jpg" draggable="false" />
         </div>
       </header>
 
@@ -49,6 +49,7 @@
                 <img
                   v-lazy="encodeURI(`${ip}?name=${item.type_name}&suffix=${item.suffix}&directory=${item.directory}`) "
                   style="object-fit: cover;width:100%;height:100%;"
+                  draggable="false"
                 />
                 <span class="logo-list text">{{ item.name }}</span>
               </li>
@@ -75,17 +76,17 @@ export default {
   data() {
     return {
       projectNameList: [],
-      projectList: {}, 
-      currentSelect: "logo", // 案例默认展示
+      projectList: {},
+      currentSelect: "", // 案例默认展示
       pageForm: {
         pageNum: 1, // 当前页码
         pageSize: 10 // 每页条数
       },
       isShowDetailsBtn: false, // 是否展示详情按钮
-      type: "", 
+      type: "",
       classificationArr: [], // 分类列表数据
       ip: "", // 公网IP
-      isShowMore: true  // 是否展示更多
+      isShowMore: true // 是否展示更多
     };
   },
   watch: {
@@ -99,34 +100,25 @@ export default {
     // 重置数据
     watchRouter(to, from) {
       const type = this.$route.query.type;
-      if (to.path == "/project" && type) {
-        this.getDesignatedData(type);
-      } else {
-        this.pageForm = {
-          pageNum: 1, // 当前页码
-          pageSize: 10 // 每页条数
-        };
-        this.currentSelect = "logo"; // 类型
-        this.getAllProject();
-      }
-
-      // if (to.name == "/project" || "details") {
-      //   this.$store.commit('changeHideNav',false)
-      // } else {
-      //   this.$store.commit('changeHideNav',true)
-      // }
-      
+      // 一开始进入页面没有获取到type,需要等待才能获取到type
+      setTimeout(() => {
+        if (to.path == "/project" && type) {
+          this.getDesignatedData(type);
+        } else if (to.path == "/project") {
+          this.pageForm = {
+            pageNum: 1, // 当前页码
+            pageSize: 10 // 每页条数
+          };
+          this.currentSelect = "logo"; // 类型
+          this.getAllProject();
+        }
+      }, 500);
     },
     // 获取数据
     async getAllProject(typeVal) {
       this.pageForm.pageNum = 1; // 重置页数
       const { pageNum, pageSize } = this.pageForm;
-      // 函数选择类型(typeVal)或者左侧悬浮导航栏跳转类型(this.$route.query.type)或上方路由正常跳转
-      const type = typeVal
-        ? typeVal
-        : this.$route.query.type
-        ? this.$route.query.type
-        : "logo";
+      const type = this.getType(typeVal);
 
       try {
         await caseType().then(res => {
@@ -170,15 +162,8 @@ export default {
           return item.type == type;
         });
       });
-      // 函数选择类型(typeVal)或者左侧悬浮导航栏跳转类型(this.$route.query.type)或上方路由正常跳转('logo')
-      this.currentSelect = typeVal
-        ? typeVal
-        : this.$route.query.type
-        ? this.$route.query.type
-        : "logo";
-
+      this.currentSelect = this.getType(typeVal);
       projectList.all = this.projectList;
-
       this.projectList = projectList;
     },
     // 改变项目类型
@@ -214,6 +199,19 @@ export default {
         this.projectList = res.data || [];
         this.sortAllProject();
       });
+    },
+    // 获取类型
+    getType(typeVal) {
+      /**
+       * @param {*} 函数选择类型 typeVal
+       * @param {*} 左侧悬浮导航栏跳转类型 this.$route.query.type
+       * @param {*} 上方路由正常跳转 logo
+       */
+      return typeVal
+        ? typeVal
+        : this.$route.query.type
+        ? this.$route.query.type
+        : "logo";
     }
   }
 };

@@ -3,7 +3,7 @@
   <div class="link-us">
     <header>
       <div class="banner">
-        <img src="../../assets/img/linkUs-img/banner.jpg" />
+        <img src="~@/assets/img/linkUs-img/banner.jpg" draggable="false" />
       </div>
     </header>
 
@@ -250,6 +250,11 @@ export default {
             type
           };
 
+          if (!type) {
+            this.$message.error("请选择服务项目");
+            return
+          }
+
           submitInfoForm(form)
             .then(res => {
               if (res.code === 0) {
@@ -304,7 +309,7 @@ export default {
   .bottom-box {
     height: 612px;
     margin-top: 40px;
-    background: url("../../assets/img/linkUs-img/leavemsg.png") #fff 100% 100% /
+    background: url("~@/assets/img/linkUs-img/leavemsg.png") #fff 100% 100% /
       cover no-repeat;
     background-position: center;
     // background-size: cover 100% 100%;
