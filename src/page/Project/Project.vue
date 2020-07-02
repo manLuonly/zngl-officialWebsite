@@ -99,27 +99,12 @@ export default {
   methods: {
     // 重置数据
     watchRouter(to, from) {
-      const type = this.$route.query.type;
-      // 一开始进入页面没有获取到type,需要等待才能获取到type
-      setTimeout(() => {
-        if (to.path == "/project" && type) {
-          this.getDesignatedData(type);
-        } else if (to.path == "/project") {
-          this.pageForm = {
-            pageNum: 1, // 当前页码
-            pageSize: 10 // 每页条数
-          };
-          this.currentSelect = "logo"; // 类型
-          this.getAllProject();
-        }
-      }, 500);
+      if (to.path == "/project") {
+        this.getCaseList();
+      }
     },
-    // 获取数据
-    async getAllProject(typeVal) {
-      this.pageForm.pageNum = 1; // 重置页数
-      const { pageNum, pageSize } = this.pageForm;
-      const type = this.getType(typeVal);
-
+    // 获取案例导航列表和案例列表
+    async getAllProject() {
       try {
         await caseType().then(res => {
           const result = res.data || [];
@@ -132,22 +117,35 @@ export default {
           this.projectNameList = arr;
         });
 
-        await caseList(type, pageNum, pageSize).then(res => {
-          this.projectList = res.data || [];
-          this.sortAllProject(typeVal);
-
-          const projectList = this.projectList[type]; // 当前项目类型
-
-          if (projectList.length === res.count) {
-            // 当前条数等于总条数
-            this.isShowMore = false;
-          }
-        });
+        await this.getCaseList();
       } catch (error) {
         error && this.$message.error("加载失败,请重新尝试");
       }
     },
-    //分类
+    /**
+     * 获取案例数据
+     * @param {*}  selectType 当前选中类型
+     */
+    getCaseList(selectType) {
+      const type = this.getType(selectType);
+      this.pageForm.pageNum = 1; // 重置页数
+      const { pageNum, pageSize } = this.pageForm;
+
+      caseList(type, pageNum, pageSize).then(res => {
+        this.projectList = res.data || [];
+        this.sortAllProject(type);
+        const projectList = this.projectList[type]; // 当前项目类型
+        // 当前条数等于总条数
+        if (projectList.length === res.count) {
+          this.isShowMore = false;
+        }
+      });
+    },
+    //
+    /**
+     * 案例分类
+     * @param {*}  typeVal 当前选中类型
+     */
     sortAllProject(typeVal) {
       let projectList = {};
 
@@ -167,10 +165,10 @@ export default {
       this.projectList = projectList;
     },
     // 改变项目类型
-    changeSelectProjectAction(type) {
+    changeSelectProjectAction(selectType) {
       this.isShowMore = true;
-      this.currentSelect = type;
-      this.getAllProject(type);
+      this.currentSelect = selectType;
+      this.getCaseList(selectType);
     },
     // 查看更多
     lookMore() {
@@ -190,22 +188,12 @@ export default {
       localStorage.setItem("type", this.currentSelect);
       this.$router.push({ name: "details", query: { id: item.id } });
     },
-    // 获取特定数据
-    getDesignatedData(type) {
-      const pageNum = 1;
-      const pageSize = 10;
-
-      caseList(type, pageNum, pageSize).then(res => {
-        this.projectList = res.data || [];
-        this.sortAllProject();
-      });
-    },
     // 获取类型
     getType(typeVal) {
       /**
-       * @param {*} 函数选择类型 typeVal
-       * @param {*} 左侧悬浮导航栏跳转类型 this.$route.query.type
-       * @param {*} 上方路由正常跳转 logo
+       * @param {*}  typeVal 选中类型
+       * @param {*} this.$route.query.type 左侧悬浮导航栏跳转类型
+       * @param {*} logo 上方路由正常跳转
        */
       return typeVal
         ? typeVal

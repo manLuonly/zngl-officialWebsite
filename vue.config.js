@@ -76,7 +76,7 @@ module.exports = {
         port: 8000, // 端口
         proxy: {
             "/": {
-                "target": "http://222.217.125.43:8000",
+                "target": "http://222.217.126.9:8000",
                 "changeOrigin": true, //是否跨域
                 ws: false, //  是否代理websockets
                 // port: 8081, // 端口
