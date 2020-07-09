@@ -192,7 +192,7 @@ export default {
     getType(typeVal) {
       /**
        * @param {*}  typeVal 选中类型
-       * @param {*} this.$route.query.type 左侧悬浮导航栏跳转类型
+       * @param {*} this.$route.query.type 导航跳转类型
        * @param {*} logo 上方路由正常跳转
        */
       return typeVal

@@ -4,13 +4,18 @@
     <div class="section d-flex">
       <div class="page-footer-section d-flex align-items-center justify-content-between">
         <div class="pic">
-          <img v-lazy="require('../../assets/img/logo.png')"  draggable="false" />
+          <img v-lazy="require('../../assets/img/logo.png')" draggable="false" />
         </div>
 
         <ul class="service clearfix">
           <div class="mr-2 mb-2">服务范围</div>
-          <li v-for="(item, index) in serviceList" :key="index" class="mb-1 mr-1">
-            <span>{{ item }}</span>
+          <li
+            v-for="(item, index) in serviceList"
+            :key="index"
+            class="mb-1 mr-1"
+            @click="goProject(item)"
+          >
+            <span>{{ item.text }}</span>
           </li>
         </ul>
 
@@ -18,7 +23,7 @@
           <li class="d-flex mb-2">
             <div class="icon d-flex">
               <div class="icon_img">
-                <img src="~@/assets/img/email-white.png"  srcset draggable="false" />
+                <img src="~@/assets/img/email-white.png" srcset draggable="false" />
               </div>
               <span class="separation-line">|</span>
             </div>
@@ -27,7 +32,7 @@
           <li class="d-flex mb-2">
             <div class="icon d-flex">
               <div class="icon_img">
-                <img src="~@/assets/img/tel-white.png"  srcset draggable="false" />
+                <img src="~@/assets/img/tel-white.png" srcset draggable="false" />
               </div>
               <span class="separation-line">|</span>
             </div>
@@ -36,7 +41,7 @@
           <li class="d-flex">
             <div class="icon d-flex">
               <div class="icon_img">
-                <img src="~@/assets/img/address-white.png"  srcset draggable="false" />
+                <img src="~@/assets/img/address-white.png" srcset draggable="false" />
               </div>
               <span class="separation-line">|</span>
             </div>
@@ -77,24 +82,69 @@ export default {
   data() {
     return {
       serviceList: [
-        "LOGO设计",
-        "画册设计",
-        "易拉宝",
-        "海报设计",
-        "VI品牌",
-        "品牌包装",
-        "宣传页",
-        "名片设计",
-        "网站开发",
-        "小程序",
-        "网站维护",
-        "APP开发",
-        "智能灌溉",
-        "智能家居"
+        {
+          text: "logo设计",
+          path: "project",
+          type: "logo"
+        },
+        {
+          text: "包装设计",
+          path: "project",
+          type: "pg"
+        },
+        {
+          text: "品牌VI设计",
+          path: "project",
+          type: "vi"
+        },
+        {
+          text: "广告设计",
+          path: "project",
+          type: "pt"
+        },
+        {
+          text: "画册设计",
+          path: "project",
+          type: "pa"
+        },
+        {
+          text: "APP开发",
+          path: "project",
+          type: "app"
+        },
+        {
+          text: "网站开发",
+          path: "project",
+          type: "web"
+        },
+        {
+          text: "小程序开发",
+          path: "project",
+          type: "sm"
+        },
+        {
+          text: "公众号开发",
+          path: "project",
+          type: "pb"
+        },
+        {
+          text: "智能家居",
+          path: "program",
+          type: 0
+        },
+        {
+          text: "智能灌溉",
+          path: "program",
+          type: 1
+        }
       ]
     };
   },
-  methods: {}
+  methods: {
+    goProject(item) {
+      this.$router.push({ name: item.path, query: { type: item.type } });
+    }
+  }
 };
 </script>
 
@@ -128,7 +178,10 @@ export default {
           min-width: 24%;
           white-space: nowrap;
           float: left;
-          // background-color: #2c2c2c !important; // 覆盖跳转路由样式
+          &:hover {
+            color: #348ccd;
+            cursor: pointer;
+          }
         }
       }
 

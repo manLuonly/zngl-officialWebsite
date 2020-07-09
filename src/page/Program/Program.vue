@@ -88,6 +88,7 @@
     <main v-show="activeClass == '1'">
       <img src="~@/assets/img/test.jpg" style="max-width:100%" />
     </main>
+    {{ getActiveClass }}
   </div>
 </template>
 
@@ -152,6 +153,11 @@ export default {
       ]
     };
   },
+  computed: {
+    getActiveClass() {
+      this.activeClass = this.$route.query.type;
+    }
+  },
   mounted() {
     var wow = new WOW({
       boxClass: "wow",
@@ -161,10 +167,15 @@ export default {
       live: false
     });
     wow.init();
+    this.getType();
   },
   methods: {
     changeType(item, index) {
       this.activeClass = index;
+    },
+    getType() {
+      let type = this.$route.query.type;
+      type ? (this.activeClass = type) : (this.activeClass = 0);
     }
   }
 };

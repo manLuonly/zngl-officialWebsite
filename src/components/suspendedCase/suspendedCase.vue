@@ -3,7 +3,7 @@
     <div class="suspended-box animated" :class="{ 'fadeOutLeft': !hideNav,'fadeInLeft': addAnimation}">
       <img class="suspended-img u-s" src="~@/assets/img/home-img/uspendedCase.png" />
       <a-icon type="close-circle" @click="closeNav" class="close-nave" />
-      <div class="suspended-text-box t-c">
+      <div class="suspended-text-box text-center">
         <div
           v-for="(item,index) in jumpList"
           :key="index"
@@ -21,7 +21,7 @@
       </div>
     </div>
 
-    <div class="icon t-c o-h">
+    <div class="icon text-center o-h">
       <div @mouseenter="enter" @mouseleave="leave">
         <a-icon type="qrcode" />
         <div class="colorfff">

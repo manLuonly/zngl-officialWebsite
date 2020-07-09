@@ -1,4 +1,3 @@
-// import axios from './config'
 import axios from 'axios'
 
 /**
@@ -33,7 +32,6 @@ service.interceptors.response.use(
         const res = response.data;
         if (res.code !== 0) {
             Message.config({
-                // duration: 2,
                 maxCount: 3,
                 duration: 2
             })
@@ -46,7 +44,6 @@ service.interceptors.response.use(
     error => {
 
         Message.config({
-            // duration: 2,
             maxCount: 3,
             duration: 2
         })

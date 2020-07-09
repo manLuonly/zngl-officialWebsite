@@ -63,8 +63,11 @@ body {
   color: #000000;
 }
 
-
 // 宽度
+.w-25 {
+  width: 25%;
+}
+
 .w-100 {
   width: 100%;
 }
@@ -88,10 +91,32 @@ body {
   margin: 0 auto;
 }
 
+.m-t-20 {
+  margin-top: 20px;
+}
+
+.m-t-40 {
+  margin-top: 40px;
+}
+
+// padding
+.p-t-40 {
+  padding-top: 40px;
+}
+
+// display
+.inline-block {
+  display: inline-block;
+}
+
+.block {
+  display: block;
+}
+
 // flex
 .flex {
   display: flex;
-	flex-direction: row;
+  flex-direction: row;
   align-items: center;
 }
 
@@ -107,44 +132,58 @@ body {
 
 /* 垂直居中 */
 .col-center {
-	align-items: center;
+  align-items: center;
 }
 
 /* 顶部对齐 */
 .col-top {
-	align-items: flex-start;
+  align-items: flex-start;
 }
 
 /* 底部对齐 */
 .col-bottom {
-	align-items: flex-end;
+  align-items: flex-end;
 }
 
 /* 左边对齐 */
 .row-left {
-	justify-content: flex-start;
+  justify-content: flex-start;
 }
 
 /* 水平居中 */
 .row-center {
-	justify-content: center;
+  justify-content: center;
 }
 
 /* 右边对齐 */
 .row-right {
-	justify-content: flex-end;
+  justify-content: flex-end;
 }
 
 /* 水平两端对齐，项目之间的间隔都相等 */
 .row-between {
-	justify-content: space-between;
+  justify-content: space-between;
 }
 
 /* 水平每个项目两侧的间隔相等，所以项目之间的间隔比项目与父元素两边的间隔大一倍 */
 .row-around {
-	justify-content: space-around;
+  justify-content: space-around;
+}
+.column {
+  flex-direction: column;
 }
 
+.flex-1 {
+  flex: 1;
+}
+
+.flex-2 {
+  flex: 2;
+}
+
+.flex-3 {
+  flex: 3;
+}
 
 // 背景颜色
 .bg2c {
@@ -161,20 +200,27 @@ body {
 }
 
 // 文字
-.t-c {
+.text-left {
+  text-align: left;
+}
+
+.text-center {
   text-align: center;
+}
+
+.text-right {
+  text-align: right;
 }
 
 // 图片点击禁用
 .u-s {
-  user-select:none;
+  user-select: none;
 }
 
-
-// 
+//
 .o-h {
   overflow: hidden;
-} 
+}
 
 .box-shadow1 {
   box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.75);
@@ -232,23 +278,23 @@ img[lazy="error"] {
 }
 
 // 分享Dropdown样式
-.resetStyle {
-  /deep/ .share1-menu {
-    height: 72px;
-    width: 40px;
-    line-height: 40px;
-    border-radius: 4px;
-    background-color: Rgba(0, 0, 0, 0.5);
-    text-align: center;
-    .ant-dropdown-menu-item {
-      border-bottom: 1px solid #ffffff;
-    }
-    .ant-dropdown-menu-item:hover,
-    .ant-dropdown-menu-submenu-title:hover {
-      background-color: #f05352;
-    }
-    .ant-dropdown-menu {
-      padding: 0;
-    }
-  }
-}
+// .resetStyle {
+//   /deep/ .share1-menu {
+//     height: 72px;
+//     width: 40px;
+//     line-height: 40px;
+//     border-radius: 4px;
+//     background-color: Rgba(0, 0, 0, 0.5);
+//     text-align: center;
+//     .ant-dropdown-menu-item {
+//       border-bottom: 1px solid #ffffff;
+//     }
+//     .ant-dropdown-menu-item:hover,
+//     .ant-dropdown-menu-submenu-title:hover {
+//       background-color: #f05352;
+//     }
+//     .ant-dropdown-menu {
+//       padding: 0;
+//     }
+//   }
+// }

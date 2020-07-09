@@ -27,7 +27,7 @@
     <main class="main">
       <div
         v-if="current.details_total === 0"
-        class="t-c font30"
+        class="text-center font30"
         style="min-height:500px;line-height: 500px;"
       >暂无数据</div>
       <div v-else>
@@ -40,8 +40,8 @@
 
     <footer class="footer section">
       <div class="text-box">
-        <span class="up text-truncate t-c" @click="getUpArticle">上一页:{{ previous.type_name }}</span>
-        <span class="down text-truncate t-c" @click="getDownArticle">下一页:{{ next.type_name }}</span>
+        <span class="up text-truncate text-center" @click="getUpArticle">上一页:{{ previous.type_name }}</span>
+        <span class="down text-truncate text-center" @click="getDownArticle">下一页:{{ next.type_name }}</span>
       </div>
     </footer>
   </div>
