@@ -21,7 +21,7 @@
       </div>
     </div>
 
-    <div class="icon text-center o-h">
+    <div class="icon text-center hidden">
       <div @mouseenter="enter" @mouseleave="leave">
         <a-icon type="qrcode" />
         <div class="colorfff">

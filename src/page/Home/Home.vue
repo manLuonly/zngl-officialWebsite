@@ -5,44 +5,49 @@
       <Banner></Banner>
     </header>
 
-    <div class="about-us">
-      <h1 class="about-us-text">关于我们</h1>
-    </div>
-
     <main>
       <div class="home-intro">
-        <section class="section flex row-between" style="margin-top:40px">
+        <section
+          class="section animated fadeInDown flex row-between flex-wrap introduction"
+          style="margin-top:40px"
+        >
           <div
             v-for="item in introduction"
             :key="item.title"
-            class="flex-1 blue"
-            :style="{'background': 'url('+item.img+') 100% 100%'}"
+            class="blue"
+            :style="{'background': 'url('+item.img+') 100% 100%','width': '24%' }"
           >
-            <span class="colorfff block title font24">{{ item.title }}</span>
-            <span class="colorfff block content font14">{{ item.content }}</span>
+            <span class="colorfff block title font24 title">{{ item.title }}</span>
+            <span class="colorfff block content font14 content">{{ item.content }}</span>
           </div>
         </section>
 
-        <section class="section" style="margin-top:40px">
-          <h1 class="font30 text-center">多端开发服务</h1>
+        <section class="section multi-end-dev" style="margin-top:40px">
+          <h1 class="wow fadeInUp font30 text-center">多端开发服务</h1>
           <span
-            class="w-100 inline-block m-t-20 font-16 text-center"
+            class="wow fadeInUp w-100 inline-block m-t-20 font-16 text-center explanation"
           >我们提供Android开发，软件，小程序，网站开发等多个平台服务</span>
-          <div class="flex row-between m-t-40">
-            <div v-for="item in ultiEndDev" :key="item.text" class="flex column w-25 ulti-end-dev">
+          <div
+            class="flex row-between flex-wrap m-0-a service-introduction"
+            style="margin-top:40px"
+          >
+            <div
+              v-for="item in ultiEndDev"
+              :key="item.text"
+              class="wow fadeInUp flex column ulti-end-dev"
+            >
               <div
                 class="w-100 flex row-center bg"
-                :style="{'background': 'url('+item.img+') 100% 100%'}"
+                :style="{'background': 'url('+item.img+') center center'}"
               >
                 <img v-lazy="item.icon" />
               </div>
               <div class="bottom">
                 <h3 class="font18 text-center title">{{ item.title }}</h3>
                 <span
-                  class="font14 block text-center content1"
+                  class="font14 block text-center content"
                   style="mrgin-top:10px"
-                >{{ item.content1 }}</span>
-                <span class="font14 block text-center content2">{{ item.content2 }}</span>
+                >{{ item.content }}</span>
               </div>
             </div>
           </div>
@@ -50,20 +55,24 @@
 
         <section>
           <div class="background m-t-40">
-            <h1 class="p-t-40 text-center font30 color000">我们能为你做什么</h1>
+            <h1 class="wow fadeInUp p-t-40 text-center font30 ">我们能为你做什么</h1>
             <span
-              class="block m-0-a m-t-20 font16 color333 team-introduction"
+              class="wow fadeInUp block m-0-a m-t-20 font16 color333 team-introduction"
             >智能桂联一家具有原创作经验丰富的团队，专业UI设计、网站开发、小程序开发、结合自主研发的智能灌溉、智能家居等智能核心技术。拥有多维度的万物互联应用解决方案，以7×24×4的服务理念为用户提供满意的设计、技术服务及专业解决方案。</span>
           </div>
         </section>
 
-        <section class="section" style="margin-top:40px">
-          <h1 class="text-center font30">多端开发的优势</h1>
-          <div class="flex row-between m-t-40">
-            <div v-for="item in advantageIntroduction" :key="item.title" class="advantage">
+        <section class="section advantage-introduction" style="margin-top:40px">
+          <h1 class="wow fadeInUp text-center font30">多端开发的优势</h1>
+          <div class="flex row-between flex-wrap m-t-40 advantage-layout-box">
+            <div
+              v-for="item in advantageIntroduction"
+              :key="item.title"
+              class="advantage wow fadeInUp box-shadow1"
+            >
               <div>
                 <div class="round-bg m-0-a text-center" style="margin-top:40px">
-                  <img v-lazy="item.img" class="text-center" />
+                  <img v-lazy="item.img" class="text-center;" style="width:47px;height:47px" />
                 </div>
                 <h3 class="color333 font18 text-center title">{{ item.title }}</h3>
                 <span class="inline-block color666 font14 text-center content">{{ item.content }}</span>
@@ -172,29 +181,25 @@ export default {
           img: require("../../assets/img/home-img/app-bg.png"),
           icon: require("../../assets/img/home-img/app-icon .png"),
           title: "APP开发",
-          content1: "原生APP开发WEBAPP开发",
-          content2: "APP混合开发"
+          content: "原生APP开发WEBAPP开发APP混合开发"
         },
         {
           img: require("../../assets/img/home-img/software.png"),
           icon: require("../../assets/img/home-img/software-icon.png"),
           title: "软件开发",
-          content1: "管理系统开发B2B2C开发",
-          content2: "O2O定制开发"
+          content: "管理系统开发B2B2C开发O2O定制开发"
         },
         {
           img: require("../../assets/img/home-img/applets.png"),
           icon: require("../../assets/img/home-img/applets-icon.png"),
           title: "小程序",
-          content1: "小程序，微商城小程序微信",
-          content2: "应用开发"
+          content: "小程序，微商城小程序微信应用开发"
         },
         {
           img: require("../../assets/img/home-img/website.png"),
           icon: require("../../assets/img/home-img/website-icon.png"),
           title: "网站建站",
-          content1: "企业/政府网站/高校网站",
-          content2: "高端网站建设"
+          content: "企业/政府网站/高校网站高端网站建设"
         }
       ],
       advantageIntroduction: [
@@ -208,7 +213,7 @@ export default {
           img: require("../../assets/img/home-img/advantage-icon2.png"),
           title: "扩展性强",
           content:
-            "可接入任意第三方服务，如地图，支付功能，在线聊天等或者为客户提供定制化制作"
+            "可接入任意第三方服务，如地图，支付功能，在线聊天等或者为客户提供定制"
         },
         {
           img: require("../../assets/img/home-img/advantage-icon3.png"),
@@ -248,25 +253,22 @@ export default {
 
 <style lang="less" scoped>
 .home {
-  .about-us {
-    .about-us-text {
-      display: none;
-    }
-  }
   .home-intro {
     .text_indent2 {
       text-indent: 2em;
     }
 
-    .blue {
-      height: 128px;
-      margin-right: 13px;
-      padding-left: 20px;
-      .title {
-        margin: 30px 0;
-      }
-      &:last-child {
-        margin-right: 0;
+    .introduction {
+      .blue {
+        height: 128px;
+        margin-right: 13px;
+        padding-left: 20px;
+        .title {
+          margin: 30px 0;
+        }
+        &:last-child {
+          margin-right: 0;
+        }
       }
     }
 
@@ -279,20 +281,24 @@ export default {
       .title {
         margin-top: 20px;
       }
-      .content1 {
+      .content {
+        width: 170px;
         margin-top: 10px;
       }
     }
 
-    .ulti-end-dev {
-      margin-right: 60px;
-      border: 1px solid #e5e5e5;
-      border-radius: 2px;
-      &:last-child {
-        margin-right: 0;
-      }
-      &:hover {
-        border: 1px solid #38f;
+    .service-introduction {
+      .ulti-end-dev {
+        width: 21%;
+        margin-right: 60px;
+        border: 1px solid #e5e5e5;
+        border-radius: 2px;
+        &:last-child {
+          margin-right: 0;
+        }
+        &:hover {
+          border: 1px solid #38f;
+        }
       }
     }
 
@@ -301,6 +307,7 @@ export default {
       background: url("../../assets/img/home-img/background.png") no-repeat
         center center;
       .team-introduction {
+        // width: 90%;
         width: 1200px;
         height: 44px;
         text-indent: 2em;
@@ -308,6 +315,7 @@ export default {
     }
 
     .advantage {
+      width:20.5%;
       border: 1px solid #eeeeee;
       margin-right: 68px;
       &:last-child {
