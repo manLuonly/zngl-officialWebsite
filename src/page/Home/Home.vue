@@ -53,11 +53,11 @@
           </div>
         </section>
 
-        <section>
+        <section class="team">
           <div class="background m-t-40">
-            <h1 class="wow fadeInUp p-t-40 text-center font30 ">我们能为你做什么</h1>
+            <h1 class="wow fadeInUp p-t-40 text-center font30">我们能为你做什么</h1>
             <span
-              class="wow fadeInUp block m-0-a m-t-20 font16 color333 team-introduction"
+              class="wow fadeInUp block m-0-a m-t-20 font16 team-introduction"
             >智能桂联一家具有原创作经验丰富的团队，专业UI设计、网站开发、小程序开发、结合自主研发的智能灌溉、智能家居等智能核心技术。拥有多维度的万物互联应用解决方案，以7×24×4的服务理念为用户提供满意的设计、技术服务及专业解决方案。</span>
           </div>
         </section>
@@ -302,20 +302,21 @@ export default {
       }
     }
 
-    .background {
-      height: 800px;
+    .team {
       background: url("../../assets/img/home-img/background.png") no-repeat
         center center;
-      .team-introduction {
-        // width: 90%;
-        width: 1200px;
-        height: 44px;
-        text-indent: 2em;
+      .background {
+        height: 800px;
+        .team-introduction {
+          width: 1200px;
+          height: 44px;
+          text-indent: 2em;
+        }
       }
     }
 
     .advantage {
-      width:20.5%;
+      width: 20.5%;
       border: 1px solid #eeeeee;
       margin-right: 68px;
       &:last-child {
