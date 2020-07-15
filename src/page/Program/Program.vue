@@ -34,7 +34,7 @@
             <div class="text-box">
               <h1 class="right_title font30 color000">“智能家居”(Smart Home)</h1>
               <div
-                class="text_indent2"
+                class="text_indent2 indent2"
               >又称智能生活。它利用先进的计算机、嵌入式系统和网络通讯技术及现代控制技术，将家中的各种设备（如照明、环境控制、安防、网络、空调，窗户、门锁）通过家庭网络连接到一起。能根据不同的环境状态相互协作，从而给用户带来最大程度的高效、便利、舒适与安全。帮助人们有效安排时间，增强家居生活的健康性、安全性，舒适性。</div>
             </div>
           </a-col>
@@ -86,7 +86,62 @@
     </main>
 
     <main v-show="activeClass == '1'">
-      <img src="~@/assets/img/test.jpg" style="max-width:100%" />
+      <section class="section flex">
+        <div class="left animated fadeInLeft">
+          <h1 class="font30 color000">系统介绍</h1>
+          <p class="font18 p-t-40 indent2">针对本地、远程控制、私用、共享等多种手机及电脑所使用条件下，智能化农业灌溉服务系统。</p>
+          <p
+            class="font18 p-t-40 indent2"
+          >通过远程获取环境参数，光照强度，空气湿度，土壤水分温度，湿度，二氧化氮浓度，露点的湿度等数据的无线采集显示和远程调控，节省了人</p>
+        </div>
+        <div class="right animated fadeInRight">
+          <img v-lazy="require('../../assets/img/program-img/introduction-img.png')" />
+        </div>
+      </section>
+
+      <section class="section" style="margin-top:80px">
+        <h1 class="text-center font30 color000 wow slideInUp">系统目标</h1>
+        <p
+          class="m-t-40 fong20 indent2 color333 wow slideInUp"
+        >利用互联网，自动化，同行网络，计算机网络，软件工程，GIS等现代信息技术。构建智慧节灌信息化综合体系，全面提升农业管理和服务水平。</p>
+        <div class="flex row-between m-t-40 wow slideInUp">
+          <div v-for="item in aimsList" :key="item.title" class="w-25 flex column">
+            <img :src="item.img" />
+            <span class="m-t-40">{{ item.title }}</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="m-t-40" style="background:#f7f7f7">
+        <h1 class="text-center font30" style="padding:40px 0">系统功能</h1>
+        <div class="flex flex-wrap m-0-a" style="width:784px;padding-bottom:40px">
+          <div
+            v-for="item in systemFeaturesList"
+            :key="item.title"
+            class="flex column row-center flex-wrap"
+            style="width:25%;height:180px;border:1px solid #000"
+            :style="{ background: ( item.isColor ? item.background : 'url:('+ item.background +')' ) }"
+          >
+            <img :src="item.img" />
+            <span
+              class="font20"
+              style="margin-top:24px"
+              :style="{ color: item.color }"
+            >{{ item.title }}</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="flex row-between m-t-40">
+          <img src="~@/assets/img/program-img/bottom-img.png" />
+          <div class="flex column m-t-40">
+            <div v-for="item in contentList" :key="item.content" style="padding-left:80px">
+              <p class="indent2 font14" style="padding-bottom:63px">{{ item.content }}</p>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
     {{ getActiveClass }}
   </div>
@@ -150,7 +205,102 @@ export default {
           title: "豪华智能家居",
           content: "增加多媒体控制,防护功能，更加个性化。可按需求编程"
         }
-      ]
+      ],
+      aimsList: [
+        {
+          img: require("../../assets/img/program-img/efficient-icon.png"),
+          title: "水供管理高效化"
+        },
+        {
+          img: require("../../assets/img/program-img/dataTesting-icon.png"),
+          title: "环境数据检测"
+        },
+        {
+          img: require("../../assets/img/program-img/intelligent-icon.png"),
+          title: "灌溉管理智能化"
+        },
+        {
+          img: require("../../assets/img/program-img/visualization-icon.png"),
+          title: "数据管理可视化"
+        }
+      ],
+      systemFeaturesList: [
+        {
+          img: require("../../assets/img/program-img/authority.png"),
+          title: "人员权限",
+          background: "#fff",
+          color: "#000",
+          isColor: true
+        },
+        {
+          img: require("../../assets/img/program-img/equipment.png"),
+          title: "设备运行",
+          background: "#0556A8",
+          color: "#fff",
+          isColor: true
+        },
+        {
+          img: require("../../assets/img/program-img/site.png"),
+          title: "场地管理",
+          background: require("../../assets/img/program-img/venue.png"),
+          color: "#fff",
+          isColor: false
+        },
+        {
+          img: require("../../assets/img/program-img/system.png"),
+          title: "系统功能",
+          background: "#fff",
+          color: "#000",
+          isColor: true
+        },
+        {
+          img: require("../../assets/img/program-img/process.png"),
+          title: "灌溉进程",
+          background: "#0556A8",
+          color: "#fff",
+          isColor: true
+        },
+        {
+          img: require("../../assets/img/program-img/testing.png"),
+          title: "检测参数",
+          background: require("../../assets/img/program-img/testing-bg.png"),
+          color: "#fff",
+          isColor: false
+        },
+        {
+          img: require("../../assets/img/program-img/statistics.png"),
+          title: "数据统计",
+          background: "#fff",
+          color: "#000",
+          isColor: true
+        },
+        {
+          img: require("../../assets/img/program-img/recording.png"),
+          title: "浇水记录",
+          background: "#0556A8",
+          color: "#fff",
+          isColor: true
+        }
+      ],
+      contentList: [
+        {
+          content:
+            "当土壤湿度较干时，控制设备的红灯亮起，发出警报;同时自动开启，启动水泵和水阀自动浇水。"
+        },
+        {
+          content:
+            "当土壤湿度较湿时，水泵停止浇水，同时处在控制室内的绿灯就会亮起，提示正常。"
+        },
+        {
+          content:
+            "支持灌溉时间预约，人员管控所有设备功能；支持温湿度环境自动调节及手动调节功能。"
+        },
+        {
+          content:
+            "浇水结束后，系统自动关闭功能；预约时间内自动开启水阀开关，系统开关系统提醒并记录。"
+        }
+      ],
+      background: ""
     };
   },
   computed: {
@@ -215,9 +365,6 @@ export default {
       .right_title {
         letter-spacing: 1px;
         margin-bottom: 20px;
-      }
-      .text_indent2 {
-        text-indent: 2em;
       }
     }
   }
@@ -307,5 +454,12 @@ export default {
       }
     }
   }
+
+  // .left {
+  //   position: absolute;
+  // }
+  // .right {
+  //   position: relative;
+  // }
 }
 </style>

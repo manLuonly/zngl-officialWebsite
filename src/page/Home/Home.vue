@@ -85,7 +85,7 @@
           <div class="center-text m-t-40">
             <h1 class="center_title font30 text-center wow slideInUp">合作伙伴</h1>
             <div
-              class="text_indent2 font16 wow slideInUp"
+              class="text_indent2 indent2 font16 wow slideInUp"
             >智能桂联一直奉行“智能快捷、互惠双赢”的合作原则。一直相信“合作创造价值”，建立在双方资源互补、双赢基础上的商业合作能够为合作伙伴带来最大的利益。在合作过程中，智能桂联所表现出的专业、务实和坦诚态度，获得了合作商的极大赞誉和认可。</div>
           </div>
 
@@ -181,7 +181,7 @@ export default {
           img: require("../../assets/img/home-img/app-bg.png"),
           icon: require("../../assets/img/home-img/app-icon .png"),
           title: "APP开发",
-          content: "原生APP开发WEBAPP开发APP混合开发"
+          content: "APP开发WEBAPP开发APP混合开发"
         },
         {
           img: require("../../assets/img/home-img/software.png"),
@@ -219,7 +219,7 @@ export default {
           img: require("../../assets/img/home-img/advantage-icon3.png"),
           title: "兼容性好",
           content:
-            "兼容主流浏览器，微信内置浏览器等,及主流移动设备如苹果，小米，华为等，并且可流畅运行"
+            "兼容主流浏览器，微信内置浏览器等,及主流移动设备如苹果，小米，华为等，可流畅运行"
         },
         {
           img: require("../../assets/img/home-img/advantage-icon4.png"),
@@ -253,11 +253,8 @@ export default {
 
 <style lang="less" scoped>
 .home {
+  overflow: hidden;
   .home-intro {
-    .text_indent2 {
-      text-indent: 2em;
-    }
-
     .introduction {
       .blue {
         height: 128px;

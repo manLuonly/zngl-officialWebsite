@@ -40,6 +40,11 @@ body {
   font-size: 30px;
 }
 
+// 字体缩进
+.indent2 {
+  text-indent: 2em;
+}
+
 // 颜色
 .color348 {
   color: #348ccd;
@@ -169,6 +174,8 @@ body {
 .row-around {
   justify-content: space-around;
 }
+
+/* Y轴 */
 .column {
   flex-direction: column;
 }
@@ -247,20 +254,11 @@ body {
 .img_cover {
   //防止被压缩变形
   flex-shrink: 0;
-  // width: 100%;
-  // height: 100%;
-  // max-width: 100%;
   max-width: 100%;
   max-height: 100%;
   object-fit: cover;
 }
 
-//选中的路由
-.router-link-active {
-  background-color: #0556a8;
-  color: #ffffff !important;
-  text-decoration: none !important;
-}
 
 //路由hover样式
 .r-link {
@@ -277,24 +275,3 @@ img[lazy="loaded"] {
 img[lazy="error"] {
 }
 
-// 分享Dropdown样式
-// .resetStyle {
-//   /deep/ .share1-menu {
-//     height: 72px;
-//     width: 40px;
-//     line-height: 40px;
-//     border-radius: 4px;
-//     background-color: Rgba(0, 0, 0, 0.5);
-//     text-align: center;
-//     .ant-dropdown-menu-item {
-//       border-bottom: 1px solid #ffffff;
-//     }
-//     .ant-dropdown-menu-item:hover,
-//     .ant-dropdown-menu-submenu-title:hover {
-//       background-color: #f05352;
-//     }
-//     .ant-dropdown-menu {
-//       padding: 0;
-//     }
-//   }
-// }

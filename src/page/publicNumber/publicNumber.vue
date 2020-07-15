@@ -114,6 +114,7 @@ export default {
 
 <style lang='less' scoped>
 .public-number {
+  overflow: hidden;
   .title {
     text-align: center;
     font-size: 30px;
