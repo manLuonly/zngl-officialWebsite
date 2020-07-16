@@ -20,7 +20,7 @@
       </div>
     </nav>
 
-    <main v-show="activeClass == '0' ">
+    <main class="furniture" v-show="activeClass == '0' ">
       <section class="section introduction1">
         <a-row class="row font16" type="flex">
           <a-col :span="12" class="animated fadeInLeft left-img">
@@ -85,42 +85,42 @@
       </section>
     </main>
 
-    <main v-show="activeClass == '1'">
-      <section class="section flex">
+    <main class="irrigation" v-show="activeClass == '1'">
+      <section class="section flex introduction1">
         <div class="left animated fadeInLeft">
           <h1 class="font30 color000">系统介绍</h1>
           <p class="font18 p-t-40 indent2">针对本地、远程控制、私用、共享等多种手机及电脑所使用条件下，智能化农业灌溉服务系统。</p>
           <p
             class="font18 p-t-40 indent2"
-          >通过远程获取环境参数，光照强度，空气湿度，土壤水分温度，湿度，二氧化氮浓度，露点的湿度等数据的无线采集显示和远程调控，节省了人</p>
+          >通过远程获取环境参数，光照强度，空气湿度，土壤水分温度，湿度，二氧化氮浓度，露点的湿度等数据的无线采集显示和远程调控，节省了人力。</p>
         </div>
         <div class="right animated fadeInRight">
           <img v-lazy="require('../../assets/img/program-img/introduction-img.png')" />
         </div>
       </section>
 
-      <section class="section" style="margin-top:80px">
+      <section class="section introduction2" style="margin-top:80px">
         <h1 class="text-center font30 color000 wow slideInUp">系统目标</h1>
         <p
           class="m-t-40 fong20 indent2 color333 wow slideInUp"
         >利用互联网，自动化，同行网络，计算机网络，软件工程，GIS等现代信息技术。构建智慧节灌信息化综合体系，全面提升农业管理和服务水平。</p>
-        <div class="flex row-between m-t-40 wow slideInUp">
-          <div v-for="item in aimsList" :key="item.title" class="w-25 flex column">
+        <div class="flex row-between flex-wrap m-t-40 wow slideInUp aims-box">
+          <div v-for="item in aimsList" :key="item.title" class="w-25 flex column aims-item">
             <img :src="item.img" />
             <span class="m-t-40">{{ item.title }}</span>
           </div>
         </div>
       </section>
 
-      <section class="m-t-40" style="background:#f7f7f7">
+      <section class="m-t-40 introduction3" style="background:#f7f7f7">
         <h1 class="text-center font30" style="padding:40px 0">系统功能</h1>
-        <div class="flex flex-wrap m-0-a" style="width:784px;padding-bottom:40px">
+        <div class="flex flex-wrap m-0-a system-features-box" style="width:784px;padding-bottom:40px">
           <div
             v-for="item in systemFeaturesList"
             :key="item.title"
-            class="flex column row-center flex-wrap"
-            style="width:25%;height:180px;border:1px solid #000"
-            :style="{ background: ( item.isColor ? item.background : 'url:('+ item.background +')' ) }"
+            class="flex column row-center flex-wrap system-features-item"
+            style="width:25%;height:180px;"  
+            :style='{background: item.isColor ? item.background : "url("+item.background+")"}' 
           >
             <img :src="item.img" />
             <span
@@ -132,11 +132,11 @@
         </div>
       </section>
 
-      <section class="section">
-        <div class="flex row-between m-t-40">
-          <img src="~@/assets/img/program-img/bottom-img.png" />
-          <div class="flex column m-t-40">
-            <div v-for="item in contentList" :key="item.content" style="padding-left:80px">
+      <section class="section introduction4">
+        <div class="flex row-between m-t-40 content-box">
+          <img class="w-100 left" v-lazy="require('../../assets/img/program-img/bottom-img.png')" />
+          <div class="flex column m-t-40 right">
+            <div class="content-item" v-for="item in contentList" :key="item.content" style="padding-left:80px">
               <p class="indent2 font14" style="padding-bottom:63px">{{ item.content }}</p>
             </div>
           </div>
@@ -299,8 +299,7 @@ export default {
           content:
             "浇水结束后，系统自动关闭功能；预约时间内自动开启水阀开关，系统开关系统提醒并记录。"
         }
-      ],
-      background: ""
+      ]
     };
   },
   computed: {
