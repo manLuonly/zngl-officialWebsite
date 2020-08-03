@@ -137,33 +137,33 @@
 </template>
 
 <script>
-import { submitInfoForm } from "@/api/project";
+import { add } from "@/api/project";
 
 const plainOptions = [
   { label: "LOGO设计", value: "LOGO设计" },
   { label: "产品包装", value: "产品包装" },
   { label: "微店装修", value: "微店装修" },
-  { label: "公众号开发", value: "公众号开发" }
+  { label: "公众号开发", value: "公众号开发" },
 ];
 const options = [
   { label: "画册设计", value: "画册设计" },
   { label: "VIS设计", value: "VIS设计" },
   { label: "小程序开发", value: "小程序开发" },
-  { label: "智能灌溉", value: "智能灌溉" }
+  { label: "智能灌溉", value: "智能灌溉" },
 ];
 const optionsWithDisabled = [
   { label: "海报设计", value: "海报设计" },
   { label: "易拉宝设计", value: "易拉宝设计" },
   { label: "网站开发", value: "网站开发" },
-  { label: "智能家居", value: "智能家居" }
+  { label: "智能家居", value: "智能家居" },
 ];
 const formItemLayout = {
   labelCol: { span: 4 },
-  wrapperCol: { span: 20 }
+  wrapperCol: { span: 20 },
 };
 const formTailLayout = {
   labelCol: { span: 4 },
-  wrapperCol: { span: 20 }
+  wrapperCol: { span: 20 },
 };
 export default {
   name: "LinkUs",
@@ -179,7 +179,7 @@ export default {
       form: this.$form.createForm(this),
       checkedValues1: [],
       checkedValues2: [],
-      checkedValues3: []
+      checkedValues3: [],
     };
   },
   methods: {
@@ -194,17 +194,18 @@ export default {
       this.checkedValues3 = checkedValues;
     },
     submit() {
-      this.form.validateFields(err => {
+      this.form.validateFields((err) => {
         if (!err) {
           let res = this.checkedValues1.concat(
             this.checkedValues2,
             this.checkedValues3
           );
+          console.log(res,'res');
 
           const service = res.join(","); // 服务项目
 
           const typeArr = [];
-          res.map(item => {
+          res.map((item) => {
             switch (item) {
               case "LOGO设计":
                 typeArr.push("logo");
@@ -235,41 +236,42 @@ export default {
             }
           });
 
-          const name = this.form.getFieldValue("username"); // 姓名
-          const phone = this.form.getFieldValue("tel"); // 手机号码
-          const email = this.form.getFieldValue("email"); // 邮箱
-          const leaving = this.form.getFieldValue("leavingMsg"); // 补充说明
-          const type = typeArr.join(","); // 服务项目(type)
+          let name = this.form.getFieldValue("username"); // 姓名
+          let tel = this.form.getFieldValue("tel"); // 手机号码
+          let email = this.form.getFieldValue("email"); // 邮箱
+          let leave_message = this.form.getFieldValue("leavingMsg"); // 补充说明
+          let service_type = typeArr.join(","); // 服务项目(type)
+          const source = "pc";
 
           let form = {
-            service,
             name,
-            phone,
+            tel,
             email,
-            leaving,
-            type
+            leave_message,
+            service_type,
+            source,
           };
 
-          if (!type) {
+          if (!service_type) {
             this.$message.error("请选择服务项目");
-            return
+            return;
           }
 
-          submitInfoForm(form)
-            .then(res => {
+          add(form)
+            .then((res) => {
               if (res.code === 0) {
                 this.$message.success("保存成功");
                 this.form.resetFields();
                 this.reload();
               }
             })
-            .catch(err => {
+            .catch((err) => {
               this.$message.error("提交失败,请重新尝试!");
             });
         }
       });
-    }
-  }
+    },
+  },
 };
 </script>
 

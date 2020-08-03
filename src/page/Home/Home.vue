@@ -68,7 +68,7 @@
             <div
               v-for="item in advantageIntroduction"
               :key="item.title"
-              class="advantage wow fadeInUp box-shadow1"
+              class="advantage wow fadeInUp "
             >
               <div>
                 <div class="round-bg m-0-a text-center" style="margin-top:40px">
@@ -331,6 +331,9 @@ export default {
       }
       .content {
         margin: 20px 20px 40px 20px;
+      }
+      &:hover {
+        box-shadow: 0px 0px 10px -5px rgba(0, 0, 0, 0.75);
       }
     }
 

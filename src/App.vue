@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { serviceLink } from "@/api/project";
+import { getIp } from "@/api/project";
 
 export default {
   name: "app",
@@ -20,16 +20,12 @@ export default {
       isRouterAlive: true //控制视图是否显示的变量
     };
   },
-
-  computed: {
-    isShowNav() {}
-  },
   watch: {
     $route: "watchRouter"
   },
   created() {
-    serviceLink().then(res => {
-      let ip = res.data.path_link;
+    getIp().then(res => {
+      let ip = res.data.ip;
       window.localStorage.setItem("ip", ip);
     });
   },
@@ -43,7 +39,9 @@ export default {
     watchRouter(to, from) {
       if (to.name == "project" || to.name == "details") {
         this.$store.commit("changeHideNav", false);
-      } 
+      }
+
+      // this.$store.commit("changePosition", "relative");
     }
   }
 };

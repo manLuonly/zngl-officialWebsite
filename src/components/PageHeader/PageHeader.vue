@@ -114,7 +114,7 @@ export default {
   watch: {},
   computed: {
     _navStyle() {
-      return this.$route.meta.title === "详情" ? "detailsCol" : "col-xl r-link";
+      return this.$route.meta.title === "详情" ? "details-col" : "col-xl r-link";
     },
     src() {
       return this.isShowOnIcon ? "nav-btn-on" : "nav-btn";
@@ -221,7 +221,6 @@ export default {
           font-size: 0.9rem;
         }
         .active {
-          // color: #0556a7;
           color: rgb(126, 179, 248)
         }
       }
@@ -259,9 +258,11 @@ export default {
   .r-link {
     &.router-link-exact-active {
       color: #ffffff !important;
+      background:#0556a8;
+      text-decoration:none;
     }
   }
-  .detailsCol {
+  .details-col {
     margin-right: 40px;
     font-size: 14px;
     color: #fff;

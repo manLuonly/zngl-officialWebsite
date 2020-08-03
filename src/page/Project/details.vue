@@ -40,15 +40,22 @@
 
     <footer class="footer section">
       <div class="text-box">
-        <span class="up text-truncate text-center" @click="getUpArticle">上一页:{{ previous.type_name }}</span>
-        <span class="down text-truncate text-center" @click="getDownArticle">下一页:{{ next.type_name }}</span>
+        <span
+          class="up text-truncate text-center"
+          @click="getUpArticle"
+        >上一页:{{ previous.name? previous.name : "无" }}</span>
+        <span
+          class="down text-truncate text-center"
+          @click="getDownArticle"
+        >下一页:{{ next.name ?next.name : "无"}}</span>
       </div>
     </footer>
   </div>
 </template>
 
 <script>
-import { detail } from "@/api/project";
+import { mapState } from "vuex";
+import { listAllPcDetailsImgs } from "@/api/project";
 
 export default {
   name: "details1",
@@ -60,16 +67,18 @@ export default {
       current: [], // 当前页
       previous: [], // 上一页
       ip: "",
-      i: 0,
-      pageNum: 1
+      pageNum: 1,
     };
+  },
+  computed: {
+    ...mapState(["currentData"]),
   },
   mounted() {
     this.getDataList();
     this.ip = window.localStorage.getItem("ip");
-    /** 
+    /**
      *  监听浏览器返回键触发自定义返回函数
-    */
+     */
     if (window.history && window.history.pushState) {
       history.pushState(null, null, document.URL);
       window.addEventListener("popstate", this.goBack, false);
@@ -81,8 +90,9 @@ export default {
   methods: {
     getDataList(Id) {
       let id = Id ? Id : this.$route.query.id;
-
-      detail(id).then(res => {
+      let type = localStorage.getItem("type");
+      let form = { id, type };
+      listAllPcDetailsImgs(form).then((res) => {
         this.next = res.data.next; // 下一页
         this.current = res.data.current; // 当前
         this.previous = res.data.previous; // 上一页
@@ -93,10 +103,14 @@ export default {
     goBack() {
       let type = localStorage.getItem("type");
       this.$router.push({ name: "project", query: { type: type } });
+      console.log('go');
     },
     // 获取上页文章
     getUpArticle() {
       let id = this.previous.id;
+      if (!this.previous) {
+        return;
+      }
       this.getDataList(id);
       this.spliceImgsUrl();
       window.scrollTo(0, 0);
@@ -104,29 +118,30 @@ export default {
     // 获取下页文章
     getDownArticle() {
       let id = this.next.id;
+      if (!this.next) {
+        return;
+      }
       this.getDataList(id);
       this.spliceImgsUrl();
       window.scrollTo(0, 0);
     },
     // 拼接图片路径
     spliceImgsUrl() {
-      let current = this.current;
       this.imgList = [];
 
-      for (this.i = 0; this.i < current.details_total; this.i++) {
+      this.current.details_imgs.filter((item) => {
+        let url = this.ip + item;
         this.imgList.push({
-          name: current.type_name,
-          url: `${this.ip}?name=${this.i + 1}&suffix=${
-            current.details_suffix
-          }&directory=${current.directory}/${current.type_name}`
+          name: this.current.name,
+          url: url,
         });
-      }
+      });
     },
     // 锚点跳转
     changePagenum() {
       document.querySelector(`#img${this.pageNum - 1}`).scrollIntoView(true);
-    }
-  }
+    },
+  },
 };
 </script>
 

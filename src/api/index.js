@@ -36,10 +36,8 @@ service.interceptors.response.use(
                 duration: 2
             })
             Message.error(res.msg);
-            return response.data;
-        } else {
-            return response.data;
         }
+        return response.data;
     },
     error => {
 

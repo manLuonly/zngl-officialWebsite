@@ -9,7 +9,7 @@
         <a-icon type="right-circle" />
       </div>
       <div class="carousel">
-        <img src="~@/assets/img/home-img/banner1.jpg" alt="slide" class="img_cover" />
+        <img src="~@/assets/img/home-img/banner.jpg" alt="slide" class="img_cover" />
       </div>
       <div class="carousel">
         <img src="~@/assets/img/home-img/banner2.jpg" alt="slide" class="img_cover" />

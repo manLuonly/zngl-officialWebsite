@@ -1,6 +1,6 @@
 <!-- 公共底部  -->
 <template>
-  <div class="page-footer bg2c colorccc font12">
+  <div class="page-footer bg2c colorccc font12" :style="{ 'position': position }" >
     <div class="section d-flex">
       <div class="page-footer-section d-flex align-items-center justify-content-between">
         <div class="pic">
@@ -58,7 +58,7 @@
             <div class>
               <img
                 class="gw-qrcode"
-                v-lazy="require('../../assets/img/gw-qrcode (2).png')"
+                src='../../assets/img/gw-qrcode (2).png'
                 draggable="false"
               />
             </div>
@@ -66,7 +66,7 @@
           </a-col>
           <a-col :span="12" class="d-flex flex-column justify-content-center align-items-center">
             <div class>
-              <img v-lazy="require('../../assets/img/wx-qrcode.png')" adraggable="false" />
+              <img src='../../assets/img/wx-qrcode.png' adraggable="false" />
             </div>
             <span class="mt-1">智能桂联公众号</span>
           </a-col>
@@ -77,6 +77,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
 export default {
   name: "PageFooter",
   data() {
@@ -140,6 +141,9 @@ export default {
       ]
     };
   },
+  computed: {
+    ...mapState(['position'])
+  },
   methods: {
     goProject(item) {
       this.$router.push({ name: item.path, query: { type: item.type } });
@@ -150,8 +154,9 @@ export default {
 
 <style lang="less" scoped>
 .page-footer {
-  position: relative;
+  bottom:0;
   z-index: 99;
+  width:100%;
   height: 180px;
   margin-top: 40px;
   padding: 40px 0;

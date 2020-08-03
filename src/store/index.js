@@ -6,20 +6,23 @@ Vue.use(Vuex)
 
 const state = {
     ddda: 2222,
-    count: 1,
-    hideNav: true
+    hideNav: true,
+    position: 'relative',
+    currentData: []
 }
 const getters = {
 
 }
 
 const mutations = {
-    increment(state) {
-        // 变更状态
-        state.count++
-    },
     changeHideNav(state, hideNav) {
         state.hideNav = hideNav;
+    },
+    changePosition(state, position) {
+        state.position = position;
+    },
+    setCurrentData(state, currentData) {
+        state.currentData = currentData
     }
 }
 

@@ -35,7 +35,7 @@
           <div class="logo-list">
             <ul class="clearfix font18">
               <li
-                v-for="(item, index) in projectList[currentSelect]"
+                v-for="(item, index) in projectList"
                 :key="index"
                 :class="{isShowDetailsBtn: isShowDetailsBtn}"
               >
@@ -47,7 +47,7 @@
                 >查看详情</a-button>
                 <!-- encodeURI解决IE图片加载失败问题  -->
                 <img
-                  v-lazy="encodeURI(`${ip}?name=${item.type_name}&suffix=${item.suffix}&directory=${item.directory}`) "
+                  v-lazy="`${ip}${item.img}`"
                   style="object-fit: cover;width:100%;height:100%;"
                   draggable="false"
                 />
@@ -55,7 +55,7 @@
               </li>
             </ul>
 
-            <div class="look-more d-flex justify-content-end align-items-center">
+            <div class="look-more d-flex justify-content-end align-items-center" v-if="isHaveData">
               <a-button
                 class="look-more-btn"
                 :disabled="!isShowMore"
@@ -65,32 +65,52 @@
           </div>
         </section>
       </main>
+
+      <main v-if="!isHaveData">
+        <div class="text-center font30">暂无数据</div>
+      </main>
+      {{ isNotdetails }}
     </div>
   </div>
 </template>
 
 <script>
-import { caseType, caseList } from "@/api/project";
+import { listAll, caseList } from "@/api/project";
 export default {
   name: "Project",
   data() {
     return {
-      projectNameList: [],
-      projectList: {},
-      currentSelect: "", // 案例默认展示
+      projectNameList: [], // 案例分类
+      projectList: [],
+      currentSelect: "logo", // 案例默认展示
       pageForm: {
         pageNum: 1, // 当前页码
-        pageSize: 10 // 每页条数
+        pageSize: 10, // 每页条数
+        system_type: "pc", // 系统的类型(pc/mini)
+        type: "logo", // 案例类型(-1为查所有)
+        search_name: "", // 搜索名字
+        delete_status: 0, // 状态(0可恢复/1可永久删除)
       },
       isShowDetailsBtn: false, // 是否展示详情按钮
       type: "",
       classificationArr: [], // 分类列表数据
       ip: "", // 公网IP
-      isShowMore: true // 是否展示更多
+      isHaveData: true, // 是否展示button
+      isShowMore: true, // 是否展示更多
     };
   },
+  computed: {
+    // logo 和 小程序 没有详情
+    isNotdetails() {
+      if (this.currentSelect == "logo" || this.currentSelect == "sm") {
+        this.isShowDetailsBtn = false;
+      } else {
+        this.isShowDetailsBtn = true;
+      }
+    },
+  },
   watch: {
-    $route: "watchRouter"
+    $route: "watchRouter",
   },
   mounted() {
     this.getAllProject();
@@ -106,9 +126,13 @@ export default {
     // 获取案例导航列表和案例列表
     async getAllProject() {
       try {
-        await caseType().then(res => {
+        const form = {
+          system_type: "pc",
+          delete_status: 0,
+        };
+        await listAll(form).then((res) => {
           const result = res.data || [];
-          this.classificationArr = result.map(i => i.type);
+          this.classificationArr = result.map((i) => i.type);
           var arr = [];
           // 一维数组分割为多维数组
           for (var i = 0; i < result.length; i += 4) {
@@ -120,6 +144,7 @@ export default {
         await this.getCaseList();
       } catch (error) {
         error && this.$message.error("加载失败,请重新尝试");
+        this.isHaveData = false;
       }
     },
     /**
@@ -127,42 +152,19 @@ export default {
      * @param {*}  selectType 当前选中类型
      */
     getCaseList(selectType) {
-      const type = this.getType(selectType);
+      this.pageForm.type = this.getType(selectType); // 获取type
+      this.currentSelect = this.pageForm.type; // 给选择的li添加class
       this.pageForm.pageNum = 1; // 重置页数
-      const { pageNum, pageSize } = this.pageForm;
+      let form = this.pageForm;
 
-      caseList(type, pageNum, pageSize).then(res => {
+      caseList(form).then((res) => {
         this.projectList = res.data || [];
-        this.sortAllProject(type);
-        const projectList = this.projectList[type]; // 当前项目类型
+
         // 当前条数等于总条数
-        if (projectList.length === res.count) {
+        if (this.projectList.length === res.count) {
           this.isShowMore = false;
         }
       });
-    },
-    //
-    /**
-     * 案例分类
-     * @param {*}  typeVal 当前选中类型
-     */
-    sortAllProject(typeVal) {
-      let projectList = {};
-
-      this.classificationArr.map(type => {
-        projectList[type] = this.projectList.filter(item => {
-          if (item.type == "logo" || item.type == "sm") {
-            this.isShowDetailsBtn = false;
-          } else {
-            this.isShowDetailsBtn = true;
-          }
-
-          return item.type == type;
-        });
-      });
-      this.currentSelect = this.getType(typeVal);
-      projectList.all = this.projectList;
-      this.projectList = projectList;
     },
     // 改变项目类型
     changeSelectProjectAction(selectType) {
@@ -173,13 +175,11 @@ export default {
     // 查看更多
     lookMore() {
       this.pageForm.pageNum++;
-      const { pageNum, pageSize } = this.pageForm;
-      const type = this.currentSelect;
-      const projectList = this.projectList[type]; // 当前项目类型
+      let form = this.pageForm;
 
-      caseList(type, pageNum, pageSize).then(res => {
+      caseList(form).then((res) => {
         if (res.code === 0 && res.data.length !== 0) {
-          projectList = projectList.concat(res.data);
+          this.projectList = this.projectList.concat(res.data);
         }
       });
     },
@@ -200,8 +200,8 @@ export default {
         : this.$route.query.type
         ? this.$route.query.type
         : "logo";
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -212,6 +212,8 @@ export default {
     cursor: pointer;
   }
   .logo-list {
+    position: relative;
+    // min-height: 17.647rem;
     margin-top: 40px;
     .look-more {
       .look-more-btn {
@@ -286,7 +288,7 @@ export default {
         background-color: #348ccd;
         border-radius: 5px;
         transition: background 0.5s;
-        cursor: not-allowed;
+        // cursor: not-allowed;
       }
     }
   }
